@@ -959,3 +959,11 @@ a { color: inherit; text-decoration: none; }
   /* Slogan breathes instead of wrapping jaggedly */
   .footer__slogan { letter-spacing: 0.08em; font-size: 0.6rem; word-spacing: 0.1em; }
 }
+
+/* ---------- Local SEO elements ---------- */
+.contact__location {
+  margin: -14px 0 34px;
+  font-size: 0.72rem; letter-spacing: 0.14em;
+  color: var(--text-dim);
+}
+.footer__loc { font-size: 0.9rem; color: var(--text-faint); }
