@@ -166,30 +166,83 @@
 })();
 
 
-/* ---------- Hero status typing effect ---------- */
+/* ---------- Hero status: expanding pill + typing (reserve final size, then grow) ---------- */
 (function initHeroStatus() {
   var el = document.querySelector('.hero__status');
   if (!el) return;
-  var fullText = el.textContent.trim();
-  // Respect reduced motion
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  // Keep the pulse dot, type the text after it
-  var dot = el.querySelector('.pulse-dot');
-  var textNode = Array.prototype.find.call(el.childNodes, function(n){ return n.nodeType === 3 && n.textContent.trim().length; });
-  if (!textNode) return;
+  var lines = el.querySelectorAll('.status-line');
+  if (!lines.length) return;
 
-  var target = textNode.textContent;
-  textNode.textContent = '';
-  var i = 0;
-  var type = function () {
-    if (i <= target.length) {
-      textNode.textContent = ' ' + target.slice(0, i);
-      i++;
-      setTimeout(type, 28);
-    }
-  };
-  setTimeout(type, 500);
+  var isMobile = window.matchMedia && window.matchMedia('(max-width: 600px)').matches;
+
+  // Capture full text now (invisible), so we can measure the pill's final footprint
+  var texts = Array.prototype.map.call(lines, function (l) { return l.textContent; });
+
+  // Measure final width/height at full text before we blank anything.
+  // This reserves the pill's end-state box so it never warps on mobile.
+  el.style.visibility = 'hidden';
+  el.style.display = 'inline-flex';
+  var finalW = el.offsetWidth;
+  var finalH = el.offsetHeight;
+  el.style.visibility = '';
+
+  // Blank the lines, then start collapsed and expand to the reserved size.
+  Array.prototype.forEach.call(lines, function (l) { l.textContent = ''; });
+
+  // Start collapsed (just the dot), lock final height so only width animates.
+  el.style.overflow = 'hidden';
+  el.style.height = finalH + 'px';
+  el.style.width = (isMobile ? finalW : 0) + 'px';
+  el.style.transition = 'width 700ms cubic-bezier(0.22,1,0.36,1), opacity 0.7s ease, transform 0.7s ease';
+  el.style.flex = 'none';
+  el.style.justifyContent = isMobile ? 'center' : 'flex-start';
+  el.style.whiteSpace = 'nowrap';
+
+  if (isMobile) {
+    // Mobile: pill is already at final size (two stacked lines). Just type — no width anim,
+    // so the wrap layout never reflows mid-typing (this was the warp).
+    typeAll();
+    return;
+  }
+
+  // Desktop: expand the pill, then type inside the now-full-size pill.
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      el.style.width = finalW + 'px';
+      setTimeout(typeAll, 720); // start typing as the expansion settles
+    });
+  });
+
+  function typeAll() {
+    var li = 0, ci = 0;
+    (function typeLine() {
+      if (li >= texts.length) { cleanup(); return; }
+      var line = lines[li], target = texts[li];
+      if (ci <= target.length) {
+        line.textContent = target.slice(0, ci);
+        ci++;
+        setTimeout(typeLine, 26);
+      } else {
+        li++; ci = 0;
+        setTimeout(typeLine, 140); // brief pause between lines
+      }
+    })();
+  }
+
+  function cleanup() {
+    // Release the fixed box so the pill can reflow naturally on resize/orientation change.
+    setTimeout(function () {
+      el.style.transition = '';
+      el.style.width = '';
+      el.style.height = '';
+      el.style.overflow = '';
+      el.style.whiteSpace = '';
+      el.style.justifyContent = '';
+      el.style.flex = '';
+    }, 400);
+  }
 })();
 
 /* ---------- Hero logo pointer parallax ---------- */
