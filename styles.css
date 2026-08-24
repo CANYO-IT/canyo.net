@@ -3,9 +3,10 @@
    ============================================================ */
 
 :root {
-  --accent: #ff5c1a;
-  --accent-soft: rgba(255, 92, 26, 0.12);
-  --accent-glow: rgba(255, 92, 26, 0.35);
+  --accent: #c8ccd2;
+  --on-accent: #141419;
+  --accent-soft: rgba(200, 204, 210, 0.12);
+  --accent-glow: rgba(200, 204, 210, 0.28);
   --font-body: 'Montserrat', system-ui, -apple-system, sans-serif;
   --font-display: 'Montserrat', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
@@ -47,8 +48,10 @@
   --grid-line: rgba(15, 15, 25, 0.06);
   --shadow: 0 20px 60px rgba(20, 20, 40, 0.12);
   --nav-bg: rgba(246, 246, 248, 0.78);
-  --accent-soft: rgba(255, 92, 26, 0.10);
-  --accent-glow: rgba(255, 92, 26, 0.22);
+  --accent: #2a2a31;
+  --on-accent: #f5f5f7;
+  --accent-soft: rgba(42, 42, 49, 0.08);
+  --accent-glow: rgba(42, 42, 49, 0.18);
 }
 
 /* ---------- Base ---------- */
@@ -75,7 +78,7 @@ body {
 h1 { font-family: var(--font-display); font-weight: 900; letter-spacing: -0.035em; line-height: 1.06; }
 h2, h3 { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.028em; line-height: 1.1; }
 
-::selection { background: var(--accent); color: #fff; }
+::selection { background: var(--accent); color: var(--on-accent); }
 
 a { color: inherit; text-decoration: none; }
 
@@ -99,7 +102,7 @@ a { color: inherit; text-decoration: none; }
 .brand__mark {
   display: grid; place-items: center;
   width: 34px; height: 34px; border-radius: 9px;
-  background: var(--accent); color: #fff;
+  background: var(--accent); color: var(--on-accent);
   font-family: var(--font-mono); font-weight: 700; font-size: 1.05rem;
   box-shadow: 0 0 22px var(--accent-glow);
 }
@@ -110,7 +113,7 @@ a { color: inherit; text-decoration: none; }
 .nav__links a:hover { color: var(--text); }
 .nav__cta {
   padding: 9px 18px; border-radius: 99px;
-  background: var(--accent); color: #fff !important; font-weight: 600;
+  background: var(--accent); color: var(--on-accent) !important; font-weight: 600;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .nav__cta:hover { transform: translateY(-1px); box-shadow: 0 6px 24px var(--accent-glow); }
@@ -227,7 +230,7 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid transparent;
   transition: transform 0.2s, box-shadow 0.2s, background var(--transition), border-color var(--transition);
 }
-.btn--primary { background: var(--accent); color: #fff; box-shadow: 0 8px 30px var(--accent-glow); }
+.btn--primary { background: var(--accent); color: var(--on-accent); box-shadow: 0 8px 30px var(--accent-glow); }
 .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px var(--accent-glow); }
 .btn--ghost { background: transparent; color: var(--text); border-color: var(--border-strong); }
 .btn--ghost:hover { border-color: var(--accent); color: var(--accent); }
@@ -497,7 +500,7 @@ a { color: inherit; text-decoration: none; }
 .stack-card__logo {
   flex: none; width: 58px; height: 58px; border-radius: 14px;
   display: grid; place-items: center;
-  background: var(--accent); color: #fff;
+  background: var(--accent); color: var(--on-accent);
   font-size: 1.25rem; font-weight: 700;
   box-shadow: 0 0 22px var(--accent-glow);
 }
@@ -690,7 +693,7 @@ a { color: inherit; text-decoration: none; }
 .scroll-progress {
   position: fixed; top: 0; left: 0; z-index: 200;
   height: 3px; width: 100%;
-  background: linear-gradient(90deg, var(--accent), #ff8c42);
+  background: linear-gradient(90deg, var(--accent), var(--text-faint));
   transform-origin: 0 50%;
   transform: scaleX(0);
   transition: transform 0.1s linear;
@@ -825,7 +828,7 @@ a { color: inherit; text-decoration: none; }
   transition: background 0.3s, transform 0.3s;
 }
 .pillar-card:hover .pillar-card__num {
-  background: var(--accent); color: #fff;
+  background: var(--accent); color: var(--on-accent);
   transform: rotate(-6deg) scale(1.08);
   box-shadow: 0 6px 20px var(--accent-glow);
 }
