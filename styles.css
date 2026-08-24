@@ -979,3 +979,24 @@ a { color: inherit; text-decoration: none; }
 .review-line { margin-top: 14px; }
 .review-line a { color: var(--text-faint); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; }
 .review-line a:hover { color: var(--accent); }
+
+/* ---------- Reviews section (monochrome) ---------- */
+.reviews__scorecard { text-align: center; margin: 34px 0 46px; }
+.reviews__rating { display: inline-flex; align-items: baseline; gap: 14px; }
+.reviews__num { font-family: var(--font-display); font-weight: 900; font-size: 3.4rem; letter-spacing: -0.03em; color: var(--text); }
+.reviews__stars { color: var(--accent); font-size: 1.5rem; letter-spacing: 0.12em; }
+.reviews__source { margin-top: 10px; font-size: 0.72rem; color: var(--text-faint); letter-spacing: 0.14em; }
+.reviews__source a { color: var(--text-dim); text-decoration: none; border-bottom: 1px solid var(--border-strong); transition: color 0.2s; }
+.reviews__source a:hover { color: var(--accent); }
+
+.reviews__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+.review-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; transition: transform var(--transition), border-color var(--transition); }
+.review-card:hover { transform: translateY(-3px); border-color: var(--border-strong); }
+.review-card__stars { color: var(--accent); font-size: 0.95rem; letter-spacing: 0.1em; margin-bottom: 14px; }
+.review-card__text { color: var(--text-dim); font-size: 0.98rem; line-height: 1.65; font-weight: 300; }
+.review-card__author { margin-top: 16px; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; color: var(--text-faint); }
+
+.reviews__cta { text-align: center; margin-top: 40px; font-size: 0.72rem; color: var(--text-faint); letter-spacing: 0.12em; }
+.reviews__cta a { color: var(--text-dim); text-decoration: none; border-bottom: 1px solid var(--border-strong); transition: color 0.2s; }
+.reviews__cta a:hover { color: var(--accent); }
+.reviews__empty { text-align: center; color: var(--text-faint); font-weight: 300; }

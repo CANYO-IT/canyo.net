@@ -280,3 +280,29 @@
 
 /* ---------- Footer year ---------- */
 document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ---------- Reviews: render testimonials from editable data ---------- */
+(function initReviews() {
+  var grid = document.getElementById('reviewsGrid');
+  if (!grid) return;
+
+  // EDIT THIS LIST as you collect testimonials. Each: { text, author, stars (1-5) }
+  var reviews = [
+    // Example format — replace with real client quotes as they come in:
+    // { text: "CANYO keeps our systems running and responds fast every time.", author: "Office Manager, Local Dental Practice", stars: 5 },
+  ];
+
+  if (!reviews.length) {
+    grid.innerHTML = '<p class="reviews__empty reveal visible">Be our first featured client — we&rsquo;re earning our reviews one job at a time.</p>';
+    return;
+  }
+
+  grid.innerHTML = reviews.map(function (r) {
+    var stars = '★★★★★'.slice(0, r.stars || 5);
+    return '<div class="review-card reveal visible">' +
+             '<div class="review-card__stars">' + stars + '</div>' +
+             '<p class="review-card__text">&ldquo;' + r.text + '&rdquo;</p>' +
+             '<div class="review-card__author">&mdash; ' + r.author + '</div>' +
+           '</div>';
+  }).join('');
+})();
