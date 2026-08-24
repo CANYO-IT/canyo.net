@@ -1,3 +1,14 @@
+/* ---------- Fresh load: strip hash + start at top so refresh returns to hero ---------- */
+(function resetOnFreshLoad() {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { /* still strip */ }
+  if (window.location.hash) {
+    // Remove the fragment without adding a history entry, then jump to top.
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+    window.scrollTo(0, 0);
+  }
+  if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+})();
+
 /* ============================================================
    CANYO.net — Interactions
    ============================================================ */
