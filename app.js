@@ -306,3 +306,35 @@ document.getElementById('year').textContent = new Date().getFullYear();
            '</div>';
   }).join('');
 })();
+
+/* ---------- Pricing calculator ---------- */
+(function initPricingCalc() {
+  var slider = document.getElementById('empCount');
+  if (!slider) return;
+  var num = document.getElementById('empNum');
+  var price = document.getElementById('estPrice');
+  var formula = document.getElementById('estFormula');
+
+  function calc(n) {
+    var total, note;
+    if (n <= 10) {
+      total = n * 250;
+      note = n + ' EMPLOYEE' + (n === 1 ? '' : 'S') + ' × $250';
+    } else {
+      var extra = n - 10;
+      total = 2500 + extra * 150;
+      note = '$2,500 BASE + ' + extra + ' × $150';
+    }
+    return { total: total, note: note };
+  }
+
+  function update() {
+    var n = parseInt(slider.value, 10);
+    var r = calc(n);
+    num.textContent = n;
+    price.textContent = r.total.toLocaleString('en-US');
+    formula.textContent = r.note;
+  }
+  slider.addEventListener('input', update);
+  update();
+})();
