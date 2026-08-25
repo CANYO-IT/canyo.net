@@ -377,45 +377,37 @@
         <h2 class="section__title reveal">Simple, Scales With You.<br>Everything Included.</h2>
         <p class="section__sub reveal">Per-employee pricing that grows as you do. Every plan includes the full managed service — monitoring, maintenance, support, and backup. No tiers of features, no surprises.</p>
 
-        <!-- Interactive estimate -->
+        <!-- Interactive estimate: slider left, included card right -->
         <div class="pricing reveal">
-          <div class="pricing__calc">
-            <label class="pricing__calc-label mono" for="empCount">HOW MANY EMPLOYEES?</label>
-            <div class="pricing__calc-row">
-              <input type="range" id="empCount" class="pricing__slider" min="1" max="50" value="10" step="1">
-              <span class="pricing__calc-num mono"><span id="empNum">10</span> <span class="pricing__calc-unit">EMPLOYEES</span></span>
+          <div class="pricing__split">
+            <div class="pricing__calc">
+              <label class="pricing__calc-label mono" for="empCount">HOW MANY EMPLOYEES?</label>
+              <div class="pricing__calc-row">
+                <input type="range" id="empCount" class="pricing__slider" min="1" max="50" value="1" step="1">
+                <span class="pricing__calc-num mono"><span id="empNum">1</span> <span class="pricing__calc-unit">USER</span></span>
+              </div>
+              <div class="pricing__estimate">
+                <span class="pricing__currency">$</span><span class="pricing__value mono" id="estPrice">250</span><span class="pricing__per">/mo</span>
+              </div>
+              <p class="pricing__formula mono" id="estFormula">1 USER × $250</p>
+              <p class="pricing__tier-hint mono" id="tierHint">SMALL TEAM RATE · $250 / USER</p>
             </div>
-            <div class="pricing__estimate">
-              <span class="pricing__currency">$</span><span class="pricing__value mono" id="estPrice">2,500</span><span class="pricing__per">/mo</span>
+
+            <div class="pricing__card pricing__card--included">
+              <span class="pricing__badge mono">EVERYTHING INCLUDED</span>
+              <ul class="pricing__list">
+                <li>24/7 monitoring of servers, workstations &amp; cloud services</li>
+                <li>Proactive maintenance &amp; automated patching</li>
+                <li>Remote support — guaranteed 3-hour response</li>
+                <li>Ransomware-resistant, verified backups &amp; recovery</li>
+                <li>Every device patched, monitored &amp; accounted for</li>
+                <li>New-hire onboarding &amp; offboarding</li>
+                <li>Monthly health report &amp; quarterly review</li>
+              </ul>
             </div>
-            <p class="pricing__formula mono" id="estFormula">10 EMPLOYEES × $250</p>
           </div>
 
-          <div class="pricing__tiers">
-            <div class="pricing__tier">
-              <span class="pricing__badge mono">SMALL TEAM</span>
-              <p class="pricing__tier-head">1–10 employees</p>
-              <p class="pricing__tier-rate"><strong>$250</strong> / employee / month</p>
-              <p class="pricing__tier-desc">Pay only for the people you have. A 5-person team is $1,250/mo; a 10-person team is $2,500/mo.</p>
-            </div>
-            <div class="pricing__tier">
-              <span class="pricing__badge mono">GROWING TEAM</span>
-              <p class="pricing__tier-head">11+ employees</p>
-              <p class="pricing__tier-rate"><strong>$2,500</strong> base + <strong>$150</strong> / employee after 10</p>
-              <p class="pricing__tier-desc">Your rate per employee drops as you scale. A 15-person team is $3,250/mo; a 20-person team is $4,000/mo.</p>
-            </div>
-          </div>
-
-          <ul class="pricing__list">
-            <li>24/7 monitoring of servers, workstations &amp; cloud services</li>
-            <li>Proactive maintenance &amp; automated patching</li>
-            <li>Remote support — guaranteed 3-hour response</li>
-            <li>Ransomware-resistant, verified backups &amp; recovery</li>
-            <li>Every device patched, monitored &amp; accounted for</li>
-            <li>New-hire onboarding &amp; offboarding</li>
-            <li>Monthly health report &amp; quarterly review</li>
-          </ul>
-          <p class="pricing__note">Final pricing depends on environment complexity, device count, and compliance requirements — your free assessment locks in an exact number before you commit to anything.</p>
+          <p class="pricing__note">Per-user pricing scales with you — $250/user up to 10, then $2,500 base + $150/user beyond 10. Final pricing depends on environment complexity, device count, and compliance requirements — your free assessment locks in an exact number before you commit to anything.</p>
           <a href="#contact" class="btn btn--primary btn--block">Start With a Free Assessment</a>
         </div>
       </div>

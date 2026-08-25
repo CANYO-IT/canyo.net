@@ -1002,7 +1002,7 @@ a { color: inherit; text-decoration: none; }
 .reviews__empty { text-align: center; color: var(--text-faint); font-weight: 300; font-family: var(--font-body); }
 
 /* ---------- Pricing calculator + tiers (monochrome) ---------- */
-.pricing__calc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 34px 34px 30px; margin-bottom: 28px; text-align: center; }
+.pricing__calc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 34px 34px 30px; text-align: center; display: flex; flex-direction: column; justify-content: center; }
 .pricing__calc-label { font-size: 0.72rem; letter-spacing: 0.14em; color: var(--text-faint); display: block; margin-bottom: 20px; }
 .pricing__calc-row { display: flex; align-items: center; gap: 22px; justify-content: center; flex-wrap: wrap; }
 .pricing__calc-num { font-size: 1.05rem; font-weight: 700; color: var(--text); white-space: nowrap; }
@@ -1016,9 +1016,8 @@ a { color: inherit; text-decoration: none; }
 .pricing__estimate { margin-top: 26px; display: flex; align-items: baseline; justify-content: center; gap: 4px; }
 .pricing__formula { margin-top: 12px; font-size: 0.72rem; letter-spacing: 0.12em; color: var(--accent); }
 
-.pricing__tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-bottom: 30px; }
-.pricing__tier { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
-.pricing__tier-head { font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; color: var(--text); margin: 12px 0 6px; }
-.pricing__tier-rate { color: var(--text); font-size: 1rem; font-weight: 400; margin-bottom: 10px; }
-.pricing__tier-rate strong { font-weight: 800; color: var(--accent); }
-.pricing__tier-desc { color: var(--text-dim); font-size: 0.92rem; line-height: 1.6; font-weight: 300; }
+.pricing__split { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: stretch; margin-bottom: 28px; }
+.pricing__card--included { display: flex; flex-direction: column; }
+.pricing__card--included .pricing__list { margin: 16px 0 0; }
+.pricing__tier-hint { margin-top: 10px; font-size: 0.66rem; letter-spacing: 0.12em; color: var(--text-faint); }
+@media (max-width: 760px) { .pricing__split { grid-template-columns: 1fr; } }

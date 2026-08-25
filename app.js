@@ -312,28 +312,29 @@ document.getElementById('year').textContent = new Date().getFullYear();
   var slider = document.getElementById('empCount');
   if (!slider) return;
   var num = document.getElementById('empNum');
+  var unit = document.querySelector('.pricing__calc-unit');
   var price = document.getElementById('estPrice');
   var formula = document.getElementById('estFormula');
+  var hint = document.getElementById('tierHint');
 
-  function calc(n) {
-    var total, note;
+  function update() {
+    var n = parseInt(slider.value, 10);
+    var total, note, hintText;
     if (n <= 10) {
       total = n * 250;
-      note = n + ' EMPLOYEE' + (n === 1 ? '' : 'S') + ' × $250';
+      note = n + ' USER' + (n === 1 ? '' : 'S') + ' × $250';
+      hintText = 'SMALL TEAM RATE · $250 / USER';
     } else {
       var extra = n - 10;
       total = 2500 + extra * 150;
       note = '$2,500 BASE + ' + extra + ' × $150';
+      hintText = 'GROWING TEAM RATE · $150 / USER AFTER 10';
     }
-    return { total: total, note: note };
-  }
-
-  function update() {
-    var n = parseInt(slider.value, 10);
-    var r = calc(n);
     num.textContent = n;
-    price.textContent = r.total.toLocaleString('en-US');
-    formula.textContent = r.note;
+    if (unit) unit.textContent = n === 1 ? 'USER' : 'USERS';
+    price.textContent = total.toLocaleString('en-US');
+    formula.textContent = note;
+    if (hint) hint.textContent = hintText;
   }
   slider.addEventListener('input', update);
   update();
