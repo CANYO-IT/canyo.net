@@ -1008,7 +1008,9 @@ a { color: inherit; text-decoration: none; }
 .pricing__calc-num { font-size: 1.05rem; font-weight: 700; color: var(--text); white-space: nowrap; }
 .pricing__calc-unit { font-size: 0.68rem; letter-spacing: 0.12em; color: var(--text-faint); font-weight: 500; }
 
-.pricing__slider { -webkit-appearance: none; appearance: none; flex: 1; min-width: 220px; max-width: 420px; height: 4px; border-radius: 99px; background: var(--surface-2); outline: none; cursor: pointer; }
+.pricing__slider { -webkit-appearance: none; appearance: none; flex: 1; min-width: 0; max-width: 420px; width: 100%; height: 4px; border-radius: 99px; background: var(--surface-2); outline: none; cursor: pointer; touch-action: pan-x; }
+/* enlarge the touch hit-area without changing the visual thumb */
+.pricing__slider::-webkit-slider-runnable-track { height: 4px; }
 .pricing__slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); border: 3px solid var(--bg); box-shadow: 0 0 0 1px var(--border-strong), 0 0 16px var(--accent-glow); cursor: pointer; transition: transform 0.15s; }
 .pricing__slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
 .pricing__slider::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--accent); border: 3px solid var(--bg); box-shadow: 0 0 0 1px var(--border-strong), 0 0 16px var(--accent-glow); cursor: pointer; }
@@ -1021,3 +1023,12 @@ a { color: inherit; text-decoration: none; }
 .pricing__card--included .pricing__list { margin: 16px 0 0; }
 .pricing__tier-hint { margin-top: 10px; font-size: 0.66rem; letter-spacing: 0.12em; color: var(--text-faint); }
 @media (max-width: 760px) { .pricing__split { grid-template-columns: 1fr; } }
+
+/* ---------- Pricing slider: touch-friendly ---------- */
+@media (max-width: 760px), (hover: none) {
+  .pricing__calc-row { flex-direction: column; gap: 16px; align-items: stretch; }
+  .pricing__calc-num { text-align: center; }
+  .pricing__slider { max-width: 100%; height: 6px; }
+  .pricing__slider::-webkit-slider-thumb { width: 30px; height: 30px; }
+  .pricing__slider::-moz-range-thumb { width: 30px; height: 30px; }
+}
