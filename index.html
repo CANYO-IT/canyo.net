@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CANYO — Engineered IT. Reliable Results.</title>
-  <meta name="description" content="Managed IT for Tucson small business — 24/7 monitoring, fast critical response, secure remote access, on-site support & ransomware-resistant backup. One flat rate.">
+  <meta name="description" content="Managed IT for Tucson small business — 24/7 monitoring, fast critical response, secure remote access, on-site support & backup. $250/user/mo, scales with your team.">
   <!-- Open Graph (social sharing) -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://canyo.net/">
@@ -47,7 +47,33 @@
       "availableLanguage": "English"
     },
     "slogan": "Engineered IT. Reliable Results.",
-    "priceRange": "From $250/user/mo",
+    "priceRange": "$250/user/mo (1–10 users), then $2,500 base + $150/user/mo beyond 10",
+    "priceSpecification": [
+      {
+        "@type": "UnitPriceSpecification",
+        "name": "Standard per-user rate (1–10 users)",
+        "price": "250",
+        "priceCurrency": "USD",
+        "unitText": "per user per month",
+        "description": "Each user up to 10 is billed at $250/month, building the base cost."
+      },
+      {
+        "@type": "UnitPriceSpecification",
+        "name": "Base rate (11+ users)",
+        "price": "2500",
+        "priceCurrency": "USD",
+        "unitText": "monthly base",
+        "description": "For teams over 10, a $2,500 monthly base applies (equivalent to 10 users at $250 each)."
+      },
+      {
+        "@type": "UnitPriceSpecification",
+        "name": "Additional users beyond 10",
+        "price": "150",
+        "priceCurrency": "USD",
+        "unitText": "per user per month",
+        "description": "Each user beyond the first 10 is billed at $150/month, in addition to the $2,500 base."
+      }
+    ],
     "image": "https://canyo.net/assets/og-image.png",
     "logo": "https://canyo.net/assets/canyo-logo-black.png",
     "address": {
@@ -538,6 +564,10 @@
           <details class="faq__item reveal">
             <summary>How does my team work remotely without exposing our network?<span class="faq__chev"></span></summary>
             <p>We build secure remote access on SOC 2–certified, WireGuard-based VPN technology — no exposed ports, no public attack surface. Your team reaches office systems from anywhere as if they were sitting at their desks, with the connection encrypted end to end. It's part of your plan, not an add-on.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>How does pricing scale as my team grows?<span class="faq__chev"></span></summary>
+            <p>Pricing is per-user and transparent: $250 per user per month for your first 10 users. That creates a $2,500 monthly base. Beyond 10 users, you keep that $2,500 base and add just $150 per additional user per month. So an 8-person team pays $2,000/mo, a 15-person team pays $2,500 + (5 × $150) = $3,250/mo. Your free assessment locks in an exact number based on your environment before you commit to anything.</p>
           </details>
           <details class="faq__item reveal">
             <summary>Is Microsoft 365 included in the plan?<span class="faq__chev"></span></summary>
