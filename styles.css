@@ -1028,13 +1028,24 @@ a { color: inherit; text-decoration: none; }
 .pricing__estimate { margin-top: 20px; display: flex; align-items: baseline; justify-content: center; gap: 4px; }
 .pricing__formula { margin-top: 12px; font-size: 0.72rem; letter-spacing: 0.12em; color: var(--accent); }
 
-.pricing__split { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; margin-bottom: 22px; }
-.pricing__flex { display: flex; justify-content: center; margin-bottom: 28px; }
-.pricing__flex .pricing__card { max-width: 520px; width: 100%; }
-.pricing__card--included { display: flex; flex-direction: column; }
+.pricing__split {
+  display: grid; gap: 22px; margin-bottom: 28px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "calc included" "flex included";
+}
+.pricing__calc { grid-area: calc; }
+.pricing__card--included { grid-area: included; align-self: center; display: flex; flex-direction: column; }
 .pricing__card--included .pricing__list { margin: 16px 0 0; }
+.pricing__card--flex { grid-area: flex; display: flex; flex-direction: column; }
+.pricing__card--flex .pricing__list { margin: 16px 0 0; }
 .pricing__tier-hint { margin-top: 10px; font-size: 0.66rem; letter-spacing: 0.12em; color: var(--text-faint); }
-@media (max-width: 760px) { .pricing__split { grid-template-columns: 1fr; } }
+@media (max-width: 900px) {
+  .pricing__split {
+    grid-template-columns: 1fr;
+    grid-template-areas: "calc" "included" "flex";
+  }
+  .pricing__card--included { align-self: auto; }
+}
 
 /* ---------- Pricing slider: touch-friendly ---------- */
 @media (max-width: 760px), (hover: none) {
