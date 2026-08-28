@@ -321,13 +321,13 @@ document.getElementById('year').textContent = new Date().getFullYear();
     var n = parseInt(slider.value, 10);
     var total, note, hintText;
     if (n <= 10) {
-      total = n * 250;
-      note = n + ' USER' + (n === 1 ? '' : 'S') + ' × $250';
-      hintText = 'SMALL TEAM RATE · $250 / USER';
+      total = n * 200;
+      note = n + ' USER' + (n === 1 ? '' : 'S') + ' × $200';
+      hintText = 'SMALL TEAM RATE · $200 / USER';
     } else {
       var extra = n - 10;
-      total = 2500 + extra * 150;
-      note = '$2,500 BASE + ' + extra + ' × $150';
+      total = 2000 + extra * 150;
+      note = '$2,000 BASE + ' + extra + ' × $150';
       hintText = 'GROWING TEAM RATE · $150 / USER AFTER 10';
     }
     num.textContent = n;
