@@ -1008,23 +1008,23 @@ a { color: inherit; text-decoration: none; }
 .reviews__empty { text-align: center; color: var(--text-faint); font-weight: 300; font-family: var(--font-body); }
 
 /* ---------- Pricing calculator + tiers (monochrome) ---------- */
-.pricing__calc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 34px 34px 30px; text-align: center; display: flex; flex-direction: column; justify-content: center; }
+.pricing__calc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 34px 34px 30px; text-align: center; display: flex; flex-direction: column; justify-content: center; align-self: start; }
 .pricing__calc-label { font-size: 0.72rem; letter-spacing: 0.14em; color: var(--text-faint); display: block; margin-bottom: 20px; }
 .pricing__calc-row { display: flex; align-items: center; gap: 22px; justify-content: center; flex-wrap: wrap; }
 .pricing__calc-num { font-size: 1.05rem; font-weight: 700; color: var(--text); white-space: nowrap; }
 .pricing__calc-unit { font-size: 0.68rem; letter-spacing: 0.12em; color: var(--text-faint); font-weight: 500; }
 
-.pricing__slider { -webkit-appearance: none; appearance: none; flex: 1; min-width: 0; max-width: 420px; width: 100%; height: 4px; border-radius: 99px; background: var(--surface-2); outline: none; cursor: pointer; touch-action: pan-x; }
+.pricing__slider { -webkit-appearance: none; appearance: none; flex: 1; min-width: 0; max-width: 280px; width: 100%; height: 4px; border-radius: 99px; background: var(--surface-2); outline: none; cursor: pointer; touch-action: pan-x; }
 /* enlarge the touch hit-area without changing the visual thumb */
 .pricing__slider::-webkit-slider-runnable-track { height: 4px; }
 .pricing__slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); border: 3px solid var(--bg); box-shadow: 0 0 0 1px var(--border-strong), 0 0 16px var(--accent-glow); cursor: pointer; transition: transform 0.15s; }
 .pricing__slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
 .pricing__slider::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--accent); border: 3px solid var(--bg); box-shadow: 0 0 0 1px var(--border-strong), 0 0 16px var(--accent-glow); cursor: pointer; }
 
-.pricing__estimate { margin-top: 26px; display: flex; align-items: baseline; justify-content: center; gap: 4px; }
+.pricing__estimate { margin-top: 20px; display: flex; align-items: baseline; justify-content: center; gap: 4px; }
 .pricing__formula { margin-top: 12px; font-size: 0.72rem; letter-spacing: 0.12em; color: var(--accent); }
 
-.pricing__split { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: stretch; margin-bottom: 22px; }
+.pricing__split { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; margin-bottom: 22px; }
 .pricing__flex { display: flex; justify-content: center; margin-bottom: 28px; }
 .pricing__flex .pricing__card { max-width: 520px; width: 100%; }
 .pricing__card--included { display: flex; flex-direction: column; }
