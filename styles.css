@@ -335,6 +335,11 @@ a { color: inherit; text-decoration: none; }
   transition: border-color 0.25s, background-color var(--transition);
 }
 .faq__item[open] { border-color: var(--accent); }
+.faq__table-wrap { margin: 12px 0; overflow-x: auto; }
+.faq__table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.faq__table th { text-align: left; font-weight: 700; padding: 10px 12px; border-bottom: 2px solid var(--border-strong); color: var(--text); }
+.faq__table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text-dim); vertical-align: top; }
+.faq__table tr:last-child td { border-bottom: none; }
 .faq__item summary {
   display: flex; justify-content: space-between; align-items: center; gap: 16px;
   padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 1rem;
@@ -1019,11 +1024,13 @@ a { color: inherit; text-decoration: none; }
 .pricing__estimate { margin-top: 26px; display: flex; align-items: baseline; justify-content: center; gap: 4px; }
 .pricing__formula { margin-top: 12px; font-size: 0.72rem; letter-spacing: 0.12em; color: var(--accent); }
 
-.pricing__split { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; align-items: stretch; margin-bottom: 28px; }
+.pricing__split { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: stretch; margin-bottom: 22px; }
+.pricing__flex { display: flex; justify-content: center; margin-bottom: 28px; }
+.pricing__flex .pricing__card { max-width: 520px; width: 100%; }
 .pricing__card--included { display: flex; flex-direction: column; }
 .pricing__card--included .pricing__list { margin: 16px 0 0; }
 .pricing__tier-hint { margin-top: 10px; font-size: 0.66rem; letter-spacing: 0.12em; color: var(--text-faint); }
-@media (max-width: 960px) { .pricing__split { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .pricing__split { grid-template-columns: 1fr; } }
 
 /* ---------- Pricing slider: touch-friendly ---------- */
 @media (max-width: 760px), (hover: none) {
