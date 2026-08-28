@@ -88,7 +88,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2">
   <!-- Favicons: white logo for dark chrome, black for light. Dark listed first as the default. -->
   <link rel="icon" type="image/png" href="assets/favicon-dark.png" sizes="512x512" media="(prefers-color-scheme: dark)">
   <link rel="icon" type="image/png" href="assets/favicon-light.png" sizes="512x512" media="(prefers-color-scheme: light)">
@@ -466,16 +466,17 @@
           <details class="faq__item reveal">
             <summary>How fast do you respond when something goes wrong?<span class="faq__chev"></span></summary>
             <p>We use a tiered response system based on how severely an issue impacts your business. "Response" means a technician is actively working your issue — not an automated acknowledgment.</p>
-            <div class="faq__table-wrap">
-              <table class="faq__table">
-                <thead>
-                  <tr><th>Severity</th><th>Response Time</th><th>Examples</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td><strong>Severity 1 — Critical</strong></td><td>15–30 minutes</td><td>Server down, security incident, network outage, anything stopping your team from working</td></tr>
-                  <tr><td><strong>Severity 2 — Standard</strong></td><td>Within 3 hours</td><td>Software issues, account problems, non-urgent hardware, general support requests</td></tr>
-                </tbody>
-              </table>
+            <div class="faq__sev">
+              <div class="faq__sev-row">
+                <span class="faq__sev-badge mono">SEV 1 — CRITICAL</span>
+                <span class="faq__sev-time">15–30 min</span>
+                <span class="faq__sev-desc">Server down, security incident, network outage — anything stopping your team from working</span>
+              </div>
+              <div class="faq__sev-row">
+                <span class="faq__sev-badge mono">SEV 2 — STANDARD</span>
+                <span class="faq__sev-time">Within 3 hrs</span>
+                <span class="faq__sev-desc">Software issues, account problems, non-urgent hardware, general support requests</span>
+              </div>
             </div>
             <p>Most issues are handled remotely so we can start fixing things immediately. On-site support is available when the situation calls for it.</p>
           </details>
