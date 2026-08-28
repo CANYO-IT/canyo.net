@@ -1034,6 +1034,7 @@ a { color: inherit; text-decoration: none; }
   grid-template-areas: "calc included" "flex included";
 }
 .pricing__calc { grid-area: calc; }
+.pricing__split .pricing__card { width: 100%; max-width: none; }
 .pricing__card--included { grid-area: included; align-self: center; display: flex; flex-direction: column; }
 .pricing__card--included .pricing__list { margin: 16px 0 0; }
 .pricing__card--flex { grid-area: flex; display: flex; flex-direction: column; }
