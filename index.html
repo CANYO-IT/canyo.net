@@ -36,88 +36,121 @@
 
   <!-- Structured data: LocalBusiness schema -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "CANYO",
-    "legalName": "CANYO LLC",
-    "description": "Managed IT services for small business in Tucson and Southern Arizona — 24/7 monitoring, tiered response (15–30 min critical, 3-hr standard), secure WireGuard-based remote access, on-site support, hardware provisioning (HaaS), security awareness training, Microsoft 365 management, and ransomware-resistant backup & recovery, all at one flat monthly rate.",
-    "url": "https://canyo.net",
-    "alternateName": ["CANYO IT", "CANYO IT Systems & Management", "CANYO Tucson", "canyo.com"],
-    "email": "contact@canyo.net",
-    "telephone": "+1-520-336-7521",
-    "foundingDate": "2026",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+1-520-336-7521",
-      "email": "contact@canyo.net",
-      "contactType": "sales",
-      "areaServed": "Southern Arizona",
-      "availableLanguage": "English"
-    },
-    "slogan": "Engineered IT. Reliable Results.",
-    "priceRange": "$200/user/mo (1–10 users), then $2,000 base + $150/user/mo beyond 10",
-    "priceSpecification": [
-      {
-        "@type": "UnitPriceSpecification",
-        "name": "Standard per-user rate (1–10 users)",
-        "price": "200",
-        "priceCurrency": "USD",
-        "unitText": "per user per month",
-        "description": "Each user up to 10 is billed at $200/month, building the $2,000 base cost."
-      },
-      {
-        "@type": "UnitPriceSpecification",
-        "name": "Base rate (11+ users)",
-        "price": "2000",
-        "priceCurrency": "USD",
-        "unitText": "monthly base",
-        "description": "For teams over 10, a $2,000 monthly base applies (equivalent to 10 users at $200 each)."
-      },
-      {
-        "@type": "UnitPriceSpecification",
-        "name": "Additional users beyond 10",
-        "price": "150",
-        "priceCurrency": "USD",
-        "unitText": "per user per month",
-        "description": "Each user beyond the first 10 is billed at $150/month, in addition to the $2,000 base."
-      }
-    ],
-    "image": "https://canyo.net/assets/og-image.png",
-    "logo": "https://canyo.net/assets/canyo-logo-black.png",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Tucson",
-      "addressRegion": "AZ",
-      "addressCountry": "US"
-    },
-    "areaServed": [
-      { "@type": "City", "name": "Tucson", "containedInPlace": { "@type": "State", "name": "Arizona" } },
-      { "@type": "State", "name": "Arizona" },
-      { "@type": "AdministrativeArea", "name": "Southern Arizona" }
-    ],
-    "founder": {
-      "@type": "Person",
-      "name": "Samuel Glenn"
-    },
-    "@id": "https://canyo.net/#organization",
-    "identifier": {
+{
+  "@context": "https://schema.org",
+  "@type": "Corporation",
+  "name": "CANYO LLC",
+  "legalName": "CANYO LLC",
+  "url": "https://canyo.net",
+  "alternateName": [
+    "CANYO",
+    "CANYO IT",
+    "CANYO IT Systems & Management"
+  ],
+  "description": "Veteran-owned managed IT services provider serving small businesses in Tucson and Southern Arizona.",
+  "foundingDate": "2026",
+  "founder": {
+    "@type": "Person",
+    "name": "Samuel Glenn"
+  },
+  "knowsAbout": [
+    "Managed IT Services",
+    "Cybersecurity",
+    "Data Backup & Recovery",
+    "Network Infrastructure",
+    "Microsoft 365 Management",
+    "Hardware as a Service (HaaS)"
+  ],
+  "identifier": [
+    {
       "@type": "PropertyValue",
-      "propertyID": "DUNS",
-      "value": "148564788"
+      "name": "Arizona Corporation Commission File Number",
+      "value": "25043400"
     },
-    "knowsAbout": ["Managed IT Services", "IT Support", "Data Backup & Recovery", "Remote Monitoring & Management", "Small Business IT", "Hardware as a Service (HaaS)", "Security Awareness Training", "Microsoft 365 Management", "On-Site IT Support", "Secure Remote Access", "WireGuard VPN"],
-    "sameAs": [
-      "https://canyo.com",
-      "https://www.canyo.com",
-      "https://g.page/r/CX-KTqEh6_EYEBM/review",
-      "https://github.com/CANYO-IT",
-      "https://www.crunchbase.com/organization/canyo",
-      "https://clutch.co/profile/canyo",
-      "https://www.goodfirms.co/company/canyo-llc"
-    ]
-  }
-  </script>
+    {
+      "@type": "PropertyValue",
+      "name": "NAICS Code",
+      "value": "541513"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "D-U-N-S Number",
+      "value": "148564788"
+    }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Tucson",
+    "addressRegion": "AZ",
+    "addressCountry": "US"
+  },
+  "sameAs": [
+    "https://canyo.com",
+    "https://www.canyo.com",
+    "https://g.page/r/CX-KTqEh6_EYEBM/review",
+    "https://github.com/CANYO-IT",
+    "https://www.crunchbase.com/organization/canyo",
+    "https://clutch.co/profile/canyo",
+    "https://www.goodfirms.co/company/canyo-llc"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1-520-336-7521",
+    "email": "contact@canyo.net",
+    "contactType": "sales",
+    "areaServed": "Southern Arizona",
+    "availableLanguage": "English"
+  },
+  "email": "contact@canyo.net",
+  "telephone": "+1-520-336-7521",
+  "slogan": "Engineered IT. Reliable Results.",
+  "priceRange": "$200/user/mo (1–10 users), then $2,000 base + $150/user/mo beyond 10",
+  "priceSpecification": [
+    {
+      "@type": "UnitPriceSpecification",
+      "name": "Standard per-user rate (1–10 users)",
+      "price": "200",
+      "priceCurrency": "USD",
+      "unitText": "per user per month",
+      "description": "Each user up to 10 is billed at $200/month, building the $2,000 base cost."
+    },
+    {
+      "@type": "UnitPriceSpecification",
+      "name": "Base rate (11+ users)",
+      "price": "2000",
+      "priceCurrency": "USD",
+      "unitText": "monthly base",
+      "description": "For teams over 10, a $2,000 monthly base applies (equivalent to 10 users at $200 each)."
+    },
+    {
+      "@type": "UnitPriceSpecification",
+      "name": "Additional users beyond 10",
+      "price": "150",
+      "priceCurrency": "USD",
+      "unitText": "per user per month",
+      "description": "Each user beyond the first 10 is billed at $150/month, in addition to the $2,000 base."
+    }
+  ],
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Tucson",
+      "containedInPlace": {
+        "@type": "State",
+        "name": "Arizona"
+      }
+    },
+    {
+      "@type": "State",
+      "name": "Arizona"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Southern Arizona"
+    }
+  ]
+}
+</script>
 
   <!-- Set theme before first paint to avoid flash -->
   <script>
