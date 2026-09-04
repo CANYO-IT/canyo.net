@@ -1,0 +1,13 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://canyo.net/",
+      "service-doc": [
+        {
+          "href": "https://canyo.net/llms.txt",
+          "type": "text/plain"
+        }
+      ]
+    }
+  ]
+}
