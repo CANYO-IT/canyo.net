@@ -183,7 +183,7 @@
   <!-- ============ NAV ============ -->
   <header class="nav" id="nav">
     <div class="container nav__inner">
-      <a href="./" class="brand">
+      <a href="#top" class="brand">
         <img class="brand__logo brand__logo--mark logo-dark" src="assets/canyo-logo-white.png" alt="CANYO">
         <img class="brand__logo brand__logo--mark logo-light" src="assets/canyo-logo-black.png" alt="CANYO">
         <img class="brand__logo brand__logo--word logo-dark" src="assets/canyo-wordmark-white.png" alt="CANYO">
@@ -191,15 +191,14 @@
       </a>
 
       <nav class="nav__links" id="navLinks">
-        <a href="./" aria-current="page">Home</a>
-        <a href="services/">Services</a>
-        <a href="process/">Process</a>
-        <a href="about/">About</a>
-        <a href="stack/">Stack</a>
-        <a href="pricing/">Pricing</a>
-        <a href="faq/">FAQ</a>
-        <a href="reviews/">Reviews</a>
-        <a href="contact/" class="nav__cta">Get a Free Assessment</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#about">About</a>
+        <a href="#stack">Stack</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact" class="nav__cta">Get a Free Assessment</a>
       </nav>
 
       <div class="nav__controls">
@@ -240,7 +239,7 @@
 
         <div class="hero__actions reveal">
           <a href="#contact" class="btn btn--primary">Get a Free Assessment</a>
-          <a href="services/" class="btn btn--ghost">See What's Covered</a>
+          <a href="#services" class="btn btn--ghost">See What's Covered</a>
         </div>
 
         <div class="hero__stats reveal">
@@ -261,72 +260,437 @@
     </div>
 
     <!-- ============ SERVICES ============ -->
-    <section class="section" id="explore">
+    <section class="section" id="services">
       <div class="container">
-        <p class="kicker mono reveal">// EXPLORE CANYO</p>
-        <h2 class="section__title reveal">Everything Your Business Needs,<br>Nothing It Doesn't</h2>
+        <p class="kicker mono reveal">// WHAT WE DO</p>
+        <h2 class="section__title reveal">Structured IT Management,<br>End to End</h2>
 
         <div class="cards">
           <article class="card reveal">
             <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-            <h3>Services</h3>
-            <p>24/7 monitoring, cybersecurity, backup, Microsoft 365, and on-site support — one flat rate covers it all.</p>
-            <a href="services/" class="card__link mono">EXPLORE SERVICES →</a>
+            <h3>24/7 Monitoring &amp; Maintenance</h3>
+            <p>Servers, workstations, and cloud services watched around the clock. Problems get flagged and fixed before they ever reach your desk.</p>
+            <span class="card__tag mono">PROACTIVE — NOT REACTIVE</span>
           </article>
 
           <article class="card reveal">
-            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-            <h3>Process</h3>
-            <p>From chaos to managed in four steps — assessment, stabilization, management, and transparent reporting.</p>
-            <a href="process/" class="card__link mono">SEE HOW IT WORKS →</a>
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/><circle cx="12" cy="10" r="2.2"/><path d="M12 12.2v1.8"/></svg></div>
+            <h3>Remote &amp; On-Site Support</h3>
+            <p>When something does break, you get a real technician — not a ticket queue. Critical issues get a response in 15–30 minutes; standard issues within three hours. On-site support available when remote isn't enough.</p>
+            <span class="card__tag mono">TIERED RESPONSE</span>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+            <h3>Backup &amp; Recovery</h3>
+            <p>Ransomware-resistant backups — write-only by design, so a compromised device can never erase its own history. Monitored, verified, and tested with real restores.</p>
+            <span class="card__tag mono">VERIFIED. RECOVERABLE. IMMUTABLE.</span>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <h3>Security &amp; Compliance</h3>
+            <p>Every device patched, monitored, and accounted for — nothing falls through the cracks. Documented controls come standard, not as an add-on.</p>
+            <span class="card__tag mono">BASELINE — NOT UPSELL</span>
           </article>
 
           <article class="card reveal">
             <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></div>
-            <h3>About</h3>
-            <p>Founded by a U.S. Army veteran. Built on discipline, documentation, and reversible-first operations.</p>
-            <a href="about/" class="card__link mono">OUR STORY →</a>
+            <h3>New-Hire Onboarding</h3>
+            <p>New team member starts Monday? Their laptop, accounts, and access are ready before they walk in. Offboarding is just as clean.</p>
+            <span class="card__tag mono">DAY-ONE READY</span>
           </article>
 
           <article class="card reveal">
-            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="7" rx="2"/><rect x="2" y="14" width="20" height="7" rx="2"/><circle cx="6" cy="6.5" r=".5"/><circle cx="6" cy="17.5" r=".5"/></svg></div>
-            <h3>Stack</h3>
-            <p>NinjaOne, Tailscale, Restic, Backblaze — enterprise-grade tools behind every CANYO engagement.</p>
-            <a href="stack/" class="card__link mono">SEE THE STACK →</a>
-          </article>
-
-          <article class="card reveal">
-            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-            <h3>Pricing</h3>
-            <p>$200 per user per month. Everything included. Use the interactive calculator to see your exact cost.</p>
-            <a href="pricing/" class="card__link mono">SEE PRICING →</a>
-          </article>
-
-          <article class="card reveal">
-            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></div>
-            <h3>FAQ</h3>
-            <p>Straight answers on response times, pricing, backups, onboarding, and what's actually included.</p>
-            <a href="faq/" class="card__link mono">GET ANSWERS →</a>
-          </article>
-
-          <article class="card reveal">
-            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-            <h3>Reviews</h3>
-            <p>Rated 5.0 on Google by Tucson small businesses. Real feedback from real clients.</p>
-            <a href="reviews/" class="card__link mono">READ REVIEWS →</a>
-          </article>
-
-          <article class="card reveal">
-            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></div>
-            <h3>Contact</h3>
-            <p>Free assessment, no obligation. Tell us about your environment and we'll map a path forward.</p>
-            <a href="contact/" class="card__link mono">GET STARTED →</a>
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg></div>
+            <h3>Health Reports &amp; Reviews</h3>
+            <p>One plain-English health report every month and a quarterly review — what's working, what's aging, what it costs. No jargon, no surprises.</p>
+            <span class="card__tag mono">FULL VISIBILITY</span>
           </article>
         </div>
       </div>
     </section>
 
-  
+    <!-- ============ REGULATED INDUSTRIES ============ -->
+    <section class="section section--alt section--compliance">
+      <div class="container">
+        <div class="compliance reveal">
+          <div class="compliance__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4M12 16h.01"/></svg></div>
+          <div class="compliance__body">
+            <p class="kicker mono">// COMPLIANCE-READY</p>
+            <h2 class="compliance__title">Built for Regulated Industries</h2>
+            <p>If your business handles sensitive client data — financial records, health information, or anything else that invites scrutiny — you need an IT partner that treats compliance as a baseline, not an upsell.</p>
+            <p>Every engagement includes documented controls, audit-ready reporting, and safeguards built around your regulatory obligations — not generic best practices.</p>
+            <div class="compliance__chips">
+              <span class="chip mono">DOCUMENTED CONTROLS</span>
+              <span class="chip mono">AUDIT-READY REPORTING</span>
+              <span class="chip mono">DATA SAFEGUARDS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section class="section" id="process">
+      <div class="container">
+        <p class="kicker mono reveal">// HOW IT WORKS</p>
+        <h2 class="section__title reveal">From Chaos to Managed<br>in Four Steps</h2>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step__num mono">01</span>
+            <div><h3>Free Assessment</h3><p>We inventory your environment — every device, every account, every risk — and hand you a plain-English picture of where you stand. No cost, no obligation.</p></div>
+          </li>
+          <li class="step reveal">
+            <span class="step__num mono">02</span>
+            <div><h3>Stabilize</h3><p>We close the gaps that bite first: patching, backups, monitoring. Your business is protected before we change anything else.</p></div>
+          </li>
+          <li class="step reveal">
+            <span class="step__num mono">03</span>
+            <div><h3>Manage</h3><p>Day-to-day IT becomes our job — support requests, maintenance windows, vendor wrangling, new hires. You get one number to call and a guaranteed response time.</p></div>
+          </li>
+          <li class="step reveal">
+            <span class="step__num mono">04</span>
+            <div><h3>Report &amp; Review</h3><p>A monthly health report and quarterly review keep you in command of the big picture: what's working, what's aging, what it costs.</p></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section section--alt" id="about">
+      <div class="container">
+        <p class="kicker mono reveal">// ABOUT CANYO</p>
+        <h2 class="section__title reveal">Operational Excellence.<br>No Surprises.</h2>
+        <p class="section__sub reveal">Most IT support is reactive — fixing problems as they arise, often leading to cycles of disruption. CANYO was founded to break that cycle. We don't do one-time quick-fixes; we create standardized managed ecosystems built on system longevity, continuity, and transparent reporting to business leaders. Our measure of success isn't how quickly we respond to problems — it's how few problems occur at all.</p>
+
+        <div class="about__story-card reveal">
+          <p class="kicker mono">// THE STORY BEHIND CANYO</p>
+          <div class="about__founder-row">
+            <img class="about__avatar" src="assets/samuel-glenn.jpg" alt="Samuel Glenn, Founder of CANYO" width="160" height="160" loading="lazy">
+            <h3 class="about__founder">Samuel Glenn <span class="accent">| Founder</span></h3>
+          </div>
+          <p>I started CANYO after realizing IT support was stuck in reactive loops. My background as a U.S. Army veteran taught me discipline, documentation, and having a plan. Later, my software engineering studies at Colorado Technical University gave me the technical foundation to build on those lessons. Our IT framework is structured, accountable, and strongly prioritizes clear communication. This company is personal — named after my son, Canyon — and our service reflects that commitment daily.</p>
+          <p class="about__location mono"><span class="accent">●</span> BASED IN TUCSON, AZ &nbsp;·&nbsp; SERVING SMALL BUSINESSES ACROSS ARIZONA</p>
+        </div>
+
+        <p class="kicker mono reveal about__pillars-kicker">// THE CANYO CORE PILLARS</p>
+        <div class="pillar__grid">
+          <div class="pillar-card reveal">
+            <span class="pillar-card__num mono">01</span>
+            <h4>Reversible-First Operations</h4>
+            <p>Every change we make is designed to be safe and reversible. Major or risky changes are carefully vetted and never performed without explicit client approval.</p>
+          </div>
+          <div class="pillar-card reveal">
+            <span class="pillar-card__num mono">02</span>
+            <h4>Verification Over Assumption</h4>
+            <p>We don't just assume fixes work. A ticket is closed only when results are verified against known-good system baselines. Transparency and reliability are our default.</p>
+          </div>
+          <div class="pillar-card reveal">
+            <span class="pillar-card__num mono">03</span>
+            <h4>Institutional Memory, Scripted Execution</h4>
+            <p>We transform successful workflows into documentation and automated scripts — ensuring identical precision every time. Data governance is built in: we store only what's necessary to prove accountability, monitor performance, and guarantee backup readiness.</p>
+          </div>
+        </div>
+
+        <p class="kicker mono reveal about__pillars-kicker">// OUR MANAGED SERVICE LINES</p>
+        <ol class="service-lines">
+          <li class="service-line reveal">
+            <span class="service-line__num mono">01</span>
+            <div><h4>Monitoring and Alerting</h4><p>Continuous endpoint tracking, alert triage, and exception tracking for early detection and automated isolation of issues.</p></div>
+          </li>
+          <li class="service-line reveal">
+            <span class="service-line__num mono">02</span>
+            <div><h4>Endpoint Maintenance</h4><p>Script-based health checks, patch cycles, and status verification deliver consistent performance and extend device lifecycles.</p></div>
+          </li>
+          <li class="service-line reveal">
+            <span class="service-line__num mono">03</span>
+            <div><h4>Remote Remediation</h4><p>Fast, controlled remote troubleshooting with operational guardrails delivers rapid solutions while minimizing risk.</p></div>
+          </li>
+          <li class="service-line reveal">
+            <span class="service-line__num mono">04</span>
+            <div><h4>Continuity and Backups</h4><p>Always-tracked and tested backup workflows uphold recovery readiness and business continuity.</p></div>
+          </li>
+          <li class="service-line reveal">
+            <span class="service-line__num mono">05</span>
+            <div><h4>Operational Reviews</h4><p>We log incidents, analyze trends, and provide actionable, data-backed recommendations — providing true accountability and insight into the health of your IT environment.</p></div>
+          </li>
+        </ol>
+
+        <div class="about__boundaries reveal">
+          <p class="kicker mono">// A PARTNERSHIP BUILT ON BOUNDARIES</p>
+          <p>We believe great partnerships are rooted in absolute clarity — not black box operations. We clearly define the overlap between our managed services and your critical business data, ensuring your leadership always has strategic control. Through explicit approval requirements and a policy of least surprise, we deliver stability, continual improvement, and full support — every single day.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STACK ============ -->
+    <section class="section" id="stack">
+      <div class="container">
+        <p class="kicker mono reveal">// OUR STACK</p>
+        <h2 class="section__title reveal">Built On Trusted Technology</h2>
+        <p class="section__sub reveal">We don't build on shortcuts. CANYO runs on the same enterprise-grade tools trusted by IT teams everywhere.</p>
+
+        <div class="stack__grid">
+          <div class="stack-card reveal">
+            <div class="stack-card__logo mono">N1</div>
+            <div class="stack-card__body">
+              <h3>NinjaOne</h3>
+              <p>Remote monitoring &amp; management — the platform behind our 24/7 visibility, automated patching, and rapid remote support across every endpoint we manage.</p>
+              <span class="card__tag mono">MONITORING &amp; MANAGEMENT</span>
+            </div>
+          </div>
+          <div class="stack-card reveal">
+            <div class="stack-card__logo mono">TS</div>
+            <div class="stack-card__body">
+              <h3>Tailscale</h3>
+              <p>Zero-trust remote access built on WireGuard. All management connections to our infrastructure travel over an encrypted mesh — no exposed ports, no public attack surface.</p>
+              <span class="card__tag mono">ZERO-TRUST REMOTE ACCESS</span>
+            </div>
+          </div>
+          <div class="stack-card reveal">
+            <div class="stack-card__logo mono">RS</div>
+            <div class="stack-card__body">
+              <h3>Restic</h3>
+              <p>Encrypted, deduplicated, snapshot-based backups. Data is encrypted client-side before it ever leaves the system, and snapshots are immutable — a compromised device can't rewrite its own history.</p>
+              <span class="card__tag mono">BACKUP ENGINE</span>
+            </div>
+          </div>
+          <div class="stack-card reveal">
+            <div class="stack-card__logo mono">B2</div>
+            <div class="stack-card__body">
+              <h3>Backblaze B2</h3>
+              <p>Encrypted, redundant cloud storage — the off-site destination our Restic snapshots land in, so recovery never depends on a single location or device.</p>
+              <span class="card__tag mono">BACKUP STORAGE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRICING ============ -->
+    <section class="section section--alt" id="pricing">
+      <div class="container">
+        <p class="kicker mono reveal">// PRICING</p>
+        <h2 class="section__title reveal">Simple, Scales With You.<br>Everything Included.</h2>
+        <p class="section__sub reveal">Per-employee pricing that grows as you do. Every plan includes the full managed service — monitoring, maintenance, support, and backup. No tiers of features, no surprises.</p>
+
+        <!-- Interactive estimate: slider left, included card right -->
+        <div class="pricing reveal">
+          <div class="pricing__split">
+            <div class="pricing__calc">
+              <label class="pricing__calc-label mono" for="empCount">HOW MANY EMPLOYEES?</label>
+              <div class="pricing__calc-row">
+                <input type="range" id="empCount" class="pricing__slider" min="1" max="30" value="1" step="1">
+                <span class="pricing__calc-num mono"><span id="empNum">1</span> <span class="pricing__calc-unit">USER</span></span>
+              </div>
+              <div class="pricing__estimate">
+                <span class="pricing__currency">$</span><span class="pricing__value mono" id="estPrice">200</span><span class="pricing__per">/mo</span>
+              </div>
+              <p class="pricing__formula mono" id="estFormula">1 USER × $200</p>
+              <p class="pricing__tier-hint mono" id="tierHint">SMALL TEAM RATE · $200 / USER</p>
+            </div>
+
+            <div class="pricing__card pricing__card--included">
+              <span class="pricing__badge mono">EVERYTHING INCLUDED</span>
+              <ul class="pricing__list">
+                <li>24/7 monitoring of servers, workstations &amp; cloud services</li>
+                <li>Proactive maintenance &amp; automated patching</li>
+                <li>Remote &amp; on-site support — 15–30 min critical, 3-hr standard</li>
+                <li>Secure remote access — work from anywhere without putting your network at risk</li>
+                <li>Ransomware-resistant, verified backups &amp; recovery</li>
+                <li>Every device patched, monitored &amp; accounted for</li>
+                <li>Hardware repair, provisioning &amp; lifecycle management (HaaS)</li>
+                <li>New-hire onboarding &amp; offboarding</li>
+                <li>Security awareness training — phishing, password hygiene &amp; more</li>
+                <li>Microsoft 365 Business licensing included (11+ users)</li>
+                <li>Monthly health report &amp; quarterly review</li>
+              </ul>
+            </div>
+
+            <div class="pricing__card pricing__card--flex">
+              <span class="pricing__badge mono">FLEXIBLE BY DESIGN</span>
+              <ul class="pricing__list">
+                <li>Your environment, your way — we adapt to your tools, not the other way around</li>
+                <li>Need something not listed? We scope it, quote it, and fold it into your plan</li>
+                <li>Compliance requirements, specialized software, unique workflows — we build around them</li>
+                <li>No rigid packages. Your plan reflects how your business actually operates</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="pricing__note">Per-user pricing scales with you — $200/user up to 10, then a $2,000 base + $150/user beyond 10. Final pricing depends on environment complexity, device count, and compliance requirements — your free assessment locks in an exact number before you commit to anything.</p>
+          <a href="#contact" class="btn btn--primary btn--block">Start With a Free Assessment</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECURE REMOTE ACCESS ============ -->
+    <section class="section" id="remote-access">
+      <div class="container">
+        <div class="compliance reveal">
+          <div class="compliance__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1.5"/></svg></div>
+          <div class="compliance__body">
+            <p class="kicker mono">// SECURE REMOTE ACCESS</p>
+            <h2 class="compliance__title">Your Office, From Anywhere.<br>Your Network, Nowhere.</h2>
+            <p>Whether your team is at home, on the road, or on a job site, they open their laptop and they're in — files, applications, and internal systems, exactly as if they were sitting at their desks.</p>
+            <p>Traditional remote access hangs a door on the public internet and hopes nobody knocks. Ours doesn't have a door at all: SOC 2–certified, WireGuard-based VPN technology with no exposed ports and no public attack surface. Every connection is encrypted end to end — and it's included in every plan.</p>
+            <div class="compliance__chips">
+              <span class="chip mono">WIREGUARD-BASED</span>
+              <span class="chip mono">SOC 2–CERTIFIED</span>
+              <span class="chip mono">NO EXPOSED PORTS</span>
+              <span class="chip mono">ZERO PUBLIC ATTACK SURFACE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section" id="faq">
+      <div class="container container--narrow">
+        <p class="kicker mono reveal">// FAQ</p>
+        <h2 class="section__title reveal">Straight Answers</h2>
+
+        <div class="faq">
+          <details class="faq__item reveal">
+            <summary>What does '24/7 monitoring' actually cover?<span class="faq__chev"></span></summary>
+            <p>We continuously watch your servers, workstations, network devices, and cloud infrastructure for performance issues, failures, and security red flags. When something trends toward a problem — a failing drive, a service that keeps crashing, low disk space — we catch it and act before it turns into downtime for your team.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>How does patching work, and will it disrupt my team?<span class="faq__chev"></span></summary>
+            <p>Operating system and third-party application updates are applied automatically on a managed schedule. We test and stage updates to minimize disruption, and where possible we run patching outside of business hours. You'll see patch compliance reported every month, so there's never a question about whether your systems are up to date.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>How fast do you respond when something goes wrong?<span class="faq__chev"></span></summary>
+            <p>We use a tiered response system based on how severely an issue impacts your business. "Response" means a technician is actively working your issue — not an automated acknowledgment.</p>
+            <div class="faq__sev">
+              <div class="faq__sev-row">
+                <span class="faq__sev-badge mono">SEV 1 — CRITICAL</span>
+                <span class="faq__sev-time">15–30 min</span>
+                <span class="faq__sev-desc">Server down, security incident, network outage — anything stopping your team from working</span>
+              </div>
+              <div class="faq__sev-row">
+                <span class="faq__sev-badge mono">SEV 2 — STANDARD</span>
+                <span class="faq__sev-time">Within 3 hrs</span>
+                <span class="faq__sev-desc">Software issues, account problems, non-urgent hardware, general support requests</span>
+              </div>
+            </div>
+            <p>Most issues are handled remotely so we can start fixing things immediately. On-site support is available when the situation calls for it.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>What happens when something breaks?<span class="faq__chev"></span></summary>
+            <p>You open a ticket and we get to work. Every ticket is documented with the root cause and the resolution, so you always understand what went wrong and how it was fixed. No black box, no vague "it's working now" — just a clear record you can review anytime.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>How are my backups handled — and how do I know they actually work?<span class="faq__chev"></span></summary>
+            <p>Backups run automatically every day, and we don't just confirm that the job ran. We monitor and verify them, and we perform tested restores to prove your data can actually be recovered. A backup you've never tested isn't a backup — it's a hope. We don't operate that way.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>What kind of security is included?<span class="faq__chev"></span></summary>
+            <p>Every device is patched, monitored, and accounted for — nothing falls through the cracks. Combined with ransomware-resistant backups and enforced update policies, this closes the most common gaps attackers rely on: outdated software and unmanaged devices.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>How does new-hire onboarding work?<span class="faq__chev"></span></summary>
+            <p>When you bring someone on, we handle the technical setup so they're ready to work on day one — accounts, devices, access, and the tools they need. It's part of your plan, so there's no scramble and no extra invoice every time you grow your team.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>How will I know what I'm paying for?<span class="faq__chev"></span></summary>
+            <p>You'll receive monthly health reports covering uptime, ticket volume, backup status, and patch compliance. We also meet quarterly to review performance and plan ahead, and we maintain full documentation of your environment. Transparency is the point — you always know what you're paying for and why.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>Is everything really included, or are there hidden add-ons?<span class="faq__chev"></span></summary>
+            <p>Monitoring, maintenance, support, backups, hardware provisioning, security training, onboarding, and reporting are all part of your plan. For teams of 11 or more, Microsoft 365 Business licensing is included too. The goal is a predictable monthly cost with no surprise charges every time you need help — so you can budget with confidence.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>Do you provide hardware, or do we buy our own?<span class="faq__chev"></span></summary>
+            <p>Both. We handle hardware repair and provisioning as part of your plan — including Hardware as a Service (HaaS), where we supply, manage, and refresh your devices on a lifecycle schedule. If you prefer to own your hardware outright, we support that too. Either way, every device is patched, monitored, and accounted for.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>What kind of security training do you provide?<span class="faq__chev"></span></summary>
+            <p>We run regular security awareness sessions for your team covering phishing recognition, password hygiene, social engineering red flags, and safe browsing practices. Training is practical and jargon-free — the goal is to make your team the strongest link in your security chain, not the weakest.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>Can you come on-site if we need someone in person?<span class="faq__chev"></span></summary>
+            <p>Yes. Most issues are resolved remotely, which is faster for everyone. But when a situation calls for hands-on work — hardware installs, device setup, physical troubleshooting — we come to you. On-site support is part of your plan, not an extra charge.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>How does my team work remotely without exposing our network?<span class="faq__chev"></span></summary>
+            <p>We build secure remote access on SOC 2–certified, WireGuard-based VPN technology — no exposed ports, no public attack surface. Your team reaches office systems from anywhere as if they were sitting at their desks, with the connection encrypted end to end. It's part of your plan, not an add-on.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>How does pricing scale as my team grows?<span class="faq__chev"></span></summary>
+            <p>Pricing is per-user and transparent: $200 per employee per month for your first 10 employees. That creates a $2,000 monthly base. Beyond 10 employees, you keep that $2,000 base and add just $150 per additional employee per month. So an 8-person team pays $1,600/month, a 15-person team pays $2,000 + (5 × $150) = $2,750/month. Your free assessment locks in an exact number based on your environment before you commit to anything.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>Is Microsoft 365 included in the plan?<span class="faq__chev"></span></summary>
+            <p>For teams of 11 or more users, Microsoft 365 Business licensing is included in your monthly rate — no separate invoice from Microsoft. For smaller teams, we manage your existing Microsoft 365 environment as part of your plan, but licensing costs are billed separately.</p>
+          </details>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- ============ REVIEWS ============ -->
+    <section class="section section--alt" id="reviews">
+      <div class="container">
+        <p class="kicker mono reveal">// CLIENT FEEDBACK</p>
+        <h2 class="section__title reveal">Trusted by Tucson Small Businesses</h2>
+        <p class="section__sub reveal">Real feedback from the businesses we keep running.</p>
+
+        <div class="reviews__scorecard reveal">
+          <div class="reviews__rating">
+            <span class="reviews__num">5.0</span>
+            <span class="reviews__stars" aria-label="5 out of 5 stars">★★★★★</span>
+          </div>
+          <p class="reviews__source mono">RATED ON <a href="https://g.page/r/CX-KTqEh6_EYEBM/review" target="_blank" rel="noopener">GOOGLE</a></p>
+        </div>
+
+        <div class="reviews__grid" id="reviewsGrid">
+          <!-- Testimonials populated from data below -->
+        </div>
+
+        <p class="reviews__cta mono reveal">WORKED WITH US? <a href="https://g.page/r/CX-KTqEh6_EYEBM/review" target="_blank" rel="noopener">SHARE YOUR EXPERIENCE →</a></p>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section section--contact" id="contact">
+      <div class="hero__glow hero__glow--contact"></div>
+      <div class="container container--narrow">
+        <p class="kicker mono reveal">// GET STARTED</p>
+        <h2 class="section__title reveal">Get Your Free Assessment</h2>
+        <p class="section__sub reveal">Tell us about your environment and we'll come back with a clear picture of where you stand — no cost, no obligation, no sales pressure.</p>
+
+        <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/mljrvypp" method="POST">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Jane Smith" required>
+            </div>
+            <div class="form-field">
+              <label for="email">Work Email</label>
+              <input id="email" name="email" type="email" placeholder="jane@company.com" required>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" placeholder="Company, LLC" required>
+          </div>
+          <div class="form-field">
+            <label for="message">What does your IT look like today?</label>
+            <textarea id="message" name="message" rows="5" placeholder="Team size, current setup, biggest pain point…" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--block">Request Free Assessment</button>
+          <input type="hidden" name="_subject" value="New CANYO Assessment Request — {{name}}">
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+          <p class="form-note mono" style="margin-bottom:4px">ALL FIELDS REQUIRED</p>
+          <p class="form-note mono">OR REACH US DIRECTLY<br>
+          <a href="mailto:contact@canyo.net" class="nowrap">CONTACT@CANYO.NET</a><span class="note-sep"> · </span><a href="tel:+15203367521" class="nowrap">(520) 336-7521</a></p>
+          <p class="form-note mono review-line"><a href="https://g.page/r/CX-KTqEh6_EYEBM/review" target="_blank" rel="noopener">★&nbsp; RATE YOUR EXPERIENCE ON GOOGLE</a></p>
+        </form>
+      </div>
+    </section>
 
   </main>
 
@@ -334,7 +698,7 @@
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__brand">
-        <a href="./" class="brand">
+        <a href="#top" class="brand">
           <img class="brand__logo brand__logo--mark logo-dark" src="assets/canyo-logo-white.png" alt="CANYO">
           <img class="brand__logo brand__logo--mark logo-light" src="assets/canyo-logo-black.png" alt="CANYO">
           <img class="brand__logo brand__logo--word logo-dark" src="assets/canyo-wordmark-white.png" alt="CANYO">
@@ -345,11 +709,11 @@
       </div>
       <div class="footer__col">
         <h4 class="mono">SITE</h4>
-        <a href="services/">Services</a>
-        <a href="process/">Process</a>
-        <a href="about/">About</a>
-        <a href="stack/">Our Stack</a>
-        <a href="pricing/">Pricing</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#about">About</a>
+        <a href="#stack">Our Stack</a>
+        <a href="#pricing">Pricing</a>
       </div>
       <div class="footer__col">
         <h4 class="mono">LEGAL</h4>
@@ -361,7 +725,7 @@
         <a href="mailto:contact@canyo.net">contact@canyo.net</a>
         <a href="tel:+15203367521">(520) 336-7521</a>
         <span class="footer__loc">Tucson, Arizona</span>
-        <a href="contact/">Free Assessment</a>
+        <a href="#contact">Free Assessment</a>
         <a href="https://g.page/r/CX-KTqEh6_EYEBM/review" target="_blank" rel="noopener" class="footer__review">★ Leave a Google review</a>
       </div>
     </div>
