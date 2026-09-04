@@ -1,0 +1,27 @@
+# CANYO LLC
+
+> Veteran-owned managed IT services provider serving small businesses in Tucson and Southern Arizona. Flat-rate monthly pricing with guaranteed response times.
+
+## Company
+
+- [About](https://canyo.net/about/): Founder Samuel Glenn, veteran-owned, our approach
+- [Process](https://canyo.net/process/): assess, document, execute, verify
+- [Services](https://canyo.net/services/): 24/7 monitoring, M365 management, backup & recovery, on-site support
+- [Pricing](https://canyo.net/pricing/): $200/user up to 10 users; $2,000 base + $150/user beyond
+- [FAQ](https://canyo.net/faq/): Common client questions
+- [Contact](https://canyo.net/contact/): contact@canyo.net, +1-520-336-7521
+
+## Entity Verification
+
+- Founder: Samuel Glenn (U.S. Army Sergeant, Reserve)
+- Formed: 2026, Arizona LLC (ACC File 25043400)
+- D-U-N-S: 148564788
+- NAICS: 541513 (Computer Facilities Management Services)
+
+## Public Profiles
+
+- Google Business: https://g.page/r/CX-KTqEh6_EYEBM/review
+- Crunchbase: https://www.crunchbase.com/organization/canyo
+- Clutch: https://clutch.co/profile/canyo
+- Goodfirms: https://www.goodfirms.co/company/canyo-llc
+- GitHub: https://github.com/CANYO-IT
