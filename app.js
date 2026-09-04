@@ -123,6 +123,7 @@
 /* ---------- Contact form (Formspree AJAX) ---------- */
 (function initContactForm() {
   var form = document.getElementById('contactForm');
+  if (!form) return;
   form.addEventListener('submit', function (e) {
     e.preventDefault(); // stop the mailto/redirect
 
@@ -279,7 +280,8 @@
 })();
 
 /* ---------- Footer year ---------- */
-document.getElementById('year').textContent = new Date().getFullYear();
+var yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 /* ---------- Reviews: render testimonials from editable data ---------- */
 (function initReviews() {

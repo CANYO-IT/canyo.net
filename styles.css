@@ -1061,3 +1061,12 @@ a { color: inherit; text-decoration: none; }
 .about__founder-row { display: flex; align-items: center; gap: 16px; margin-bottom: 6px; }
 .about__avatar { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border-strong); flex: none; }
 @media (max-width: 760px) { .about__avatar { width: 48px; height: 48px; } }
+
+/* ---------- Hero geo tagline (SEO) ---------- */
+.hero__sub--geo {
+  margin-top: -24px;
+  margin-bottom: 40px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-faint);
+}
