@@ -1070,3 +1070,18 @@ a { color: inherit; text-decoration: none; }
   font-weight: 500;
   color: var(--text-faint);
 }
+
+/* ---------- Card link (teaser grid) ---------- */
+.card__link {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  transition: transform 0.2s, opacity 0.2s;
+}
+.card__link:hover {
+  transform: translateX(4px);
+  opacity: 0.85;
+}
