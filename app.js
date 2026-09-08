@@ -1,8 +1,19 @@
 /* ---------- Fresh load: strip hash + start at top so refresh returns to hero ---------- */
 (function resetOnFreshLoad() {
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { /* still strip */ }
-  if (window.location.hash) {
-    // Remove the fragment without adding a history entry, then jump to top.
+  // Only strip the hash + jump to top on an actual reload. When the user
+  // arrives via a link (navigate), honor the hash and let the browser
+  // scroll to the anchored section.
+  var navType = 'navigate';
+  try {
+    var entries = performance.getEntriesByType && performance.getEntriesByType('navigation');
+    if (entries && entries.length) {
+      navType = entries[0].type;
+    } else if (performance.navigation) {
+      navType = performance.navigation.type === 1 ? 'reload' : 'navigate'; // legacy fallback
+    }
+  } catch (e) { /* default to navigate = honor hash */ }
+
+  if (window.location.hash && navType === 'reload') {
     history.replaceState(null, '', window.location.pathname + window.location.search);
     window.scrollTo(0, 0);
   }

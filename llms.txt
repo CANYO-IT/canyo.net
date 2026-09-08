@@ -10,6 +10,7 @@
 - [Pricing](https://canyo.net/pricing/): $200/user up to 10 users; $2,000 base + $150/user beyond
 - [FAQ](https://canyo.net/faq/): Common client questions
 - [Contact](https://canyo.net/contact/): contact@canyo.net, +1-520-336-7521
+- [Inside CANYO](https://canyo.net/behind-the-scenes/): how CANYO operates its own infrastructure — least privilege, defense in depth, verification, isolation
 
 ## Entity Verification
 
