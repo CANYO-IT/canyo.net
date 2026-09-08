@@ -321,9 +321,15 @@ a { color: inherit; text-decoration: none; }
 .card__link {
   display: inline-block; color: var(--accent); font-size: 0.82rem;
   font-weight: 700; letter-spacing: 0.08em; text-decoration: none;
-  border-bottom: 1px solid transparent; transition: border-color 0.2s;
+  position: relative; padding-bottom: 2px;
 }
-.card__link:hover { border-bottom-color: var(--accent); }
+.card__link::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 100%; height: 1px; background: var(--accent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card__link:hover::after { transform: scaleX(1); }
 
 /* ---------- Process steps ---------- */
 .steps { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; counter-reset: step; }
@@ -1208,21 +1214,21 @@ a { color: inherit; text-decoration: none; }
 /* ---------- CANYO Operating Loop ---------- */
 .loop {
   display: flex; align-items: stretch; justify-content: center;
-  gap: 0; flex-wrap: wrap; max-width: 900px; margin: 0 auto;
+  gap: 0; flex-wrap: wrap; max-width: 1080px; margin: 0 auto;
 }
 .loop__step {
-  flex: 1 1 120px; min-width: 110px; max-width: 150px;
+  flex: 1 1 140px; min-width: 130px; max-width: 170px;
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 20px 14px; text-align: center;
+  border-radius: var(--radius); padding: 28px 18px; text-align: center;
   transition: border-color var(--transition), transform var(--transition);
 }
 .loop__step:hover { border-color: var(--accent); transform: translateY(-3px); }
 .loop__num {
-  display: block; color: var(--accent); font-size: 0.72rem;
-  font-weight: 700; margin-bottom: 8px; letter-spacing: 0.1em;
+  display: block; color: var(--accent); font-size: 0.78rem;
+  font-weight: 700; margin-bottom: 10px; letter-spacing: 0.1em;
 }
-.loop__step h4 { font-size: 0.92rem; margin-bottom: 4px; }
-.loop__step p { font-size: 0.78rem; color: var(--text-dim); }
+.loop__step h4 { font-size: 1.05rem; margin-bottom: 6px; }
+.loop__step p { font-size: 0.85rem; color: var(--text-dim); }
 .loop__arrow {
   display: grid; place-items: center;
   color: var(--text-faint); font-size: 1.1rem; padding: 0 4px;
@@ -1230,6 +1236,8 @@ a { color: inherit; text-decoration: none; }
 }
 @media (max-width: 760px) {
   .loop { flex-direction: column; align-items: center; gap: 0; }
-  .loop__step { width: 100%; max-width: 320px; }
-  .loop__arrow { transform: rotate(90deg); padding: 4px 0; }
+  .loop__step { width: 100%; max-width: 360px; padding: 24px 20px; }
+  .loop__step h4 { font-size: 1.1rem; }
+  .loop__step p { font-size: 0.88rem; }
+  .loop__arrow { transform: rotate(90deg); padding: 6px 0; font-size: 1.3rem; }
 }
