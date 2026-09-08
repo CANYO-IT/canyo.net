@@ -166,7 +166,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=8">
+  <link rel="stylesheet" href="styles.css?v=9">
   <!-- Favicons: white logo for dark chrome, black for light. Dark listed first as the default. -->
   <link rel="icon" type="image/png" href="assets/favicon-dark.png" sizes="512x512" media="(prefers-color-scheme: dark)">
   <link rel="icon" type="image/png" href="assets/favicon-light.png" sizes="512x512" media="(prefers-color-scheme: light)">
@@ -398,11 +398,8 @@
         <div class="about__story-card reveal" id="inside-canyo" style="margin: 54px 0;">
           <p class="kicker mono">// INSIDE CANYO</p>
           <h3 style="font-size: 1.5rem; margin-bottom: 16px;">We Don't Just Tell You How We Operate. <span class="accent">We Show You.</span></h3>
-          <p>CANYO manages technology, security, backups, networks, and business-critical systems for our clients — so our own infrastructure has to meet the same standard we expect from the environments we manage.</p>
-          <p style="margin-top: 14px;">We build around four principles: <strong>least privilege</strong>, <strong>defense in depth</strong>, <strong>verification over trust</strong>, and <strong>isolation by default</strong>. These aren't statements on a website — they're constraints we use when designing and operating CANYO itself.</p>
-          <p style="margin-top: 14px;">A few examples: our internal management tools sit behind a private Tailscale network rather than the public internet. Access then passes through an additional Authelia authentication layer with two-factor authentication, and the applications themselves maintain separate authentication. Backup credentials are intentionally restricted so the credential on a client device cannot erase the backup history it creates. Sensitive infrastructure provisioning requires deliberate human involvement, and security-relevant configurations are tested against disposable systems before they ever touch real client data.</p>
-          <p style="margin-top: 14px;">We believe an MSP shouldn't be a black box.</p>
-          <a href="inside-canyo/" class="card__link mono" style="margin-top: 18px;">SEE HOW CANYO ACTUALLY RUNS →</a>
+          <p>We build around four principles: <strong>least privilege</strong>, <strong>defense in depth</strong>, <strong>verification over trust</strong>, and <strong>isolation by default</strong>. Our own infrastructure uses layered access, restricted backup credentials, technical network isolation, deliberate provisioning, and verification — the same standard we apply to the environments we manage.</p>
+          <a href="inside-canyo/" class="card__link mono" style="margin-top: 18px;">READ: INSIDE CANYO — HOW CANYO ACTUALLY RUNS →</a>
         </div>
 
         <p class="kicker mono reveal about__pillars-kicker">// OUR MANAGED SERVICE LINES</p>
