@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M3MSYTL207"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M3MSYTL207');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inside CANYO: How We Actually Run | Tucson Managed IT</title>
+  <meta name="description" content="CANYO is a Tucson-based managed IT services provider. Here's how we operate our own infrastructure: least privilege, defense in depth, verification over trust, isolation by default.">
+  <link rel="canonical" href="https://canyo.net/inside-canyo/">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="CANYO">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://canyo.net/inside-canyo/">
+  <meta property="og:title" content="Inside CANYO: How We Actually Run">
+  <meta property="og:description" content="You trust us with your technology. Here's what happens behind our walls — least privilege, defense in depth, verification, isolation.">
+  <meta property="og:image" content="https://canyo.net/assets/og-image.png">
+
+  <!-- Fonts + styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css?v=5">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="../assets/favicon-dark.png" sizes="512x512" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" href="../assets/favicon-light.png" sizes="512x512" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" href="../assets/favicon-dark-32.png" sizes="32x32" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" href="../assets/favicon-light-32.png" sizes="32x32" media="(prefers-color-scheme: light)">
+  <link rel="alternate icon" href="../assets/favicon.ico">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Inside CANYO: How We Actually Run",
+    "description": "How CANYO, a Tucson-based managed IT services provider, designs and operates its own infrastructure: least privilege, defense in depth, verification over trust, and isolation by default.",
+    "url": "https://canyo.net/inside-canyo/",
+    "author": {
+      "@type": "Corporation",
+      "name": "CANYO LLC",
+      "url": "https://canyo.net"
+    },
+    "about": [
+      {"@type": "Thing", "name": "Managed IT services"},
+      {"@type": "Thing", "name": "Network security"},
+      {"@type": "Thing", "name": "Backup and recovery"},
+      {"@type": "Thing", "name": "Least privilege"},
+      {"@type": "Thing", "name": "Defense in depth"}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="../" class="brand">
+        <img class="brand__logo brand__logo--mark logo-dark" src="../assets/canyo-logo-white.png" alt="CANYO">
+        <img class="brand__logo brand__logo--mark logo-light" src="../assets/canyo-logo-black.png" alt="CANYO">
+        <img class="brand__logo brand__logo--word logo-dark" src="../assets/canyo-wordmark-white.png" alt="CANYO">
+        <img class="brand__logo brand__logo--word logo-light" src="../assets/canyo-wordmark-black.png" alt="CANYO">
+      </a>
+
+      <nav class="nav__links" id="navLinks">
+        <a href="../">Home</a>
+        <a href="../#services">Services</a>
+        <a href="../#process">Process</a>
+        <a href="../#about">About</a>
+        <a href="../#stack">Stack</a>
+        <a href="../#pricing">Pricing</a>
+        <a href="../#faq">FAQ</a>
+        <a href="../#reviews">Reviews</a>
+        <a href="./" aria-current="page">Inside CANYO</a>
+        <a href="../#contact" class="nav__cta">Get a Free Assessment</a>
+      </nav>
+
+      <div class="nav__controls">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark / light mode" title="Toggle theme">
+          <svg class="icon icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="icon icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <button class="nav__burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ PAGE HERO ============ -->
+    <section class="hero">
+      <div class="hero__grid-bg"></div>
+      <div class="hero__glow"></div>
+
+      <div class="container hero__inner">
+        <div class="hero__logo-stage reveal">
+          <div class="hero__logo-ring" aria-hidden="true"></div>
+          <div class="hero__logo-ring hero__logo-ring--2" aria-hidden="true"></div>
+          <img class="hero__logo-img logo-dark" src="../assets/canyo-logo-white.png" alt="CANYO">
+          <img class="hero__logo-img logo-light" src="../assets/canyo-logo-black.png" alt="CANYO">
+        </div>
+
+        <p class="bts-eyebrow mono reveal">BEHIND THE SCENES OF</p>
+        <img class="bts-wordmark logo-dark reveal" src="../assets/canyo-wordmark-white.png" alt="CANYO">
+        <img class="bts-wordmark logo-light reveal" src="../assets/canyo-wordmark-black.png" alt="CANYO">
+
+        <h1 class="hero__title reveal" style="font-size: clamp(2rem, 5vw, 3.4rem);">How CANYO<br><span class="accent">Actually Runs.</span></h1>
+
+        <p class="hero__sub reveal">You trust us with your technology. Here's what happens behind our walls.</p>
+      </div>
+    </section>
+
+    <!-- ============ 1. WHY WE'RE SHOWING YOU ============ -->
+    <section class="section">
+      <div class="container container--narrow">
+        <p class="kicker mono reveal">// WHY WE'RE SHOWING YOU THIS</p>
+        <h2 class="section__title reveal">You Shouldn't Have to Trust a Black Box</h2>
+        <p class="section__sub reveal" style="margin-top: 0;">CANYO is a Tucson-based managed IT services provider. We manage technology, infrastructure, security, backups, and day-to-day IT operations for businesses that depend on their systems working reliably.</p>
+        <p class="reveal" style="color: var(--text-dim); margin-bottom: 18px;">That creates an important responsibility. Clients trust us with access to their networks, devices, systems, credentials, backups, and business data. We don't think that trust should require a black box.</p>
+        <p class="reveal" style="color: var(--text-dim); margin-bottom: 18px;">So we've decided to open the box. Not by publishing credentials, internal addresses, or operational secrets — those should remain private. Instead, we're willing to explain how CANYO itself is designed and operated, the principles behind those decisions, the technologies we use, and the controls we use to enforce them.</p>
+        <p class="reveal" style="font-weight: 600;">Because we believe a good MSP should be willing to show its work.</p>
+      </div>
+    </section>
+
+    <!-- ============ 2. FOUR PRINCIPLES ============ -->
+    <section class="section section--alt">
+      <div class="container">
+        <p class="kicker mono reveal">// NON-NEGOTIABLES</p>
+        <h2 class="section__title reveal">The Four Principles We Don't Compromise</h2>
+
+        <div class="pillar__grid" style="grid-template-columns: repeat(2, 1fr);">
+          <div class="pillar-card reveal">
+            <span class="pillar-card__num mono">01</span>
+            <h4>Least Privilege</h4>
+            <p>Access should provide only the permissions actually required to perform a job. If something doesn't need the ability to delete, it shouldn't have delete permission. If something doesn't need administrative access, it shouldn't have it. We apply this to credentials, backups, infrastructure, automation, and the systems we use to manage technology.</p>
+          </div>
+          <div class="pillar-card reveal">
+            <span class="pillar-card__num mono">02</span>
+            <h4>Defense in Depth</h4>
+            <p>Important security boundaries shouldn't depend on a single control. We design multiple independent layers so that a failure of one control doesn't mean the next boundary disappears with it. Security shouldn't be one locked door — it should be multiple doors that don't all use the same key.</p>
+          </div>
+          <div class="pillar-card reveal">
+            <span class="pillar-card__num mono">03</span>
+            <h4>Verification Over Trust</h4>
+            <p>We don't consider something secure simply because it was configured that way. We test. Security-relevant configurations are verified against controlled or disposable systems before we trust them with real client data. The question isn't "did we configure it correctly?" — it's "can we demonstrate that it actually behaves the way we intended?"</p>
+          </div>
+          <div class="pillar-card reveal">
+            <span class="pillar-card__num mono">04</span>
+            <h4>Isolation by Default</h4>
+            <p>Systems should be separated unless there is a deliberate reason for them to communicate. We don't want security to depend on someone remembering not to cross a boundary. Where practical, the boundary should be enforced by the technology itself.</p>
+          </div>
+        </div>
+
+        <p class="reveal" style="text-align: center; margin-top: 34px; font-weight: 600;">These aren't four ideas we put on a webpage. They're constraints we use when building and operating CANYO.</p>
+      </div>
+    </section>
+
+    <!-- ============ 3. LAYERED ACCESS MODEL ============ -->
+    <section class="section">
+      <div class="container">
+        <p class="kicker mono reveal">// DEFENSE IN DEPTH, IN PRACTICE</p>
+        <h2 class="section__title reveal">Our Layered Access Model</h2>
+        <p class="section__sub reveal" style="margin-top: 0; max-width: 720px;">One of the clearest examples of how CANYO applies its security principles is the way we protect our own internal management tools. They are not exposed directly to the public internet. Access is intentionally layered, with multiple independent controls between an outside user and the actual application.</p>
+
+        <p class="kicker mono reveal" style="text-align: center; margin-bottom: 22px;">// THE ACCESS PATH</p>
+        <div class="bts-layers reveal">
+          <div class="bts-layer">
+            <span class="bts-layer__num">01</span>
+            <div class="bts-layer__body">
+              <h3>Tailscale</h3>
+              <p>Private network access</p>
+            </div>
+          </div>
+          <div class="bts-layer__arrow" aria-hidden="true">↓</div>
+          <div class="bts-layer">
+            <span class="bts-layer__num">02</span>
+            <div class="bts-layer__body">
+              <h3>Authelia</h3>
+              <p>Username + password</p>
+            </div>
+          </div>
+          <div class="bts-layer__arrow" aria-hidden="true">↓</div>
+          <div class="bts-layer">
+            <span class="bts-layer__num">03</span>
+            <div class="bts-layer__body">
+              <h3>Authelia 2FA</h3>
+              <p>Second authentication factor</p>
+            </div>
+          </div>
+          <div class="bts-layer__arrow" aria-hidden="true">↓</div>
+          <div class="bts-layer">
+            <span class="bts-layer__num">04</span>
+            <div class="bts-layer__body">
+              <h3>Application Authentication</h3>
+              <p>Separate application credentials</p>
+            </div>
+          </div>
+        </div>
+        <p class="reveal" style="text-align: center; font-weight: 600; margin-bottom: 54px;">Getting through one layer does not automatically get you through the next.</p>
+
+        <div class="cards" style="grid-template-columns: repeat(2, 1fr);">
+          <article class="card reveal">
+            <span class="card__tag mono" style="margin-bottom: 12px;">LAYER 1 — PRIVATE NETWORK ACCESS</span>
+            <h3>Tailscale</h3>
+            <p>The first boundary is the network itself. We use Tailscale to create a private, encrypted mesh network between authorized devices and internal resources. Our internal management tools are not sitting on the public internet waiting for someone to find a login page. A device must first be authorized to participate in our Tailscale network before it can even attempt to reach those services. An unauthorized party would first have to somehow gain access to an authorized device or otherwise satisfy the controls governing our private network — otherwise, the internal application simply isn't reachable.</p>
+          </article>
+
+          <article class="card reveal">
+            <span class="card__tag mono" style="margin-bottom: 12px;">LAYER 2 — USERNAME + PASSWORD</span>
+            <h3>Authelia</h3>
+            <p>Assume, purely for the sake of explaining the architecture, that someone somehow makes it through the private network layer. They still haven't reached the application. The next boundary is Authelia — an authentication gateway requiring a separate username and password. These credentials are not the same credentials used by the underlying application. Getting through the private network therefore does not automatically make someone an authenticated user.</p>
+          </article>
+
+          <article class="card reveal">
+            <span class="card__tag mono" style="margin-bottom: 12px;">LAYER 3 — SECOND FACTOR</span>
+            <h3>Authelia Two-Factor Authentication</h3>
+            <p>Take the hypothetical one step further: suppose someone somehow obtains the correct Authelia username and password. They're still not through. The next step requires the second factor of authentication. This creates another independent requirement before the protected application can be accessed — a compromised password alone is not intended to be sufficient.</p>
+          </article>
+
+          <article class="card reveal">
+            <span class="card__tag mono" style="margin-bottom: 12px;">LAYER 4 — SEPARATE CREDENTIALS</span>
+            <h3>Application Authentication</h3>
+            <p>Now suppose someone somehow makes it through every previous layer. They finally reach the actual internal application — and they're still not automatically logged in. The individual application maintains its own separate authentication, with credentials distinct from those used by Authelia. We deliberately don't identify which internal applications we run: the architecture is what matters, and publishing a target list would only hand out enumeration information.</p>
+          </article>
+        </div>
+
+        <p class="kicker mono reveal" style="text-align: center; margin: 54px 0 22px;">// FOUR INDEPENDENT QUESTIONS</p>
+        <div class="bts-layers reveal">
+          <div class="bts-layer">
+            <span class="bts-layer__num">01</span>
+            <div class="bts-layer__body">
+              <h4>Tailscale</h4>
+              <p>Is this device authorized to participate in our private network?</p>
+            </div>
+          </div>
+          <div class="bts-layer__arrow" aria-hidden="true">↓</div>
+          <div class="bts-layer">
+            <span class="bts-layer__num">02</span>
+            <div class="bts-layer__body">
+              <h4>Authelia</h4>
+              <p>Does the user have the correct username and password?</p>
+            </div>
+          </div>
+          <div class="bts-layer__arrow" aria-hidden="true">↓</div>
+          <div class="bts-layer">
+            <span class="bts-layer__num">03</span>
+            <div class="bts-layer__body">
+              <h4>Authelia 2FA</h4>
+              <p>Can the user satisfy the second authentication factor?</p>
+            </div>
+          </div>
+          <div class="bts-layer__arrow" aria-hidden="true">↓</div>
+          <div class="bts-layer">
+            <span class="bts-layer__num">04</span>
+            <div class="bts-layer__body">
+              <h4>Application</h4>
+              <p>Does the user have the separate credentials required by the actual tool?</p>
+            </div>
+          </div>
+        </div>
+        <p class="reveal" style="text-align: center; font-weight: 600;">Only after all four layers have been successfully crossed does the user reach the application.</p>
+      </div>
+    </section>
+
+    <!-- ============ 4. WHY WE BUILT IT THIS WAY ============ -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <p class="kicker mono reveal">// THE REASONING</p>
+        <h2 class="section__title reveal">Why We Built It This Way</h2>
+        <p class="reveal" style="color: var(--text-dim); margin-bottom: 18px;">Could we make this easier? Absolutely. We could expose an application directly to the internet. We could use a single authentication layer. We could reuse credentials. It would also be easier to operate. We deliberately chose otherwise.</p>
+        <p class="reveal" style="color: var(--text-dim); margin-bottom: 18px;">The goal isn't to claim that any individual security layer is impossible to defeat. The goal is to make sure that defeating one layer does not automatically defeat the next. A person who somehow crosses the network boundary still encounters authentication. A person who somehow obtains a password still encounters two-factor authentication. A person who somehow crosses those controls still encounters the application's separate credentials.</p>
+        <p class="reveal" style="font-weight: 600;">The additional friction is intentional. Defense in depth means that one mistake, one compromised credential, or one failed control should not automatically become complete access.</p>
+      </div>
+    </section>
+
+    <!-- ============ 5. TECHNOLOGIES ============ -->
+    <section class="section">
+      <div class="container">
+        <p class="kicker mono reveal">// THE TOOLS</p>
+        <h2 class="section__title reveal">The Technologies Behind CANYO</h2>
+        <p class="section__sub reveal" style="margin-top: 0; max-width: 720px;">Our <a href="../#stack">stack</a> explains what we use. Here's why each piece exists in this architecture.</p>
+
+        <div class="cards" style="grid-template-columns: repeat(3, 1fr);">
+          <article class="card reveal">
+            <h3>Tailscale</h3>
+            <p>The private mesh network connecting authorized devices to internal resources. Its role: keep internal services off the public internet and restrict network access to authorized devices.</p>
+            <span class="card__tag mono">NETWORK BOUNDARY</span>
+          </article>
+          <article class="card reveal">
+            <h3>Authelia</h3>
+            <p>An additional authentication gateway in front of protected internal services. Its role: provide another authentication boundary, including two-factor authentication.</p>
+            <span class="card__tag mono">AUTHENTICATION BOUNDARY</span>
+          </article>
+          <article class="card reveal">
+            <h3>Application Authentication</h3>
+            <p>The applications themselves maintain their own authentication. We don't treat the gateway as a replacement for application-level security — where practical, the application has its own separate credentials.</p>
+            <span class="card__tag mono">APPLICATION BOUNDARY</span>
+          </article>
+        </div>
+
+        <p class="reveal" style="text-align: center; margin-top: 34px; font-weight: 600; max-width: 720px; margin-inline: auto;">The products themselves are not the security strategy. The architecture is. Together, they create multiple independent controls between an unauthorized party and the tools we use to operate CANYO.</p>
+      </div>
+    </section>
+
+    <!-- ============ 6. BACKUPS ============ -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <p class="kicker mono reveal">// BACKUPS</p>
+        <h2 class="section__title reveal">Backups: Designed to Resist the Worst Case</h2>
+        <p class="reveal" style="color: var(--text-dim); margin-bottom: 18px;">Backups are only useful if they survive the thing you're trying to recover from. That's why we don't treat backup security as simply "we have another copy of the files." We care about what an attacker — or a compromised machine — is actually capable of doing to that copy.</p>
+        <p class="reveal" style="color: var(--text-dim); margin-bottom: 18px;"><strong style="color: var(--text);">Data is encrypted before transmission.</strong> Files are encrypted on the client device before they ever leave it, so the backup destination isn't simply receiving a collection of readable client files.</p>
+        <p class="reveal" style="color: var(--text-dim); margin-bottom: 18px;"><strong style="color: var(--text);">The backup credential can't delete what it creates.</strong> The credential stored on a client device is intentionally limited: it can add new backup data, but it cannot delete existing backup data. If a client machine were compromised, the credentials available on that machine shouldn't automatically give an attacker the ability to erase the backup history they need to destroy. A separate credential exists for cleanup and administrative operations — and that credential does not live on the client device.</p>
+        <p class="reveal" style="font-weight: 600;">Least privilege isn't a statement here. It's a property of the credential itself.</p>
+      </div>
+    </section>
+
+    <!-- ============ 7. CLIENT NETWORK ISOLATION ============ -->
+    <section class="section">
+      <div class="container container--narrow">
+        <p class="kicker mono reveal">// ISOLATION</p>
+        <h2 class="section__title reveal">Client Network Isolation Is Enforced Technically</h2>
+        <p class="reveal" style="color: var(--text-dim); margin-bottom: 18px;">We don't want network isolation to depend on a policy that says "CANYO won't let these systems communicate." We prefer the network itself to enforce the boundary. A client's devices are permitted to communicate according to the rules defined for that environment — and where communication isn't permitted, the network prevents it.</p>
+        <p class="reveal" style="color: var(--text-dim); margin-bottom: 18px;">That's an important distinction. A policy depends on someone following the policy. A technical boundary doesn't care about someone's intentions.</p>
+        <p class="reveal" style="font-weight: 600;">It's the difference between saying "please don't open that door" — and building the door so you don't have access to it in the first place.</p>
+      </div>
+    </section>
+
+    <!-- ============ 8. HUMAN CONTROL ============ -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <p class="kicker mono reveal">// HUMAN ACCOUNTABILITY</p>
+        <h2 class="section__title reveal">Some Things Should Still Require a Human</h2>
+        <p class="reveal" style="color: var(--text-dim); margin-bottom: 18px;">Automation is powerful. But automation shouldn't mean that every sensitive operation becomes possible without deliberate human involvement.</p>
+        <p class="reveal" style="color: var(--text-dim); margin-bottom: 18px;">The provisioning of new infrastructure that touches our most sensitive master credential remains a deliberate human step. It isn't something we allow an unattended process to perform automatically — a real person has to trigger it intentionally when it's needed.</p>
+        <p class="reveal" style="font-weight: 600;">We deliberately accept that small amount of friction, because the alternative is allowing one more highly privileged operation to happen without human intent.</p>
+      </div>
+    </section>
+
+    <!-- ============ 9. VERIFICATION ============ -->
+    <section class="section">
+      <div class="container container--narrow" style="text-align: center;">
+        <p class="kicker mono reveal">// VERIFICATION</p>
+        <h2 class="section__title reveal">We Test the Isolation</h2>
+        <p class="reveal" style="color: var(--text-dim); font-size: 1.1rem; margin-bottom: 8px;">A configuration isn't proof. A policy isn't proof. A checkbox isn't proof.</p>
+        <p class="bts-statement reveal" style="margin-bottom: 34px;">Behavior is <span class="accent">proof.</span></p>
+        <p class="reveal" style="color: var(--text-dim); margin-bottom: 18px; text-align: left;">When we introduce security-relevant infrastructure or configurations, we test the isolation and behavior against controlled, disposable systems before trusting those configurations with real client data. The goal is to discover mistakes while they're cheap and harmless to fix. We would much rather discover that an isolation boundary doesn't behave as expected in a throwaway environment than discover the same thing after a real client system is involved.</p>
+        <p class="reveal" style="font-weight: 600; text-align: left;">This is the same philosophy we apply throughout CANYO: <a href="../#about">Verification Over Assumption</a>.</p>
+      </div>
+    </section>
+
+    <!-- ============ 10. ENFORCEMENT OVER PROMISES ============ -->
+    <section class="section section--alt">
+      <div class="container">
+        <p class="kicker mono reveal">// THE CANYO APPROACH</p>
+        <h2 class="section__title reveal">Enforcement Over Promises</h2>
+        <p class="section__sub reveal" style="margin-top: 0; max-width: 720px;">There is a common pattern in technology: "we have a policy for that." We prefer a different question: <strong>can the system enforce it?</strong></p>
+
+        <div class="bts-compare reveal">
+          <div class="bts-compare__col bts-compare__col--no">
+            <h4 class="mono">THE PROMISE VERSION</h4>
+            <ul>
+              <li>"We have a policy that these networks don't communicate."</li>
+              <li>"We have a policy that backup credentials are protected."</li>
+              <li>"We have a policy that sensitive changes require approval."</li>
+              <li>"We have a policy that security boundaries are tested."</li>
+            </ul>
+          </div>
+          <div class="bts-compare__col bts-compare__col--yes">
+            <h4 class="mono">THE CANYO VERSION</h4>
+            <ul>
+              <li>The network itself prevents the communication.</li>
+              <li>The credential technically lacks deletion privileges.</li>
+              <li>The process requires deliberate human action.</li>
+              <li>The boundary is tested against disposable systems first.</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="reveal" style="text-align: center; margin-top: 34px; font-weight: 600;">This doesn't mean policies aren't important. It means important policies should be backed by technical controls whenever practical.</p>
+      </div>
+    </section>
+
+    <!-- ============ 11. WHY THIS MATTERS ============ -->
+    <section class="section">
+      <div class="container">
+        <p class="kicker mono reveal">// THE BUSINESS TRANSLATION</p>
+        <h2 class="section__title reveal">Why This Matters to Your Business</h2>
+        <p class="section__sub reveal" style="margin-top: 0; max-width: 720px;">The point of all this technology isn't to impress another IT professional. It's to reduce two things for the people running a business.</p>
+
+        <div class="cards" style="grid-template-columns: repeat(2, 1fr);">
+          <article class="card reveal">
+            <h3>Less Downtime</h3>
+            <p>Technology should be predictable. Problems should be detected early, systems maintained deliberately, backups usable, and changes made with an understanding of how to reverse them. The goal isn't simply to respond when something breaks — it's to make serious problems less likely to happen in the first place.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Less Stress</h3>
+            <p>Business owners shouldn't have to wonder whether everything is actually working, whether the backups are really there, who has access, or what happens if a computer fails or ransomware hits. Good IT should remove uncertainty rather than create more of it.</p>
+          </article>
+        </div>
+
+        <p class="reveal" style="text-align: center; margin-top: 34px; font-weight: 600; max-width: 720px; margin-inline: auto;">The technology is important. But the outcome we care about is a business that can operate without constantly worrying about its technology.</p>
+      </div>
+    </section>
+
+    <!-- ============ 12. WHAT WE KEEP PRIVATE ============ -->
+    <section class="section section--alt">
+      <div class="container">
+        <p class="kicker mono reveal">// TRANSPARENCY WITHOUT EXPOSURE</p>
+        <h2 class="section__title reveal">What We Keep Private</h2>
+        <p class="section__sub reveal" style="margin-top: 0; max-width: 720px;">Transparency doesn't mean publishing an attack map. There is a meaningful difference between explaining architecture and exposing secrets.</p>
+
+        <div class="bts-compare reveal">
+          <div class="bts-compare__col bts-compare__col--yes">
+            <h4 class="mono">WE'RE HAPPY TO EXPLAIN</h4>
+            <ul>
+              <li>Our security principles and access-control approach</li>
+              <li>How we think about isolation and backups</li>
+              <li>Why we use multiple security layers</li>
+              <li>How we verify important configurations</li>
+              <li>Why certain operations require human involvement</li>
+              <li>The technologies we use to implement these principles</li>
+            </ul>
+          </div>
+          <div class="bts-compare__col bts-compare__col--no">
+            <h4 class="mono">WE DO NOT PUBLISH</h4>
+            <ul>
+              <li>Credentials, secrets, or keys</li>
+              <li>Internal addresses, hostnames, or ports</li>
+              <li>Authentication endpoints or configuration details</li>
+              <li>Internal application names or client infrastructure details</li>
+              <li>Anything that would unnecessarily increase our attack surface</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="reveal" style="text-align: center; margin-top: 34px; font-weight: 600;">Transparency means showing our reasoning, not handing out the keys.</p>
+      </div>
+    </section>
+
+    <!-- ============ 13. OPERATING PHILOSOPHY ============ -->
+    <section class="section">
+      <div class="container container--narrow">
+        <p class="kicker mono reveal">// OPERATING PHILOSOPHY</p>
+        <h2 class="section__title reveal">We Don't Expect You to Take Our Word for It</h2>
+        <p class="reveal" style="color: var(--text-dim); margin-bottom: 18px;">That's the underlying idea behind everything CANYO does. We document. We verify. We isolate. We restrict access. We test. We make important boundaries technical where practical. And when something is important enough to require an exception, we want that exception to be deliberate rather than accidental.</p>
+        <p class="reveal" style="font-weight: 600;">Our clients don't need to understand every technical detail behind their environment. But they should be able to understand the philosophy behind the way we operate it.</p>
+      </div>
+    </section>
+
+    <!-- ============ 14. THE SHORT VERSION ============ -->
+    <section class="section section--alt">
+      <div class="container">
+        <p class="kicker mono reveal">// THE SHORT VERSION</p>
+        <h2 class="section__title reveal">If You Remember Nothing Else</h2>
+
+        <div class="pillar__grid">
+          <div class="pillar-card reveal">
+            <span class="pillar-card__num mono">01</span>
+            <h4>Least Privilege</h4>
+            <p>Give systems only the access they need.</p>
+          </div>
+          <div class="pillar-card reveal">
+            <span class="pillar-card__num mono">02</span>
+            <h4>Defense in Depth</h4>
+            <p>Don't let one failed control become total access.</p>
+          </div>
+          <div class="pillar-card reveal">
+            <span class="pillar-card__num mono">03</span>
+            <h4>Verification Over Trust</h4>
+            <p>Don't assume a security boundary works. Test it.</p>
+          </div>
+          <div class="pillar-card reveal" style="grid-column: 1 / -1;">
+            <span class="pillar-card__num mono">04</span>
+            <h4>Isolation by Default</h4>
+            <p>Don't rely on people to respect boundaries that technology can enforce.</p>
+          </div>
+        </div>
+
+        <p class="bts-statement reveal" style="margin-top: 54px;">We try to make the secure behavior the behavior the system permits.</p>
+        <p class="reveal" style="text-align: center; color: var(--text-dim); margin-top: 18px;">That's how CANYO runs behind the scenes. That's also how we believe managed IT should be done.</p>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="section section--contact">
+      <div class="hero__glow hero__glow--contact"></div>
+      <div class="container container--narrow" style="text-align: center;">
+        <p class="kicker mono reveal">// GET STARTED</p>
+        <h2 class="section__title reveal">Want IT That Works This Way for Your Business?</h2>
+        <p class="hero__sub reveal">CANYO provides structured managed IT services for small businesses in Tucson and across Southern Arizona. Monitoring, maintenance, support, backup and recovery, security, reporting, and ongoing management — handled as one managed system. Less downtime. Less uncertainty. Less IT to worry about.</p>
+        <div class="hero__actions reveal">
+          <a href="../#contact" class="btn btn--primary">Get a Free Assessment</a>
+          <a href="../#services" class="btn btn--ghost">See What's Covered</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="../" class="brand">
+          <img class="brand__logo brand__logo--mark logo-dark" src="../assets/canyo-logo-white.png" alt="CANYO">
+          <img class="brand__logo brand__logo--mark logo-light" src="../assets/canyo-logo-black.png" alt="CANYO">
+          <img class="brand__logo brand__logo--word logo-dark" src="../assets/canyo-wordmark-white.png" alt="CANYO">
+          <img class="brand__logo brand__logo--word logo-light" src="../assets/canyo-wordmark-black.png" alt="CANYO">
+        </a>
+        <p>Structured IT management for small businesses — monitoring, maintenance, support, and recovery, handled end-to-end.</p>
+        <p class="footer__slogan mono">ENGINEERED IT. RELIABLE RESULTS.</p>
+      </div>
+      <div class="footer__col">
+        <h4 class="mono">SITE</h4>
+        <a href="../#services">Services</a>
+        <a href="../#process">Process</a>
+        <a href="../#about">About</a>
+        <a href="../#stack">Our Stack</a>
+        <a href="./">Inside CANYO</a>
+        <a href="../#pricing">Pricing</a>
+      </div>
+      <div class="footer__col">
+        <h4 class="mono">LEGAL</h4>
+        <a href="../legal/privacy-policy.html">Privacy Policy</a>
+        <a href="../legal/terms-of-service.html">Terms of Service</a>
+      </div>
+      <div class="footer__col">
+        <h4 class="mono">CONTACT</h4>
+        <a href="mailto:contact@canyo.net">contact@canyo.net</a>
+        <a href="tel:+15203367521">(520) 336-7521</a>
+        <span class="footer__loc">Tucson, Arizona</span>
+        <a href="../#contact">Free Assessment</a>
+        <a href="https://g.page/r/CX-KTqEh6_EYEBM/review" target="_blank" rel="noopener" class="footer__review">★ Leave a Google review</a>
+      </div>
+    </div>
+    <div class="container footer__bar">
+      <span>© <span id="year">2026</span> CANYO. All rights reserved. &nbsp;·&nbsp; <span class="accent">Engineered IT. Reliable Results.</span></span>
+      <span class="footer__status mono"><span class="pulse-dot"></span> STATUS: OPERATIONAL</span>
+    </div>
+  </footer>
+
+  <script src="../app.js?v=3"></script>
+</body>
+</html>

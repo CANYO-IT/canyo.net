@@ -110,7 +110,7 @@ a { color: inherit; text-decoration: none; }
 .brand__tld { color: var(--text-faint); font-weight: 600; }
 
 .nav__links { display: flex; align-items: center; gap: 30px; }
-.nav__links a { font-size: 0.92rem; font-weight: 500; color: var(--text-dim); transition: color 0.2s; }
+.nav__links a { font-size: 0.92rem; font-weight: 500; color: var(--text-dim); transition: color 0.2s; white-space: nowrap; }
 .nav__links a:hover { color: var(--text); }
 .nav__cta {
   padding: 9px 18px; border-radius: 99px;
