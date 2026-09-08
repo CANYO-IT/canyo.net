@@ -15,6 +15,8 @@
   <meta name="description" content="CANYO provides managed IT services for small businesses in Tucson & Southern Arizona — 24/7 monitoring, cybersecurity, backup, Microsoft 365 & on-site support. Flat $200/user/mo.">
   <!-- Open Graph (social sharing) -->
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CANYO">
+  <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://canyo.net/">
   <meta property="og:title" content="Managed IT Services Tucson, AZ | CANYO">
   <meta property="og:description" content="Managed IT support, monitoring, and recovery for small business. 24/7 monitoring, fast critical response, secure remote access, on-site support, hardware provisioning, security training, Microsoft 365 — from $200/user monthly.">
@@ -32,127 +34,168 @@
   <!-- Canonical + robots -->
   <link rel="canonical" href="https://canyo.net/">
   <link href="/llms.txt" rel="http://www.llms.org/llms-txt">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="geo.region" content="US-AZ">
+  <meta name="geo.placename" content="Tucson">
+  <meta name="geo.position" content="32.2226;-110.9747">
+  <meta name="ICBM" content="32.2226, -110.9747">
+  <meta name="theme-color" content="#141419" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+  <link rel="alternate" hreflang="en-US" href="https://canyo.net/">
+  <link rel="alternate" hreflang="x-default" href="https://canyo.net/">
   <meta name="author" content="CANYO">
 
-  <!-- Structured data: LocalBusiness schema -->
+  <!-- Structured data: LocalBusiness + Service schema -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "Corporation"],
-  "name": "CANYO LLC",
-  "name": "CANYO LLC",
-  "legalName": "CANYO LLC",
-  "url": "https://canyo.net",
-  "alternateName": [
-    "CANYO",
-    "CANYO IT",
-    "CANYO IT Systems & Management"
-  ],
-  "description": "Veteran-owned managed IT services provider serving small businesses in Tucson and Southern Arizona.",
-  "foundingDate": "2026",
-  "founder": {
-    "@type": "Person",
-    "name": "Samuel Glenn"
-  },
-  "knowsAbout": [
-    "Managed IT Services",
-    "Cybersecurity",
-    "Data Backup & Recovery",
-    "Network Infrastructure",
-    "Microsoft 365 Management",
-    "Hardware as a Service (HaaS)"
-  ],
-  "identifier": [
+  "@graph": [
     {
-      "@type": "PropertyValue",
-      "name": "Arizona Corporation Commission File Number",
-      "value": "25043400"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "NAICS Code",
-      "value": "541513"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "D-U-N-S Number",
-      "value": "148564788"
-    }
-  ],
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Tucson",
-    "addressRegion": "AZ",
-    "addressCountry": "US"
-  },
-  "sameAs": [
-    "https://canyo.com",
-    "https://www.canyo.com",
-    "https://g.page/r/CX-KTqEh6_EYEBM/review",
-    "https://github.com/CANYO-IT",
-    "https://www.crunchbase.com/organization/canyo",
-    "https://clutch.co/profile/canyo",
-    "https://www.goodfirms.co/company/canyo-llc"
-  ],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+1-520-336-7521",
-    "email": "contact@canyo.net",
-    "contactType": "sales",
-    "areaServed": "Southern Arizona",
-    "availableLanguage": "English"
-  },
-  "email": "contact@canyo.net",
-  "telephone": "+1-520-336-7521",
-  "slogan": "Engineered IT. Reliable Results.",
-  "priceRange": "$200/user/mo (1–10 users), then $2,000 base + $150/user/mo beyond 10",
-  "priceSpecification": [
-    {
-      "@type": "UnitPriceSpecification",
-      "name": "Standard per-user rate (1–10 users)",
-      "price": "200",
-      "priceCurrency": "USD",
-      "unitText": "per user per month",
-      "description": "Each user up to 10 is billed at $200/month, building the $2,000 base cost."
-    },
-    {
-      "@type": "UnitPriceSpecification",
-      "name": "Base rate (11+ users)",
-      "price": "2000",
-      "priceCurrency": "USD",
-      "unitText": "monthly base",
-      "description": "For teams over 10, a $2,000 monthly base applies (equivalent to 10 users at $200 each)."
-    },
-    {
-      "@type": "UnitPriceSpecification",
-      "name": "Additional users beyond 10",
-      "price": "150",
-      "priceCurrency": "USD",
-      "unitText": "per user per month",
-      "description": "Each user beyond the first 10 is billed at $150/month, in addition to the $2,000 base."
-    }
-  ],
-  "areaServed": [
-    {
-      "@type": "City",
-      "name": "Tucson",
-      "containedInPlace": {
-        "@type": "State",
-        "name": "Arizona"
+      "@type": ["LocalBusiness", "Corporation"],
+      "@id": "https://canyo.net/#organization",
+      "name": "CANYO LLC",
+      "legalName": "CANYO LLC",
+      "url": "https://canyo.net",
+      "logo": "https://canyo.net/assets/canyo-logo-white.png",
+      "image": "https://canyo.net/assets/og-image.png",
+      "alternateName": ["CANYO", "CANYO IT", "CANYO IT Systems & Management"],
+      "description": "Veteran-owned managed IT services provider serving small businesses in Tucson and Southern Arizona. 24/7 monitoring, cybersecurity, backup and recovery, compliance support, and on-site support with flat-rate monthly pricing.",
+      "slogan": "Engineered IT. Reliable Results.",
+      "foundingDate": "2026",
+      "founder": {
+        "@type": "Person",
+        "name": "Samuel Glenn",
+        "jobTitle": "Founder"
+      },
+      "knowsAbout": [
+        "Managed IT Services",
+        "Cybersecurity",
+        "Data Backup & Recovery",
+        "Network Infrastructure",
+        "Microsoft 365 Management",
+        "Hardware as a Service (HaaS)",
+        "Compliance Management",
+        "Endpoint Detection and Response",
+        "Zero-Trust Networking"
+      ],
+      "identifier": [
+        {"@type": "PropertyValue", "name": "Arizona Corporation Commission File Number", "value": "25043400"},
+        {"@type": "PropertyValue", "name": "NAICS Code", "value": "541513"},
+        {"@type": "PropertyValue", "name": "D-U-N-S Number", "value": "148564788"}
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Tucson",
+        "addressRegion": "AZ",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "32.2226",
+        "longitude": "-110.9747"
+      },
+      "areaServed": [
+        {"@type": "City", "name": "Tucson"},
+        {"@type": "City", "name": "Oro Valley"},
+        {"@type": "City", "name": "Marana"},
+        {"@type": "City", "name": "Vail"},
+        {"@type": "City", "name": "Sahuarita"},
+        {"@type": "City", "name": "Green Valley"},
+        {"@type": "AdministrativeArea", "name": "Southern Arizona"}
+      ],
+      "sameAs": [
+        "https://canyo.com",
+        "https://www.canyo.com",
+        "https://g.page/r/CX-KTqEh6_EYEBM/review",
+        "https://github.com/CANYO-IT",
+        "https://www.crunchbase.com/organization/canyo",
+        "https://clutch.co/profile/canyo",
+        "https://www.goodfirms.co/company/canyo-llc"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-520-336-7521",
+        "email": "contact@canyo.net",
+        "contactType": "sales",
+        "areaServed": "Southern Arizona",
+        "availableLanguage": "English",
+        "hoursAvailable": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      },
+      "email": "contact@canyo.net",
+      "telephone": "+1-520-336-7521",
+      "priceRange": "$200/user/mo (1–10 users), then $2,000 base + $150/user/mo beyond 10",
+      "priceSpecification": [
+        {
+          "@type": "UnitPriceSpecification",
+          "name": "Standard per-user rate (1–10 users)",
+          "price": "200",
+          "priceCurrency": "USD",
+          "unitText": "per user per month",
+          "description": "Each user up to 10 is billed at $200/month, building the $2,000 base cost."
+        },
+        {
+          "@type": "UnitPriceSpecification",
+          "name": "Base rate (11+ users)",
+          "price": "2000",
+          "priceCurrency": "USD",
+          "unitText": "monthly base",
+          "description": "For teams over 10, a $2,000 monthly base applies (equivalent to 10 users at $200 each)."
+        },
+        {
+          "@type": "UnitPriceSpecification",
+          "name": "Additional users beyond 10",
+          "price": "150",
+          "priceCurrency": "USD",
+          "unitText": "per user per month",
+          "description": "Each additional user beyond 10 is billed at $150/month on top of the $2,000 base."
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Managed IT Services",
+        "itemListElement": [
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "24/7 Monitoring & Maintenance"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Remote & On-Site Support"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Backup & Recovery"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Security & Compliance"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "IT Documentation & Asset Management"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "New-Hire Onboarding"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Health Reports & Reviews"}}
+        ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "4"
       }
     },
     {
-      "@type": "State",
-      "name": "Arizona"
+      "@type": "WebSite",
+      "@id": "https://canyo.net/#website",
+      "url": "https://canyo.net",
+      "name": "CANYO",
+      "publisher": {"@id": "https://canyo.net/#organization"}
     },
     {
-      "@type": "AdministrativeArea",
-      "name": "Southern Arizona"
+      "@type": "WebPage",
+      "@id": "https://canyo.net/#webpage",
+      "url": "https://canyo.net/",
+      "name": "Managed IT Services Tucson, AZ | CANYO — 24/7 Monitoring & Support",
+      "isPartOf": {"@id": "https://canyo.net/#website"},
+      "about": {"@id": "https://canyo.net/#organization"},
+      "description": "CANYO provides managed IT services for small businesses in Tucson & Southern Arizona — 24/7 monitoring, cybersecurity, backup, Microsoft 365 & on-site support. Flat $200/user/mo.",
+      "inLanguage": "en-US"
     }
   ]
 }
-</script>
+  </script>
 
   <!-- Set theme before first paint to avoid flash -->
   <script>
@@ -167,7 +210,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=18">
+  <link rel="stylesheet" href="styles.css?v=19">
   <!-- Favicons: white logo for dark chrome, black for light. Dark listed first as the default. -->
   <link rel="icon" type="image/png" href="assets/favicon-dark.png" sizes="512x512" media="(prefers-color-scheme: dark)">
   <link rel="icon" type="image/png" href="assets/favicon-light.png" sizes="512x512" media="(prefers-color-scheme: light)">

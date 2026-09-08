@@ -1,16 +1,36 @@
 # CANYO LLC
 
-> Veteran-owned managed IT services provider serving small businesses in Tucson and Southern Arizona. Flat-rate monthly pricing with guaranteed response times.
+> Veteran-owned managed IT services provider serving small businesses in Tucson and Southern Arizona. CANYO builds managed IT environments designed to prevent problems before they become disruptions — automated maintenance, security monitoring, backup verification, and controlled remediation with human intervention when judgment is required. Flat-rate monthly pricing with guaranteed response times.
 
 ## Company
 
-- [About](https://canyo.net/about/): Founder Samuel Glenn, veteran-owned, our approach
-- [Process](https://canyo.net/process/): assess, document, execute, verify
-- [Services](https://canyo.net/services/): 24/7 monitoring, M365 management, backup & recovery, on-site support
-- [Pricing](https://canyo.net/pricing/): $200/user up to 10 users; $2,000 base + $150/user beyond
-- [FAQ](https://canyo.net/faq/): Common client questions
+- [About](https://canyo.net/about/): Founder Samuel Glenn, U.S. Army veteran, prevention-first IT philosophy
+- [Process](https://canyo.net/process/): Free assessment, stabilize, manage, report & review
+- [Services](https://canyo.net/services/): 24/7 monitoring & maintenance, remote & on-site support, backup & recovery, security & compliance, IT documentation & asset management, new-hire onboarding, health reports & reviews
+- [Pricing](https://canyo.net/pricing/): $200/user up to 10 users; $2,000 base + $150/user beyond 10; annual service agreements
+- [FAQ](https://canyo.net/faq/): 23 questions covering monitoring, backups, security, pricing, compliance, remote access, and more
+- [Reviews](https://canyo.net/reviews/): Early feedback, 5.0 rated on Google
 - [Contact](https://canyo.net/contact/): contact@canyo.net, +1-520-336-7521
-- [Inside CANYO](https://canyo.net/inside-canyo/): how CANYO operates its own infrastructure — least privilege, defense in depth, verification, isolation
+- [Inside CANYO](https://canyo.net/inside-canyo/): Technical deep-dive — least privilege, defense in depth, verification over trust, isolation by default, layered access model, incident response, reversible-first operations
+
+## Technology Stack
+
+- NinjaOne: Remote monitoring & management (RMM)
+- Guardz: AI-native managed detection and response (MDR) with SentinelOne EDR
+- Tailscale: Zero-trust remote access, SOC 2 Type II certified platform, WireGuard-based
+- Restic: Encrypted, deduplicated, snapshot-based backup engine
+- Backblaze B2: Immutable object storage for off-site backups
+- CISO Assistant: Open-source GRC platform for compliance framework management (HIPAA, ISO 27001, SOC 2)
+
+## Key Differentiators
+
+- Prevention-first: designed to prevent problems before they become disruptions
+- Verification over assumption: backups verified, changes tested, outcomes documented
+- Automated remediation: approved scripts handle known failures, AI-assisted analysis for tickets, human escalation for judgment calls
+- Automated threat containment: SentinelOne detection triggers Tailscale network restriction
+- Documented institutional memory: every device, account, configuration, and change is documented
+- Compliance-ready: controls tracked against HIPAA, ISO 27001, SOC 2 using CISO Assistant
+- Honest scope: no cabling, no cameras, no break/fix — managed IT only
 
 ## Entity Verification
 
@@ -18,6 +38,8 @@
 - Formed: 2026, Arizona LLC (ACC File 25043400)
 - D-U-N-S: 148564788
 - NAICS: 541513 (Computer Facilities Management Services)
+- Location: Tucson, AZ (32.2226, -110.9747)
+- Service Area: Tucson, Oro Valley, Marana, Vail, Sahuarita, Green Valley, Southern Arizona
 
 ## Public Profiles
 
