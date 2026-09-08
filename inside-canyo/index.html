@@ -36,7 +36,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=13">
+  <link rel="stylesheet" href="../styles.css?v=14">
 
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="../assets/favicon-dark.png" sizes="512x512" media="(prefers-color-scheme: dark)">
@@ -396,6 +396,19 @@
       </div>
     </section>
 
+    <!-- ============ REVERSIBLE-FIRST OPERATIONS ============ -->
+    <section class="section">
+      <div class="container">
+        <p class="kicker mono reveal">// CHANGE MANAGEMENT</p>
+        <h2 class="section__title reveal">Reversible-First Operations</h2>
+        <p class="section__sub reveal" style="margin-top: 0; max-width: 720px;">Every change we make is designed to be safe and reversible. Before a significant change touches a real system, we ask: <strong>if this goes wrong, how do we undo it?</strong></p>
+
+        <p class="reveal" style="color: var(--text-dim); margin-bottom: 18px; max-width: 720px;">Major or risky changes are carefully vetted and never performed without explicit client approval. Security-relevant configurations are tested against disposable systems before they ever touch real client data. The goal isn't to avoid change — it's to make change safe enough that it becomes routine rather than risky.</p>
+
+        <p class="reveal" style="font-weight: 600; max-width: 720px;">A change that can't be undone isn't a change. It's a gamble.</p>
+      </div>
+    </section>
+
     <!-- ============ 9. VERIFICATION ============ -->
     <section class="section">
       <div class="container container--narrow" style="text-align: center;">
@@ -405,6 +418,65 @@
         <p class="bts-statement reveal" style="margin-bottom: 34px;">Behavior is <span class="accent">proof.</span></p>
         <p class="reveal" style="color: var(--text-dim); margin-bottom: 18px; text-align: left;">When we introduce security-relevant infrastructure or configurations, we test the isolation and behavior against controlled, disposable systems before trusting those configurations with real client data. The goal is to discover mistakes while they're cheap and harmless to fix. We would much rather discover that an isolation boundary doesn't behave as expected in a throwaway environment than discover the same thing after a real client system is involved.</p>
         <p class="reveal" style="font-weight: 600; text-align: left;">This is the same philosophy we apply throughout CANYO: <a href="../#about">Verification Over Assumption</a>.</p>
+      </div>
+    </section>
+
+    <!-- ============ INCIDENT RESPONSE ============ -->
+    <section class="section">
+      <div class="container">
+        <p class="kicker mono reveal">// WHEN SOMETHING GOES WRONG</p>
+        <h2 class="section__title reveal">How CANYO Responds to an Incident</h2>
+        <p class="section__sub reveal" style="margin-top: 0; max-width: 720px;">Every incident follows the same disciplined sequence — no improvisation, no skipped steps.</p>
+
+        <div class="bts-layers reveal">
+          <div class="bts-layer">
+            <span class="bts-layer__num">01</span>
+            <div class="bts-layer__body">
+              <h3>Detect</h3>
+              <p>Monitoring identifies an abnormal condition — a stopped service, a failed backup, an unexpected change.</p>
+            </div>
+          </div>
+          <div class="bts-layer__arrow" aria-hidden="true">↓</div>
+          <div class="bts-layer">
+            <span class="bts-layer__num">02</span>
+            <div class="bts-layer__body">
+              <h3>Isolate</h3>
+              <p>If the condition poses a risk, the affected system is contained to prevent spread.</p>
+            </div>
+          </div>
+          <div class="bts-layer__arrow" aria-hidden="true">↓</div>
+          <div class="bts-layer">
+            <span class="bts-layer__num">03</span>
+            <div class="bts-layer__body">
+              <h3>Investigate</h3>
+              <p>The root cause is identified — not just the symptom.</p>
+            </div>
+          </div>
+          <div class="bts-layer__arrow" aria-hidden="true">↓</div>
+          <div class="bts-layer">
+            <span class="bts-layer__num">04</span>
+            <div class="bts-layer__body">
+              <h3>Remediate</h3>
+              <p>The problem is corrected using controlled, reversible procedures.</p>
+            </div>
+          </div>
+          <div class="bts-layer__arrow" aria-hidden="true">↓</div>
+          <div class="bts-layer">
+            <span class="bts-layer__num">05</span>
+            <div class="bts-layer__body">
+              <h3>Verify</h3>
+              <p>The fix is confirmed against the expected outcome — not assumed to have worked.</p>
+            </div>
+          </div>
+          <div class="bts-layer__arrow" aria-hidden="true">↓</div>
+          <div class="bts-layer">
+            <span class="bts-layer__num">06</span>
+            <div class="bts-layer__body">
+              <h3>Document</h3>
+              <p>What happened, what was done, and what the result was — recorded for the client and for CANYO's institutional memory.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 

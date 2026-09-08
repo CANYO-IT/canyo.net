@@ -39,7 +39,8 @@
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Corporation",
+  "@type": ["LocalBusiness", "Corporation"],
+  "name": "CANYO LLC",
   "name": "CANYO LLC",
   "legalName": "CANYO LLC",
   "url": "https://canyo.net",
@@ -166,7 +167,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=13">
+  <link rel="stylesheet" href="styles.css?v=14">
   <!-- Favicons: white logo for dark chrome, black for light. Dark listed first as the default. -->
   <link rel="icon" type="image/png" href="assets/favicon-dark.png" sizes="512x512" media="(prefers-color-scheme: dark)">
   <link rel="icon" type="image/png" href="assets/favicon-light.png" sizes="512x512" media="(prefers-color-scheme: light)">
@@ -177,20 +178,196 @@
   <link rel="alternate icon" href="assets/favicon.ico">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Do I have to change my industry-specific software?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. CANYO standardizes its management and security stack so it can flexibly support the line-of-business software your business depends on — accounting platforms, legal CRMs, medical EMRs, field service tools. Security and management guardrails wrap around your existing software."
-        }
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does '24/7 monitoring' actually cover?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We continuously watch your servers, workstations, network devices, and cloud infrastructure for performance issues, failures, and security red flags. When something trends toward a problem — a failing drive, a service that keeps crashing, low disk space — we catch it and act before it turns into downtime for your team."
       }
-    ]
-  }
+    },
+    {
+      "@type": "Question",
+      "name": "How does patching work, and will it disrupt my team?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Operating system and third-party application updates are applied automatically on a managed schedule. We test and stage updates to minimize disruption, and where possible we run patching outside of business hours. You'll see patch compliance reported every month, so there's never a question about whether your systems are up to date."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How fast do you respond when something goes wrong?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We use a tiered response system based on how severely an issue impacts your business. \"Response\" means a technician is actively working your issue — not an automated acknowledgment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens when something breaks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You open a ticket and we get to work. Every ticket is documented with the root cause and the resolution, so you always understand what went wrong and how it was fixed. No black box, no vague \"it's working now\" — just a clear record you can review anytime."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How are my backups handled — and how do I know they actually work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Backups run automatically every day, and we don't just confirm that the job ran. We monitor and verify them, and we perform tested restores to prove your data can actually be recovered. A backup you've never tested isn't a backup — it's a hope. We don't operate that way."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What kind of security is included?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every device is patched, monitored, and accounted for — nothing falls through the cracks. Combined with ransomware-resistant backups and enforced update policies, this closes the most common gaps attackers rely on: outdated software and unmanaged devices."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does new-hire onboarding work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When you bring someone on, we handle the technical setup so they're ready to work on day one — accounts, devices, access, and the tools they need. It's part of your plan, so there's no scramble and no extra invoice every time you grow your team."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How will I know what I'm paying for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You'll receive monthly health reports covering uptime, ticket volume, backup status, and patch compliance. We also meet quarterly to review performance and plan ahead, and we maintain full documentation of your environment. Transparency is the point — you always know what you're paying for and why."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is everything really included, or are there hidden add-ons?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Monitoring, maintenance, support, backups, hardware provisioning, security training, onboarding, and reporting are all part of your plan. For teams of 11 or more, Microsoft 365 Business licensing is included too. The goal is a predictable monthly cost with no surprise charges every time you need help — so you can budget with confidence."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you provide hardware, or do we buy our own?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both. We handle hardware repair and provisioning as part of your plan — including Hardware as a Service (HaaS), where we supply, manage, and refresh your devices on a lifecycle schedule. If you prefer to own your hardware outright, we support that too. Either way, every device is patched, monitored, and accounted for."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What kind of security training do you provide?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We run regular security awareness sessions for your team covering phishing recognition, password hygiene, social engineering red flags, and safe browsing practices. Training is practical and jargon-free — the goal is to make your team the strongest link in your security chain, not the weakest."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you come on-site if we need someone in person?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Most issues are resolved remotely, which is faster for everyone. But when a situation calls for hands-on work — hardware installs, device setup, physical troubleshooting — we come to you. On-site support is part of your plan, not an extra charge."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does my team work remotely without exposing our network?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We build secure remote access on Tailscale — a SOC 2 Type II–certified, WireGuard-based platform — with no exposed ports and no public attack surface. Your team reaches office systems from anywhere as if they were sitting at their desks, with the connection encrypted end to end. It's part of your plan, not an add-on."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does pricing scale as my team grows?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pricing is per-user and transparent: $200 per employee per month for your first 10 employees. That creates a $2,000 monthly base. Beyond 10 employees, you keep that $2,000 base and add just $150 per additional employee per month. So an 8-person team pays $1,600/month, a 15-person team pays $2,000 + (5 × $150) = $2,750/month. Your free assessment locks in an exact number based on your environment before you commit to anything."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Microsoft 365 included in the plan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For teams of 11 or more users, Microsoft 365 Business licensing is included in your monthly rate — no separate invoice from Microsoft. For smaller teams, we manage your existing Microsoft 365 environment as part of your plan, but licensing costs are billed separately."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does CANYO mean by proactive IT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Proactive IT means addressing problems before they become user-facing disruptions. That includes scheduled patching, health checks, backup verification, service monitoring, lifecycle planning, and reviewing trends across the environment. Our goal is not to generate more support tickets — it is to prevent them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if CANYO detects a problem before I do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We investigate it, determine whether action is necessary, and remediate it when appropriate. The result is documented so there is a record of what happened and what was done. If the issue requires your involvement or approval, we contact you rather than making an unnecessary change."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does CANYO manage our passwords?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CANYO securely manages the credentials and access information required to administer your environment within our agreed scope. Access is protected through layered authentication and restricted management connectivity, and privileges are limited to what is required to perform the work. We do not provide personal or corporate password management tools."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can CANYO provide documentation for an auditor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. CANYO maintains documentation and control evidence within the scope of the services we provide. Where appropriate, reports can be provided to support audits, compliance reviews, insurance requirements, and internal security assessments. We cooperate with your organization and its auditors while maintaining appropriate protection around sensitive information."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does CANYO provide cabling or security cameras?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. CANYO focuses on managed IT, endpoint management, security, backup, infrastructure management, and related technology services. We do not install building cabling, security camera systems, or physical access-control systems. When those services are required, we can coordinate with an appropriate specialist."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why doesn't CANYO use a traditional VPN?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CANYO uses Tailscale-based secure connectivity because it provides encrypted, identity-aware access without requiring traditional publicly exposed VPN infrastructure. The architecture is easier to manage across distributed environments while allowing CANYO to apply controlled access policies."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does a successfully managed computer look like?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ideally, one the employee barely notices. CANYO continuously manages the device in the background — patching it, monitoring its health, maintaining it, protecting access, maintaining backups, and addressing issues before they become disruptive whenever possible. The best IT support isn't necessarily the support you notice most. It's the problems you never have."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I have to change my industry-specific software?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. We standardize our management and security stack — the tools we use to monitor, protect, and maintain your environment — precisely so we can flexibly support the line-of-business software your business depends on. Accounting platforms, legal CRMs, medical EMRs, field service tools: we wrap our security and management guardrails around your existing software. You keep what works; we make it secure and reliable."
+      }
+    }
+  ]
+}
   </script>
 </head>
 <body>
@@ -250,7 +427,7 @@
 
         <h1 class="hero__title reveal">Engineered IT.<br><span class="accent">Reliable Results.</span></h1>
 
-        <p class="hero__sub reveal">CANYO delivers structured IT management for small businesses — monitoring, maintenance, support, and recovery handled end-to-end, so you can focus on the mission, not the machines.</p>
+        <p class="hero__sub reveal">CANYO delivers managed IT services for small businesses — keeping computers, networks, accounts, backups, and security maintained behind the scenes so your team can work without thinking about IT.</p>
 
         <p class="hero__sub hero__sub--geo reveal">Managed IT services for small businesses in Tucson &amp; Southern Arizona.</p>
 
@@ -262,7 +439,7 @@
         <div class="hero__stats reveal">
           <div class="stat"><span class="stat__num mono" data-count="24" data-suffix="/7">24/7</span><span class="stat__label">Monitoring</span></div>
           <div class="stat"><span class="stat__num mono">&lt;<span data-count="30">30</span> min</span><span class="stat__label">Critical Response</span></div>
-          <div class="stat"><span class="stat__num mono" data-count="100" data-suffix="%">100%</span><span class="stat__label">Backups Verified</span></div>
+          <div class="stat"><span class="stat__num mono" data-count="100" data-suffix="%">100%</span><span class="stat__label">Backup Verification</span></div>
           <div class="stat"><span class="stat__num mono"><span data-count="1">1</span></span><span class="stat__label">Flat Monthly Rate</span></div>
         </div>
       </div>
@@ -300,15 +477,22 @@
           <article class="card reveal">
             <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
             <h3>Backup &amp; Recovery</h3>
-            <p>Ransomware-resistant backups — credentials are restricted so a compromised endpoint can write backups but cannot erase backup history. Monitored, verified, and tested with real restores.</p>
-            <span class="card__tag mono">VERIFIED. RECOVERABLE. IMMUTABLE.</span>
+            <p>Ransomware-resistant backups performed hourly, so recovery can include recent file versions rather than relying solely on a daily snapshot. Backup-write capability is separated from the ability to delete backup history, limiting the potential impact of a compromised workstation. Monitored, verified, and tested with real restores.</p>
+            <span class="card__tag mono">VERIFIED. RECOVERABLE. HOURLY.</span>
           </article>
 
           <article class="card reveal">
             <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
             <h3>Security &amp; Compliance</h3>
-            <p>Every device patched, monitored, and accounted for — nothing falls through the cracks. Documented controls come standard, not as an add-on.</p>
+            <p>Every managed device is patched, monitored, inventoried, and accounted for. Access is controlled using least-privilege principles, management connections are isolated, and important security controls are documented rather than left to memory.</p>
             <span class="card__tag mono">BASELINE — NOT UPSELL</span>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+            <h3>IT Documentation &amp; Asset Management</h3>
+            <p>Every managed device, account, configuration, backup, maintenance action, and important change is documented. Your environment develops an institutional memory instead of relying on one person's knowledge.</p>
+            <span class="card__tag mono">DOCUMENTED — NOT ASSUMED</span>
           </article>
 
           <article class="card reveal">
@@ -338,6 +522,7 @@
             <h2 class="compliance__title">Built for Regulated Industries</h2>
             <p>If your business handles sensitive client data — financial records, health information, or anything else that invites scrutiny — you need an IT partner that treats compliance as a baseline, not an upsell.</p>
             <p>Every engagement includes documented controls, audit-ready reporting, and safeguards built around your regulatory obligations — not generic best practices. We track and evidence controls against frameworks like HIPAA, ISO 27001, and SOC 2 using dedicated governance tooling, so nothing lives in a spreadsheet.</p>
+            <p style="margin-top: 14px; color: var(--text-faint); font-size: 0.9rem;">CANYO manages the technical controls and documentation within our scope; compliance itself remains a shared responsibility between the organization, its leadership, its vendors, and its regulatory obligations.</p>
             <div class="compliance__chips">
               <span class="chip mono">HIPAA</span>
               <span class="chip mono">ISO 27001</span>
@@ -358,11 +543,11 @@
         <ol class="steps">
           <li class="step reveal">
             <span class="step__num mono">01</span>
-            <div><h3>Free Assessment</h3><p>We inventory your environment — every device, every account, every risk — and hand you a plain-English picture of where you stand. No cost, no obligation.</p></div>
+            <div><h3>Free Assessment</h3><p>We inventory your environment — every device, every account, every risk — and document a known baseline before management begins. You receive a plain-English picture of where you stand. No cost, no obligation.</p></div>
           </li>
           <li class="step reveal">
             <span class="step__num mono">02</span>
-            <div><h3>Stabilize</h3><p>We close the gaps that bite first: patching, backups, monitoring. Your business is protected before we change anything else.</p></div>
+            <div><h3>Stabilize</h3><p>We close the gaps that bite first: patching, backups, monitoring, access, and recovery. We don't try to change everything at once — we stabilize the environment first, then improve it deliberately.</p></div>
           </li>
           <li class="step reveal">
             <span class="step__num mono">03</span>
@@ -382,6 +567,7 @@
         <p class="kicker mono reveal">// ABOUT CANYO</p>
         <h2 class="section__title reveal">Operational Excellence.<br>No Surprises.</h2>
         <p class="section__sub reveal">Most IT support is reactive — fixing problems as they arise, often leading to cycles of disruption. CANYO was founded to break that cycle. We don't do one-time quick-fixes; we create standardized managed ecosystems built on system longevity, continuity, and transparent reporting to business leaders. Our measure of success isn't how quickly we respond to problems — it's how few problems occur at all.</p>
+        <p class="section__sub reveal" style="margin-top: 18px;">A well-managed computer should become boring. The goal isn't for employees to constantly notice how much IT work is happening — it's the opposite: patches run, backups complete, services stay healthy, access remains controlled, and problems are caught before users have to report them. If a workstation develops a problem and CANYO corrects it before the employee ever notices, that's a successful IT outcome — even though the employee may never know anything happened.</p>
 
         <div class="about__story-card reveal">
           <p class="kicker mono">// THE STORY BEHIND CANYO</p>
@@ -450,12 +636,58 @@
       </div>
     </section>
 
+    <!-- ============ VERIFICATION ============ -->
+    <section class="section">
+      <div class="container">
+        <p class="kicker mono reveal">// VERIFICATION OVER ASSUMPTION</p>
+        <h2 class="section__title reveal">We Don't Assume It's Working.<br><span class="accent">We Verify.</span></h2>
+        <p class="section__sub reveal" style="margin-top: 0; max-width: 720px;">A green status indicator isn't enough. CANYO verifies the things that matter: backups aren't simply reported as successful — recovery data is checked. Devices aren't simply added to management — their status is reviewed. Changes aren't considered complete because a script finished — the result is verified against the expected outcome.</p>
+
+        <div class="cards grid-2">
+          <article class="card reveal">
+            <h3>Evidence, Not Assumption</h3>
+            <p>When something happens, we document what happened, what was done, and what the result was. A managed environment should have evidence behind it — that's the difference between saying something works and being able to demonstrate that it works.</p>
+            <span class="card__tag mono">DOCUMENTED OUTCOMES</span>
+          </article>
+          <article class="card reveal">
+            <h3>What "Proactive" Looks Like</h3>
+            <p>A workstation's print spooler stops unexpectedly. The employee may never notice. CANYO's monitoring identifies the stopped service, the service is restarted, the result is verified, and the event is documented. The monthly health report shows the issue occurred, that it was addressed, and that the workstation remained operational. That's proactive IT management.</p>
+            <span class="card__tag mono">REAL-WORLD EXAMPLE</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CANYO OPERATING LOOP ============ -->
+    <section class="section section--alt">
+      <div class="container">
+        <p class="kicker mono reveal">// HOW CANYO RUNS</p>
+        <h2 class="section__title reveal">The CANYO Operating Loop</h2>
+        <p class="section__sub reveal" style="margin-top: 0;">Every managed environment runs on the same continuous cycle.</p>
+
+        <div class="loop reveal">
+          <div class="loop__step"><span class="loop__num mono">01</span><h4>Monitor</h4><p>Know what's happening.</p></div>
+          <div class="loop__arrow" aria-hidden="true">→</div>
+          <div class="loop__step"><span class="loop__num mono">02</span><h4>Detect</h4><p>Find abnormal conditions.</p></div>
+          <div class="loop__arrow" aria-hidden="true">→</div>
+          <div class="loop__step"><span class="loop__num mono">03</span><h4>Respond</h4><p>Correct the problem.</p></div>
+          <div class="loop__arrow" aria-hidden="true">→</div>
+          <div class="loop__step"><span class="loop__num mono">04</span><h4>Verify</h4><p>Confirm the correction worked.</p></div>
+          <div class="loop__arrow" aria-hidden="true">→</div>
+          <div class="loop__step"><span class="loop__num mono">05</span><h4>Document</h4><p>Record what happened.</p></div>
+          <div class="loop__arrow" aria-hidden="true">→</div>
+          <div class="loop__step"><span class="loop__num mono">06</span><h4>Improve</h4><p>Prevent recurrence.</p></div>
+        </div>
+        <p class="reveal" style="text-align: center; margin-top: 30px; font-weight: 600; color: var(--text-dim);">Repeat continuously.</p>
+      </div>
+    </section>
+
     <!-- ============ STACK ============ -->
     <section class="section" id="stack">
       <div class="container">
         <p class="kicker mono reveal">// OUR STACK</p>
         <h2 class="section__title reveal">Built On Trusted Technology</h2>
-        <p class="section__sub reveal">We don't build on shortcuts. CANYO runs on the same enterprise-grade tools trusted by IT teams everywhere.</p>
+        <p class="section__sub reveal">CANYO uses a deliberately small technology stack. Each platform has a defined job, and the pieces are selected to work together rather than creating another layer of complexity. The goal isn't to have the longest vendor list — it's to have a system we understand, can operate consistently, and can verify.</p>
 
         <div class="stack__grid">
           <div class="stack-card reveal">
@@ -470,7 +702,7 @@
             <div class="stack-card__logo mono">TS</div>
             <div class="stack-card__body">
               <h3>Tailscale</h3>
-              <p>Zero-trust remote access built on WireGuard. All management connections to our infrastructure travel over an encrypted mesh — no exposed ports, no public attack surface.</p>
+              <p>Zero-trust remote access built on WireGuard. Management connections are built through Tailscale rather than exposing traditional remote-access ports to the public internet — reducing unnecessary exposure while giving CANYO controlled, encrypted access to managed environments.</p>
               <span class="card__tag mono">ZERO-TRUST REMOTE ACCESS</span>
             </div>
           </div>
@@ -494,7 +726,7 @@
             <div class="stack-card__logo mono">CA</div>
             <div class="stack-card__body">
               <h3>CISO Assistant</h3>
-              <p>Open-source GRC platform we use to map, track, and evidence security controls against compliance frameworks — HIPAA, ISO 27001, SOC 2, and others. Every control is documented, assessed, and audit-ready.</p>
+              <p>Open-source GRC platform we use to map, track, and evidence security controls against compliance frameworks — HIPAA, ISO 27001, SOC 2, and others. Controls are documented, assessed, tracked, and evidenced against applicable frameworks, giving clients a structured record to support audits and compliance activities.</p>
               <span class="card__tag mono">COMPLIANCE &amp; GOVERNANCE</span>
             </div>
           </div>
@@ -507,6 +739,36 @@
         </div>
 
         <p class="section__sub reveal" style="margin: 34px 0 0;">Our stack explains <strong>what</strong> we use. Inside CANYO explains <strong>why</strong> we use it this way. <a href="inside-canyo/" class="card__link mono" style="margin-top: 6px;">SEE HOW CANYO RUNS →</a></p>
+      </div>
+    </section>
+
+    <!-- ============ WHAT WE DON'T DO ============ -->
+    <section class="section">
+      <div class="container">
+        <p class="kicker mono reveal">// HONEST SCOPE</p>
+        <h2 class="section__title reveal">What CANYO Doesn't Do</h2>
+        <p class="section__sub reveal" style="margin-top: 0; max-width: 720px;">CANYO is a managed IT provider — not a general low-voltage contractor or a break/fix computer shop.</p>
+
+        <div class="bts-compare reveal" style="max-width: 720px;">
+          <div class="bts-compare__col bts-compare__col--no">
+            <h4 class="mono">OUTSIDE OUR SCOPE</h4>
+            <ul>
+              <li>Installing Ethernet cabling in ceilings or walls</li>
+              <li>Installing security camera systems</li>
+              <li>Installing physical access-control systems</li>
+              <li>Operating as an on-demand computer repair shop</li>
+              <li>Selling unnecessary technology because it generates another project</li>
+            </ul>
+          </div>
+          <div class="bts-compare__col bts-compare__col--yes">
+            <h4 class="mono">WHEN IT'S OUTSIDE OUR SCOPE</h4>
+            <ul>
+              <li>We tell you directly</li>
+              <li>We coordinate with the appropriate specialist when needed</li>
+              <li>We stay focused on what we're good at</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -562,6 +824,11 @@
           </div>
 
           <p class="pricing__note">Per-user pricing scales with you — $200/user up to 10, then a $2,000 base + $150/user beyond 10. Final pricing depends on environment complexity, device count, and compliance requirements — your free assessment locks in an exact number before you commit to anything.</p>
+          <div class="about__story-card reveal" style="margin-top: 30px; text-align: left;">
+            <p class="kicker mono">// WHAT YOU'RE ACTUALLY PAYING FOR</p>
+            <p>You're not paying CANYO to wait for something to break. You're paying for the work that happens before you ever notice a problem: monitoring, patching, backup verification, documentation, access management, maintenance, planning, and support when something does go wrong.</p>
+            <p style="margin-top: 12px; font-weight: 600;">The goal is not to maximize tickets. The goal is to minimize them.</p>
+          </div>
           <a href="#contact" class="btn btn--primary btn--block">Start With a Free Assessment</a>
         </div>
       </div>
@@ -576,12 +843,12 @@
             <p class="kicker mono">// SECURE REMOTE ACCESS</p>
             <h2 class="compliance__title">Your Office, From Anywhere.<br>Your Network, Nowhere.</h2>
             <p>Whether your team is at home, on the road, or on a job site, they open their laptop and they're in — files, applications, and internal systems, exactly as if they were sitting at their desks.</p>
-            <p>Traditional remote access hangs a door on the public internet and hopes nobody knocks. Ours doesn't have a door at all: it's built on Tailscale, a SOC 2 Type II–certified platform using WireGuard-based encryption — no exposed ports and no public attack surface. Every connection is encrypted end to end, and it's included in every plan.</p>
+            <p>Traditional remote access hangs a door on the public internet and hopes nobody knocks. Ours is built differently: management connections run through Tailscale — a SOC 2 Type II–certified platform using WireGuard-based encryption — rather than exposing traditional remote-access ports to the public internet. Every connection is encrypted end to end, and it's included in every plan.</p>
             <div class="compliance__chips">
               <span class="chip mono">WIREGUARD-BASED</span>
               <span class="chip mono">SOC 2 TYPE II PLATFORM</span>
-              <span class="chip mono">NO EXPOSED PORTS</span>
-              <span class="chip mono">ZERO PUBLIC ATTACK SURFACE</span>
+              <span class="chip mono">NO EXPOSED VPN PORTS</span>
+              <span class="chip mono">REDUCED ATTACK SURFACE</span>
             </div>
           </div>
         </div>
@@ -667,6 +934,34 @@
           <details class="faq__item reveal">
             <summary>Is Microsoft 365 included in the plan?<span class="faq__chev"></span></summary>
             <p>For teams of 11 or more users, Microsoft 365 Business licensing is included in your monthly rate — no separate invoice from Microsoft. For smaller teams, we manage your existing Microsoft 365 environment as part of your plan, but licensing costs are billed separately.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>What does CANYO mean by proactive IT?<span class="faq__chev"></span></summary>
+            <p>Proactive IT means addressing problems before they become user-facing disruptions. That includes scheduled patching, health checks, backup verification, service monitoring, lifecycle planning, and reviewing trends across the environment. Our goal is not to generate more support tickets — it is to prevent them.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>What happens if CANYO detects a problem before I do?<span class="faq__chev"></span></summary>
+            <p>We investigate it, determine whether action is necessary, and remediate it when appropriate. The result is documented so there is a record of what happened and what was done. If the issue requires your involvement or approval, we contact you rather than making an unnecessary change.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>Does CANYO manage our passwords?<span class="faq__chev"></span></summary>
+            <p>CANYO securely manages the credentials and access information required to administer your environment within our agreed scope. Access is protected through layered authentication and restricted management connectivity, and privileges are limited to what is required to perform the work. We do not provide personal or corporate password management tools.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>Can CANYO provide documentation for an auditor?<span class="faq__chev"></span></summary>
+            <p>Yes. CANYO maintains documentation and control evidence within the scope of the services we provide. Where appropriate, reports can be provided to support audits, compliance reviews, insurance requirements, and internal security assessments. We cooperate with your organization and its auditors while maintaining appropriate protection around sensitive information.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>Does CANYO provide cabling or security cameras?<span class="faq__chev"></span></summary>
+            <p>No. CANYO focuses on managed IT, endpoint management, security, backup, infrastructure management, and related technology services. We do not install building cabling, security camera systems, or physical access-control systems. When those services are required, we can coordinate with an appropriate specialist.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>Why doesn't CANYO use a traditional VPN?<span class="faq__chev"></span></summary>
+            <p>CANYO uses Tailscale-based secure connectivity because it provides encrypted, identity-aware access without requiring traditional publicly exposed VPN infrastructure. The architecture is easier to manage across distributed environments while allowing CANYO to apply controlled access policies.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>What does a successfully managed computer look like?<span class="faq__chev"></span></summary>
+            <p>Ideally, one the employee barely notices. CANYO continuously manages the device in the background — patching it, monitoring its health, maintaining it, protecting access, maintaining backups, and addressing issues before they become disruptive whenever possible. The best IT support isn't necessarily the support you notice most. It's the problems you never have.</p>
           </details>
           <details class="faq__item reveal">
             <summary>Do I have to change my industry-specific software?<span class="faq__chev"></span></summary>
