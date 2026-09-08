@@ -36,7 +36,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=14">
+  <link rel="stylesheet" href="../styles.css?v=15">
 
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="../assets/favicon-dark.png" sizes="512x512" media="(prefers-color-scheme: dark)">
@@ -381,6 +381,7 @@
         <h2 class="section__title reveal">Client Network Isolation Is Enforced Technically</h2>
         <p class="reveal" style="color: var(--text-dim); margin-bottom: 18px;">We don't want network isolation to depend on a policy that says "CANYO won't let these systems communicate." We prefer the network itself to enforce the boundary. A client's devices are permitted to communicate according to the rules defined for that environment — and where communication isn't permitted, the network prevents it.</p>
         <p class="reveal" style="color: var(--text-dim); margin-bottom: 18px;">That's an important distinction. A policy depends on someone following the policy. A technical boundary doesn't care about someone's intentions.</p>
+        <p class="reveal" style="color: var(--text-dim); margin-bottom: 18px;">That same principle extends to threat containment. When endpoint detection identifies malware on a managed device, the network itself responds: the device's connectivity is automatically restricted, preventing the threat from moving laterally into servers or other systems. The response doesn't wait for a human to notice — it happens because the architecture is built to enforce it.</p>
         <p class="reveal" style="font-weight: 600;">It's the difference between saying "please don't open that door" — and building the door so you don't have access to it in the first place.</p>
       </div>
     </section>
@@ -433,7 +434,7 @@
             <span class="bts-layer__num">01</span>
             <div class="bts-layer__body">
               <h3>Detect</h3>
-              <p>Monitoring identifies an abnormal condition — a stopped service, a failed backup, an unexpected change.</p>
+              <p>AI-native monitoring identifies an abnormal condition — a stopped service, a failed backup, an unexpected change, or malware detected by endpoint protection.</p>
             </div>
           </div>
           <div class="bts-layer__arrow" aria-hidden="true">↓</div>
@@ -441,7 +442,7 @@
             <span class="bts-layer__num">02</span>
             <div class="bts-layer__body">
               <h3>Isolate</h3>
-              <p>If the condition poses a risk, the affected system is contained to prevent spread.</p>
+              <p>If the condition poses a risk, the affected system is contained to prevent spread. When endpoint protection detects malware, the device's network access is automatically restricted — preventing lateral movement into client servers.</p>
             </div>
           </div>
           <div class="bts-layer__arrow" aria-hidden="true">↓</div>
