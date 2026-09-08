@@ -23,12 +23,20 @@
   <meta property="og:title" content="Inside CANYO: How We Actually Run">
   <meta property="og:description" content="You trust us with your technology. Here's what happens behind our walls — least privilege, defense in depth, verification, isolation.">
   <meta property="og:image" content="https://canyo.net/assets/og-image.png">
+  <meta property="og:site_name" content="CANYO">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Inside CANYO: How We Actually Run">
+  <meta name="twitter:description" content="You trust us with your technology. Here's what happens behind our walls — least privilege, defense in depth, verification, isolation.">
+  <meta name="twitter:image" content="https://canyo.net/assets/og-image.png">
 
   <!-- Fonts + styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=7">
+  <link rel="stylesheet" href="../styles.css?v=8">
 
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="../assets/favicon-dark.png" sizes="512x512" media="(prefers-color-scheme: dark)">
@@ -46,10 +54,26 @@
     "headline": "Inside CANYO: How We Actually Run",
     "description": "How CANYO, a Tucson-based managed IT services provider, designs and operates its own infrastructure: least privilege, defense in depth, verification over trust, and isolation by default.",
     "url": "https://canyo.net/inside-canyo/",
+    "image": "https://canyo.net/assets/og-image.png",
+    "datePublished": "2026-09-04",
+    "dateModified": "2026-09-07",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://canyo.net/inside-canyo/"
+    },
     "author": {
       "@type": "Corporation",
       "name": "CANYO LLC",
       "url": "https://canyo.net"
+    },
+    "publisher": {
+      "@type": "Corporation",
+      "name": "CANYO LLC",
+      "url": "https://canyo.net",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://canyo.net/assets/canyo-logo-white.png"
+      }
     },
     "about": [
       {"@type": "Thing", "name": "Managed IT services"},
@@ -57,6 +81,27 @@
       {"@type": "Thing", "name": "Backup and recovery"},
       {"@type": "Thing", "name": "Least privilege"},
       {"@type": "Thing", "name": "Defense in depth"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://canyo.net/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Inside CANYO",
+        "item": "https://canyo.net/inside-canyo/"
+      }
     ]
   }
   </script>
@@ -142,7 +187,7 @@
         <p class="kicker mono reveal">// NON-NEGOTIABLES</p>
         <h2 class="section__title reveal">The Four Principles We Don't Compromise</h2>
 
-        <div class="pillar__grid" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="pillar__grid grid-2">
           <div class="pillar-card reveal">
             <span class="pillar-card__num mono">01</span>
             <h4>Least Privilege</h4>
@@ -212,7 +257,7 @@
         </div>
         <p class="reveal" style="text-align: center; font-weight: 600; margin-bottom: 54px;">Getting through one layer does not automatically get you through the next.</p>
 
-        <div class="cards" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="cards grid-2">
           <article class="card reveal">
             <span class="card__tag mono" style="margin-bottom: 12px;">LAYER 1 — PRIVATE NETWORK ACCESS</span>
             <h3>Tailscale</h3>
@@ -294,7 +339,7 @@
         <h2 class="section__title reveal">The Technologies Behind CANYO</h2>
         <p class="section__sub reveal" style="margin-top: 0; max-width: 720px;">Our <a href="../#stack">stack</a> explains what we use. Here's why each piece exists in this architecture.</p>
 
-        <div class="cards" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="cards grid-3">
           <article class="card reveal">
             <h3>Tailscale</h3>
             <p>The private mesh network connecting authorized devices to internal resources. Its role: keep internal services off the public internet and restrict network access to authorized devices.</p>
@@ -401,7 +446,7 @@
         <h2 class="section__title reveal">Why This Matters to Your Business</h2>
         <p class="section__sub reveal" style="margin-top: 0; max-width: 720px;">The point of all this technology isn't to impress another IT professional. It's to reduce two things for the people running a business.</p>
 
-        <div class="cards" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="cards grid-2">
           <article class="card reveal">
             <h3>Less Downtime</h3>
             <p>Technology should be predictable. Problems should be detected early, systems maintained deliberately, backups usable, and changes made with an understanding of how to reverse them. The goal isn't simply to respond when something breaks — it's to make serious problems less likely to happen in the first place.</p>
