@@ -167,7 +167,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=15">
+  <link rel="stylesheet" href="styles.css?v=16">
   <!-- Favicons: white logo for dark chrome, black for light. Dark listed first as the default. -->
   <link rel="icon" type="image/png" href="assets/favicon-dark.png" sizes="512x512" media="(prefers-color-scheme: dark)">
   <link rel="icon" type="image/png" href="assets/favicon-light.png" sizes="512x512" media="(prefers-color-scheme: light)">
@@ -187,7 +187,7 @@
       "name": "What does '24/7 monitoring' actually cover?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We continuously watch your servers, workstations, network devices, and cloud infrastructure for performance issues, failures, and security red flags. When something trends toward a problem — a failing drive, a service that keeps crashing, low disk space — we catch it and act before it turns into downtime for your team."
+        "text": "We continuously watch your servers, workstations, network devices, and cloud infrastructure for performance issues, failures, and security red flags. When something trends toward a problem — a failing drive, a service that keeps crashing, low disk space — we catch it and act before it turns into downtime for your team. Routine issues may also be automatically remediated when they fall within CANYO's approved remediation procedures. Issues outside those boundaries are escalated for human intervention."
       }
     },
     {
@@ -211,7 +211,7 @@
       "name": "What happens when something breaks?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You open a ticket and we get to work. Every ticket is documented with the root cause and the resolution, so you always understand what went wrong and how it was fixed. No black box, no vague \"it's working now\" — just a clear record you can review anytime."
+        "text": "You open a ticket and we get to work. Depending on the issue, resolution follows a hierarchy: automated remediation handles known low-risk failures first, AI-assisted analysis can evaluate and execute predefined actions, and issues requiring judgment are escalated to a human operator. Every ticket is documented with the root cause and the resolution, so you always understand what went wrong and how it was fixed. No black box, no vague \"it's working now\" — just a clear record you can review anytime."
       }
     },
     {
@@ -315,7 +315,7 @@
       "name": "What happens if CANYO detects a problem before I do?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We investigate it, determine whether action is necessary, and remediate it when appropriate. The result is documented so there is a record of what happened and what was done. If the issue requires your involvement or approval, we contact you rather than making an unnecessary change."
+        "text": "Depending on the issue, remediation may begin automatically before human intervention is required. We investigate, determine whether further action is necessary, and remediate when appropriate. The result is documented so there is a record of what happened and what was done. If the issue requires your involvement or approval, we contact you rather than making an unnecessary change."
       }
     },
     {
@@ -427,7 +427,7 @@
 
         <h1 class="hero__title reveal">Engineered IT.<br><span class="accent">Reliable Results.</span></h1>
 
-        <p class="hero__sub reveal">CANYO delivers managed IT services for small businesses — keeping computers, networks, accounts, backups, and security maintained behind the scenes so your team can work without thinking about IT.</p>
+        <p class="hero__sub reveal">CANYO builds managed IT environments designed to prevent problems before they become disruptions. Automated maintenance, security monitoring, backup verification, and controlled remediation work continuously behind the scenes — with human intervention when judgment is required.</p>
 
         <p class="hero__sub hero__sub--geo reveal">Managed IT services for small businesses in Tucson &amp; Southern Arizona.</p>
 
@@ -437,7 +437,7 @@
         </div>
 
         <div class="hero__stats reveal">
-          <div class="stat"><span class="stat__num mono" data-count="24" data-suffix="/7">24/7</span><span class="stat__label">Monitoring</span></div>
+          <div class="stat"><span class="stat__num mono" data-count="24" data-suffix="/7">24/7</span><span class="stat__label">Detection &amp; Response</span></div>
           <div class="stat"><span class="stat__num mono">&lt;<span data-count="30">30</span> min</span><span class="stat__label">Critical Response</span></div>
           <div class="stat"><span class="stat__num mono" data-count="100" data-suffix="%">100%</span><span class="stat__label">Backup Verification</span></div>
           <div class="stat"><span class="stat__num mono"><span data-count="1">1</span></span><span class="stat__label">Flat Monthly Rate</span></div>
@@ -463,8 +463,8 @@
           <article class="card reveal">
             <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
             <h3>24/7 Monitoring &amp; Maintenance</h3>
-            <p>Servers, workstations, and cloud services watched around the clock by AI-native detection and response. If malware is detected on an endpoint, network access is automatically restricted to prevent it from spreading — problems get flagged and contained before they ever reach your desk.</p>
-            <span class="card__tag mono">PROACTIVE — NOT REACTIVE</span>
+            <p>Your environment is monitored continuously — but monitoring is only the beginning. Automated health checks and remediation handle routine failures without waiting for an employee to report them. Guardz provides 24/7 MDR for security threats, while approved remediation scripts can correct common system problems automatically. Issues outside those boundaries are escalated for human intervention.</p>
+            <span class="card__tag mono">DETECT → REMEDIATE → VERIFY → ESCALATE</span>
           </article>
 
           <article class="card reveal">
@@ -477,7 +477,7 @@
           <article class="card reveal">
             <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
             <h3>Backup &amp; Recovery</h3>
-            <p>Ransomware-resistant backups performed hourly, so recovery can include recent file versions rather than relying solely on a daily snapshot. Backup-write capability is separated from the ability to delete backup history, limiting the potential impact of a compromised workstation. Monitored, verified, and tested with real restores.</p>
+            <p>Recovery shouldn't depend on hoping the backup worked. Backups are performed hourly, encrypted before leaving the managed system, and stored using separated credentials and immutable object storage. CANYO verifies that backup data exists and is readable, with periodic test restores to confirm actual recoverability. Standard retention is six months, with exceptions based on client requirements.</p>
             <span class="card__tag mono">VERIFIED. RECOVERABLE. HOURLY.</span>
           </article>
 
@@ -522,7 +522,7 @@
             <h2 class="compliance__title">Built for Regulated Industries</h2>
             <p>If your business handles sensitive client data — financial records, health information, or anything else that invites scrutiny — you need an IT partner that treats compliance as a baseline, not an upsell.</p>
             <p>Every engagement includes documented controls, audit-ready reporting, and safeguards built around your regulatory obligations — not generic best practices. We track and evidence controls against frameworks like HIPAA, ISO 27001, and SOC 2 using dedicated governance tooling, so nothing lives in a spreadsheet.</p>
-            <p style="margin-top: 14px; color: var(--text-faint); font-size: 0.9rem;">CANYO manages the technical controls and documentation within our scope; compliance itself remains a shared responsibility between the organization, its leadership, its vendors, and its regulatory obligations.</p>
+            <p style="margin-top: 14px; color: var(--text-faint); font-size: 0.9rem;">CANYO manages the technical controls and documentation within our scope; compliance itself remains a shared responsibility between the organization, its leadership, its vendors, and its regulatory obligations. CANYO is not currently SOC 2 attested — our internal operations are being built with SOC 2 and other control frameworks in mind, with evidence and control management incorporated into normal operations.</p>
             <div class="compliance__chips">
               <span class="chip mono">HIPAA</span>
               <span class="chip mono">ISO 27001</span>
@@ -547,7 +547,7 @@
           </li>
           <li class="step reveal">
             <span class="step__num mono">02</span>
-            <div><h3>Stabilize</h3><p>We close the gaps that bite first: patching, backups, monitoring, access, and recovery. We don't try to change everything at once — we stabilize the environment first, then improve it deliberately.</p></div>
+            <div><h3>Stabilize</h3><p>We establish the managed environment using CANYO's standardized onboarding process — deploying monitoring, security, backup, access, and management controls consistently rather than configuring each environment from scratch. We close the gaps that bite first: patching, backups, monitoring, access, and recovery. We don't try to change everything at once — we stabilize the environment first, then improve it deliberately.</p></div>
           </li>
           <li class="step reveal">
             <span class="step__num mono">03</span>
@@ -566,7 +566,7 @@
       <div class="container">
         <p class="kicker mono reveal">// ABOUT CANYO</p>
         <h2 class="section__title reveal">Operational Excellence.<br>No Surprises.</h2>
-        <p class="section__sub reveal">Most IT support is reactive — fixing problems as they arise, often leading to cycles of disruption. CANYO was founded to break that cycle. We don't do one-time quick-fixes; we create standardized managed ecosystems built on system longevity, continuity, and transparent reporting to business leaders. Our measure of success isn't how quickly we respond to problems — it's how few problems occur at all.</p>
+        <p class="section__sub reveal">Most IT support is built around reacting to problems. CANYO was built around preventing them. We don't do one-time quick-fixes; we create standardized managed ecosystems built on system longevity, continuity, and transparent reporting to business leaders. Our measure of success isn't how quickly we respond to problems — it's how few problems occur at all.</p>
         <p class="section__sub reveal" style="margin-top: 18px;">A well-managed computer should become boring. The goal isn't for employees to constantly notice how much IT work is happening — it's the opposite: patches run, backups complete, services stay healthy, access remains controlled, and problems are caught before users have to report them. If a workstation develops a problem and CANYO corrects it before the employee ever notices, that's a successful IT outcome — even though the employee may never know anything happened.</p>
 
         <div class="about__story-card reveal">
@@ -636,6 +636,17 @@
       </div>
     </section>
 
+    <!-- ============ THE DIFFERENCE ============ -->
+    <section class="section">
+      <div class="container container--narrow" style="text-align: center;">
+        <p class="kicker mono reveal">// THE DIFFERENCE</p>
+        <h2 class="section__title reveal">The Difference Is What Happens<br><span class="accent">Before You Call</span></h2>
+        <p class="reveal" style="color: var(--text-dim); font-size: 1.05rem; margin-bottom: 14px;">Traditional IT support starts when someone notices a problem. CANYO starts earlier.</p>
+        <p class="reveal" style="color: var(--text-dim); margin-bottom: 14px;">We monitor the environment, detect abnormal conditions, automate what can safely be automated, contain threats when necessary, verify the result, and document what happened.</p>
+        <p class="bts-statement reveal" style="margin-top: 30px;">The best ticket is the one your employee never has to open.</p>
+      </div>
+    </section>
+
     <!-- ============ VERIFICATION ============ -->
     <section class="section">
       <div class="container">
@@ -651,7 +662,7 @@
           </article>
           <article class="card reveal">
             <h3>What "Proactive" Looks Like</h3>
-            <p>A workstation's print spooler stops unexpectedly. The employee may never notice. CANYO's monitoring identifies the stopped service, the service is restarted, the result is verified, and the event is documented. The monthly health report shows the issue occurred, that it was addressed, and that the workstation remained operational. That's proactive IT management.</p>
+            <p>A workstation's printing service stops unexpectedly. CANYO's monitoring detects the failure and creates a ticket. An approved remediation script attempts to restore the service. The result is verified automatically. If the problem falls outside the approved remediation process, the issue is escalated for further analysis and human intervention. The employee may never notice anything happened. That's proactive IT.</p>
             <span class="card__tag mono">REAL-WORLD EXAMPLE</span>
           </article>
         </div>
@@ -668,17 +679,18 @@
         <div class="loop reveal">
           <div class="loop__step"><span class="loop__num mono">01</span><h4>Monitor</h4><p>Know what's happening.</p></div>
           <div class="loop__arrow" aria-hidden="true">→</div>
-          <div class="loop__step"><span class="loop__num mono">02</span><h4>Detect</h4><p>Find abnormal conditions.</p></div>
+          <div class="loop__step"><span class="loop__num mono">02</span><h4>Detect</h4><p>Identify abnormal conditions.</p></div>
           <div class="loop__arrow" aria-hidden="true">→</div>
-          <div class="loop__step"><span class="loop__num mono">03</span><h4>Respond</h4><p>Correct the problem.</p></div>
+          <div class="loop__step"><span class="loop__num mono">03</span><h4>Respond</h4><p>Use automation and approved remediation first.</p></div>
           <div class="loop__arrow" aria-hidden="true">→</div>
-          <div class="loop__step"><span class="loop__num mono">04</span><h4>Verify</h4><p>Confirm the correction worked.</p></div>
+          <div class="loop__step"><span class="loop__num mono">04</span><h4>Verify</h4><p>Confirm the result actually worked.</p></div>
           <div class="loop__arrow" aria-hidden="true">→</div>
-          <div class="loop__step"><span class="loop__num mono">05</span><h4>Document</h4><p>Record what happened.</p></div>
+          <div class="loop__step"><span class="loop__num mono">05</span><h4>Document</h4><p>Record the action and outcome.</p></div>
           <div class="loop__arrow" aria-hidden="true">→</div>
-          <div class="loop__step"><span class="loop__num mono">06</span><h4>Improve</h4><p>Prevent recurrence.</p></div>
+          <div class="loop__step"><span class="loop__num mono">06</span><h4>Improve</h4><p>Turn successful fixes into repeatable processes.</p></div>
         </div>
-        <p class="reveal" style="text-align: center; margin-top: 30px; font-weight: 600; color: var(--text-dim);">Repeat continuously.</p>
+        <p class="reveal" style="text-align: center; margin-top: 30px; font-weight: 600;">Automation handles repetition. Humans handle judgment.</p>
+        <p class="reveal" style="text-align: center; margin-top: 8px; color: var(--text-dim);">Repeat continuously.</p>
       </div>
     </section>
 
@@ -755,7 +767,7 @@
       <div class="container">
         <p class="kicker mono reveal">// HONEST SCOPE</p>
         <h2 class="section__title reveal">What CANYO Doesn't Do</h2>
-        <p class="section__sub reveal" style="margin-top: 0; max-width: 720px;">CANYO is a managed IT provider — not a general low-voltage contractor or a break/fix computer shop.</p>
+        <p class="section__sub reveal" style="margin-top: 0; max-width: 720px;">CANYO is a managed IT provider — not a general contractor or a break/fix computer shop.</p>
 
         <div class="bts-compare reveal" style="max-width: 720px;">
           <div class="bts-compare__col bts-compare__col--no">
@@ -832,6 +844,7 @@
           </div>
 
           <p class="pricing__note">Per-user pricing scales with you — $200/user up to 10, then a $2,000 base + $150/user beyond 10. Final pricing depends on environment complexity, device count, and compliance requirements — your free assessment locks in an exact number before you commit to anything.</p>
+          <p class="pricing__note" style="margin-top: 12px;">CANYO operates on annual service agreements. Managed IT works best when the environment is treated as a system to continuously improve — not as a collection of month-to-month repair requests.</p>
           <div class="about__story-card reveal" style="margin-top: 30px; text-align: left;">
             <p class="kicker mono">// WHAT YOU'RE ACTUALLY PAYING FOR</p>
             <p>You're not paying CANYO to wait for something to break. You're paying for the work that happens before you ever notice a problem: monitoring, patching, backup verification, documentation, access management, maintenance, planning, and support when something does go wrong.</p>
@@ -872,7 +885,7 @@
         <div class="faq">
           <details class="faq__item reveal">
             <summary>What does '24/7 monitoring' actually cover?<span class="faq__chev"></span></summary>
-            <p>We continuously watch your servers, workstations, network devices, and cloud infrastructure for performance issues, failures, and security red flags. When something trends toward a problem — a failing drive, a service that keeps crashing, low disk space — we catch it and act before it turns into downtime for your team.</p>
+            <p>We continuously watch your servers, workstations, network devices, and cloud infrastructure for performance issues, failures, and security red flags. When something trends toward a problem — a failing drive, a service that keeps crashing, low disk space — we catch it and act before it turns into downtime for your team. Routine issues may also be automatically remediated when they fall within CANYO's approved remediation procedures. Issues outside those boundaries are escalated for human intervention.</p>
           </details>
           <details class="faq__item reveal">
             <summary>How does patching work, and will it disrupt my team?<span class="faq__chev"></span></summary>
@@ -897,7 +910,7 @@
           </details>
           <details class="faq__item reveal">
             <summary>What happens when something breaks?<span class="faq__chev"></span></summary>
-            <p>You open a ticket and we get to work. Every ticket is documented with the root cause and the resolution, so you always understand what went wrong and how it was fixed. No black box, no vague "it's working now" — just a clear record you can review anytime.</p>
+            <p>You open a ticket and we get to work. Depending on the issue, resolution follows a hierarchy: automated remediation handles known low-risk failures first, AI-assisted analysis can evaluate and execute predefined actions, and issues requiring judgment are escalated to a human operator. Every ticket is documented with the root cause and the resolution, so you always understand what went wrong and how it was fixed. No black box, no vague "it's working now" — just a clear record you can review anytime.</p>
           </details>
           <details class="faq__item reveal">
             <summary>How are my backups handled — and how do I know they actually work?<span class="faq__chev"></span></summary>
@@ -949,7 +962,7 @@
           </details>
           <details class="faq__item reveal">
             <summary>What happens if CANYO detects a problem before I do?<span class="faq__chev"></span></summary>
-            <p>We investigate it, determine whether action is necessary, and remediate it when appropriate. The result is documented so there is a record of what happened and what was done. If the issue requires your involvement or approval, we contact you rather than making an unnecessary change.</p>
+            <p>Depending on the issue, remediation may begin automatically before human intervention is required. We investigate, determine whether further action is necessary, and remediate when appropriate. The result is documented so there is a record of what happened and what was done. If the issue requires your involvement or approval, we contact you rather than making an unnecessary change.</p>
           </details>
           <details class="faq__item reveal">
             <summary>Does CANYO manage our passwords?<span class="faq__chev"></span></summary>
@@ -983,8 +996,8 @@
     <section class="section section--alt" id="reviews">
       <div class="container">
         <p class="kicker mono reveal">// CLIENT FEEDBACK</p>
-        <h2 class="section__title reveal">Trusted by Tucson Small Businesses</h2>
-        <p class="section__sub reveal">Real feedback from the businesses we keep running.</p>
+        <h2 class="section__title reveal">Early Feedback</h2>
+        <p class="section__sub reveal">CANYO is currently building its first long-term client relationships.</p>
 
         <div class="reviews__scorecard reveal">
           <div class="reviews__rating">

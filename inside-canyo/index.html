@@ -36,7 +36,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=15">
+  <link rel="stylesheet" href="../styles.css?v=16">
 
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="../assets/favicon-dark.png" sizes="512x512" media="(prefers-color-scheme: dark)">
@@ -358,7 +358,52 @@
         </div>
 
         <p class="reveal" style="text-align: center; margin-top: 34px; font-weight: 600; max-width: 720px; margin-inline: auto;">The products themselves aren't the security strategy. The architecture is. Together, they create multiple independent controls between an unauthorized party and the tools we use to operate CANYO.</p>
-        <p class="reveal" style="text-align: center; margin-top: 18px;"><a href="../#stack" class="card__link mono">SEE WHAT CANYO USES →</a></p>
+
+        <p class="reveal" style="text-align: center; margin-top: 40px; margin-bottom: 22px; font-weight: 600;">Each tool has a specific job. More importantly, the tools are designed to work together.</p>
+
+        <div class="bts-layers reveal">
+          <div class="bts-layer">
+            <span class="bts-layer__num">N1</span>
+            <div class="bts-layer__body">
+              <h3>NinjaOne</h3>
+              <p>Management + endpoint visibility</p>
+            </div>
+          </div>
+          <div class="bts-layer__arrow" aria-hidden="true">↓</div>
+          <div class="bts-layer">
+            <span class="bts-layer__num">GZ</span>
+            <div class="bts-layer__body">
+              <h3>Guardz / SentinelOne</h3>
+              <p>Threat detection</p>
+            </div>
+          </div>
+          <div class="bts-layer__arrow" aria-hidden="true">↓</div>
+          <div class="bts-layer">
+            <span class="bts-layer__num">TS</span>
+            <div class="bts-layer__body">
+              <h3>Tailscale</h3>
+              <p>Network control / containment</p>
+            </div>
+          </div>
+          <div class="bts-layer__arrow" aria-hidden="true">↓</div>
+          <div class="bts-layer">
+            <span class="bts-layer__num">RS</span>
+            <div class="bts-layer__body">
+              <h3>Restic + Backblaze B2</h3>
+              <p>Recovery</p>
+            </div>
+          </div>
+          <div class="bts-layer__arrow" aria-hidden="true">↓</div>
+          <div class="bts-layer">
+            <span class="bts-layer__num">CA</span>
+            <div class="bts-layer__body">
+              <h3>CISO Assistant</h3>
+              <p>Governance / evidence</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="reveal" style="text-align: center; margin-top: 30px;"><a href="../#stack" class="card__link mono">SEE WHAT CANYO USES →</a></p>
       </div>
     </section>
 
