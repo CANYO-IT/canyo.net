@@ -4,7 +4,7 @@
 
 ## Company
 
-- [About](https://canyo.net/about/): Founder Samuel Glenn, U.S. Army veteran, prevention-first IT philosophy
+- [About](https://canyo.net/about/): Full founder story — Samuel Glenn, U.S. Army veteran; "good IT is IT you don't notice"; intentionally-small accountability model; core pillars
 - [Process](https://canyo.net/process/): Free assessment, stabilize, manage, report & review
 - [Services](https://canyo.net/services/): 24/7 monitoring & maintenance, remote & on-site support, backup & recovery, security & compliance, IT documentation & asset management, new-hire onboarding, health reports & reviews
 - [Pricing](https://canyo.net/pricing/): $200/user up to 10 users; $2,000 base + $150/user beyond 10; annual service agreements

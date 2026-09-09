@@ -1608,3 +1608,6 @@ html, body { overflow-x: clip; }
   .fit, .report, .vs, .matrix { max-width: 1080px; }
   .timeline { max-width: 1400px; margin-inline: auto; }
 }
+
+/* ---------- Tight section (hero-adjacent strip) ---------- */
+.section--tight { padding: 44px 0; }
