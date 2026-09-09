@@ -1511,3 +1511,100 @@ a { color: inherit; text-decoration: none; }
   font-style: italic;
 }
 
+
+/* ============================================================
+   RESPONSIVE POLISH — all screen sizes
+   ============================================================ */
+
+/* Safety: never allow accidental horizontal scroll */
+html, body { overflow-x: clip; }
+
+/* Long mono labels wrap instead of overflowing on narrow screens */
+.card__tag, .pricing__formula, .pricing__tier-hint,
+.fit__aside-label, .report__badge, .report__title {
+  overflow-wrap: break-word;
+}
+
+/* ----- Comparison table: stack gracefully on phones ----- */
+@media (max-width: 560px) {
+  .vs__row--head { display: none; }
+  .vs__row { grid-template-columns: 1fr; }
+  .vs__row span:first-child {
+    border-right: none; border-bottom: 1px dashed var(--border);
+    padding-bottom: 6px;
+  }
+  .vs__row span:first-child::before {
+    content: 'TRADITIONAL'; display: block;
+    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em;
+    color: var(--text-faint); margin-bottom: 4px;
+  }
+  .vs__row span:last-child::before {
+    content: 'CANYO'; display: block;
+    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em;
+    color: var(--accent); margin-bottom: 4px;
+  }
+}
+
+/* ----- Automation matrix: stack on phones ----- */
+@media (max-width: 560px) {
+  .matrix__row--head { display: none; }
+  .matrix__row { grid-template-columns: 1fr; gap: 2px; padding: 12px 14px; }
+  .matrix__row span { padding: 2px 0; }
+  .matrix__row span:nth-child(2)::before {
+    content: 'AUTOMATED: '; font-size: 0.62rem; letter-spacing: 0.12em;
+    color: var(--text-faint); font-weight: 700;
+  }
+  .matrix__row span:nth-child(3)::before {
+    content: 'HUMAN APPROVAL: '; font-size: 0.62rem; letter-spacing: 0.12em;
+    color: var(--text-faint); font-weight: 700;
+  }
+}
+
+/* ----- Report metrics: single column on very small phones ----- */
+@media (max-width: 380px) {
+  .report__grid { grid-template-columns: 1fr 1fr; }
+  .report__metric { padding: 16px 10px; }
+  .report__value { font-size: 1.25rem; }
+}
+
+/* ----- Timeline cards: tighter on small phones ----- */
+@media (max-width: 420px) {
+  .timeline__week { padding: 22px 18px; }
+  .timeline__week h3 { font-size: 1.05rem; }
+}
+
+/* ----- Fit section: comfortable stacking ----- */
+@media (max-width: 560px) {
+  .fit__list li { padding: 14px 16px 14px 40px; font-size: 0.9rem; }
+  .fit__list li::before { left: 16px; }
+  .fit__aside { padding: 26px 22px; }
+}
+
+/* ----- Scenario timeline: clean mobile rail ----- */
+@media (max-width: 420px) {
+  .scenario__body h4 { font-size: 0.95rem; }
+  .scenario__body p { font-size: 0.85rem; }
+}
+
+/* ----- Statement box: never crowd the edges ----- */
+@media (max-width: 420px) {
+  .bts-statement--box { padding: 24px 18px; }
+}
+
+/* ----- Hero stats: labels stay legible ----- */
+@media (max-width: 420px) {
+  .stat__label { font-size: 0.7rem; }
+}
+
+/* ----- Touch targets: FAQ + nav links meet 44px guidance ----- */
+@media (hover: none) {
+  .faq__item summary { min-height: 48px; align-items: center; }
+  .footer__col a { padding: 6px 0; display: inline-block; }
+  .card__link { padding: 8px 0; display: inline-block; }
+}
+
+/* ----- Large displays: keep measure readable ----- */
+@media (min-width: 1600px) {
+  .fit, .report, .vs, .matrix { max-width: 1080px; }
+  .timeline { max-width: 1400px; margin-inline: auto; }
+}
