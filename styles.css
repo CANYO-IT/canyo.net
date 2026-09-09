@@ -1502,3 +1502,14 @@ a { color: inherit; text-decoration: none; }
     50%      { box-shadow: 0 0 0 1px var(--accent-soft), 0 0 58px var(--accent-glow), var(--shadow); }
   }
 }
+
+/* ---------- Access-path layer question (merged "four questions") ---------- */
+.bts-layer__q {
+  margin-top: 8px; padding-top: 8px;
+  border-top: 1px dashed var(--border);
+  font-size: 0.82rem !important; color: var(--text-faint) !important;
+  font-style: italic;
+}
+
+/* ---------- Fit section: center the boxes ---------- */
+.fit { margin-inline: auto; }

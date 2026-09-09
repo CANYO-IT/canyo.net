@@ -248,6 +248,7 @@
             <div class="bts-layer__body">
               <h3>Tailscale</h3>
               <p>Private network access</p>
+              <p class="bts-layer__q">Is this device authorized to participate in our private network?</p>
             </div>
           </div>
           <div class="bts-layer__arrow" aria-hidden="true">↓</div>
@@ -256,6 +257,7 @@
             <div class="bts-layer__body">
               <h3>Authentication Gateway</h3>
               <p>Username + password</p>
+              <p class="bts-layer__q">Does the user have the correct username and password?</p>
             </div>
           </div>
           <div class="bts-layer__arrow" aria-hidden="true">↓</div>
@@ -264,6 +266,7 @@
             <div class="bts-layer__body">
               <h3>Second-Factor Verification</h3>
               <p>Independent second authentication factor</p>
+              <p class="bts-layer__q">Can the user satisfy the second authentication factor?</p>
             </div>
           </div>
           <div class="bts-layer__arrow" aria-hidden="true">↓</div>
@@ -272,10 +275,11 @@
             <div class="bts-layer__body">
               <h3>Application Authentication</h3>
               <p>Separate application credentials</p>
+              <p class="bts-layer__q">Does the user have the separate credentials required by the actual tool?</p>
             </div>
           </div>
         </div>
-        <p class="reveal" style="text-align: center; font-weight: 600; margin-bottom: 54px;">Getting through one layer does not automatically get you through the next.</p>
+        <p class="reveal" style="text-align: center; font-weight: 600; margin-bottom: 54px;">Four independent questions — and getting through one layer does not automatically get you through the next.</p>
 
         <div class="cards grid-2">
           <article class="card reveal">
@@ -303,41 +307,7 @@
           </article>
         </div>
 
-        <p class="kicker mono reveal" style="text-align: center; margin: 54px 0 22px;">// FOUR INDEPENDENT QUESTIONS</p>
-        <div class="bts-layers reveal">
-          <div class="bts-layer">
-            <span class="bts-layer__num">01</span>
-            <div class="bts-layer__body">
-              <h4>Tailscale</h4>
-              <p>Is this device authorized to participate in our private network?</p>
-            </div>
-          </div>
-          <div class="bts-layer__arrow" aria-hidden="true">↓</div>
-          <div class="bts-layer">
-            <span class="bts-layer__num">02</span>
-            <div class="bts-layer__body">
-              <h4>Gateway</h4>
-              <p>Does the user have the correct username and password?</p>
-            </div>
-          </div>
-          <div class="bts-layer__arrow" aria-hidden="true">↓</div>
-          <div class="bts-layer">
-            <span class="bts-layer__num">03</span>
-            <div class="bts-layer__body">
-              <h4>Second Factor</h4>
-              <p>Can the user satisfy the second authentication factor?</p>
-            </div>
-          </div>
-          <div class="bts-layer__arrow" aria-hidden="true">↓</div>
-          <div class="bts-layer">
-            <span class="bts-layer__num">04</span>
-            <div class="bts-layer__body">
-              <h4>Application</h4>
-              <p>Does the user have the separate credentials required by the actual tool?</p>
-            </div>
-          </div>
-        </div>
-        <p class="reveal" style="text-align: center; font-weight: 600;">A user must successfully pass each of these layers before the protected application can be accessed.</p>
+
       </div>
     </section>
 
