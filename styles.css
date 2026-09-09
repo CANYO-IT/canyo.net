@@ -1611,3 +1611,28 @@ html, body { overflow-x: clip; }
 
 /* ---------- Tight section (hero-adjacent strip) ---------- */
 .section--tight { padding: 44px 0; }
+
+/* ============================================================
+   ABOUT PAGE + NEW SECTIONS — responsive
+   ============================================================ */
+
+/* Page hero (About / Inside CANYO) scales down cleanly */
+@media (max-width: 640px) {
+  .hero__inner .bts-eyebrow { margin-bottom: 10px; }
+}
+
+/* Founder story card: avatar + name stack on phones */
+@media (max-width: 560px) {
+  .about__founder-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .about__founder { font-size: 1.15rem; }
+}
+
+/* Intentionally-small strip: breathe on mobile */
+@media (max-width: 640px) {
+  .section--tight { padding: 34px 0; }
+}
+
+/* About page CTA keeps button full-width on phones (matches .btn rule) */
+@media (max-width: 600px) {
+  .section--contact .btn { width: 100%; }
+}
