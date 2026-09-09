@@ -1636,3 +1636,26 @@ html, body { overflow-x: clip; }
 @media (max-width: 600px) {
   .section--contact .btn { width: 100%; }
 }
+
+/* ---------- Page cards (About / Inside CANYO) — glow as independent pages ---------- */
+.about__story-card--glow {
+  border-color: var(--border-strong);
+  box-shadow: 0 0 0 1px var(--accent-soft),
+              0 0 36px var(--accent-glow),
+              var(--shadow);
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+.about__story-card--glow::before {
+  content: ''; position: absolute; inset: 0 0 auto 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.7;
+}
+.about__story-card--glow:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent-soft),
+              0 0 54px var(--accent-glow),
+              var(--shadow);
+  transform: translateY(-3px);
+}

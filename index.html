@@ -217,7 +217,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=25">
+  <link rel="stylesheet" href="styles.css?v=26">
   <!-- Favicons: white logo for dark chrome, black for light. Dark listed first as the default. -->
   <link rel="icon" type="image/png" href="assets/favicon-dark.png" sizes="512x512" media="(prefers-color-scheme: dark)">
   <link rel="icon" type="image/png" href="assets/favicon-light.png" sizes="512x512" media="(prefers-color-scheme: light)">
@@ -436,11 +436,11 @@
       <nav class="nav__links" id="navLinks">
         <a href="#services">Services</a>
         <a href="#process">Process</a>
-        <a href="about/">About</a>
         <a href="#stack">Stack</a>
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
         <a href="#reviews">Reviews</a>
+        <a href="about/" class="nav__highlight">About</a>
         <a href="inside-canyo/" class="nav__highlight">Inside CANYO</a>
         <a href="#contact" class="nav__cta">Get a Free Assessment</a>
       </nav>
@@ -711,7 +711,7 @@
         <h2 class="section__title reveal">Operational Excellence.<br>No Surprises.</h2>
         <p class="section__sub reveal">Most IT support is built around reacting to problems. CANYO was built around preventing them. A well-managed computer should become boring — patches run, backups complete, and problems are caught before users have to report them.</p>
 
-        <div class="about__story-card reveal">
+        <div class="about__story-card about__story-card--glow reveal">
           <p class="kicker mono">// THE FOUNDER</p>
           <div class="about__founder-row">
             <img class="about__avatar" src="assets/samuel-glenn.jpg" alt="Samuel Glenn, Founder of CANYO" width="160" height="160" loading="lazy">
@@ -721,7 +721,7 @@
           <a href="about/" class="card__link mono" style="margin-top: 18px;">READ: THE STORY BEHIND CANYO →</a>
         </div>
 
-        <div class="about__story-card reveal" id="inside-canyo" style="margin: 54px 0 0;">
+        <div class="about__story-card about__story-card--glow reveal" id="inside-canyo" style="margin: 54px 0 0;">
           <p class="kicker mono">// INSIDE CANYO</p>
           <h3 style="font-size: 1.5rem; margin-bottom: 16px;">We Don't Just Tell You How We Operate. <span class="accent">We Show You.</span></h3>
           <p>We build around four principles: <strong>least privilege</strong>, <strong>defense in depth</strong>, <strong>verification over trust</strong>, and <strong>isolation by default</strong>. Our own infrastructure uses layered access, restricted backup credentials, technical network isolation, deliberate provisioning, and verification — the same standard we apply to the environments we manage.</p>
@@ -748,7 +748,7 @@
         <h2 class="section__title reveal">We Don't Assume It's Working.<br><span class="accent">We Verify.</span></h2>
         <p class="section__sub reveal" style="margin-top: 0; max-width: 720px;">A green status indicator isn't enough. CANYO verifies the things that matter: backups aren't simply reported as successful — recovery data is checked. Devices aren't simply added to management — their status is reviewed. Changes aren't considered complete because a script finished — the result is verified against the expected outcome.</p>
 
-        <div class="cards" style="max-width: 640px; margin-inline: auto;">
+        <div class="cards" style="grid-template-columns: 1fr; max-width: 720px; margin-inline: auto;">
           <article class="card reveal">
             <h3>What "Proactive" Looks Like</h3>
             <p>A workstation's printing service stops unexpectedly. CANYO's monitoring detects the failure and creates a ticket. An approved remediation script attempts to restore the service. The result is verified automatically. If the problem falls outside the approved remediation process, the issue is escalated for further analysis and human intervention. The employee may never notice anything happened. That's proactive IT.</p>
