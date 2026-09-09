@@ -31,6 +31,10 @@
 - Documented institutional memory: every device, account, configuration, and change is documented
 - Compliance-ready: controls tracked against HIPAA, ISO 27001, SOC 2 using CISO Assistant
 - Honest scope: no cabling, no cameras, no break/fix — managed IT only
+- Transparent onboarding: published week-by-week first-30-days plan (inventory, stabilize, document, report)
+- Example monthly health report published on the homepage (sample data, clearly labeled)
+- Illustrative ransomware response scenario published on Inside CANYO (detect → isolate → investigate → remediate → verify)
+- Published automation permission boundaries: automation handles known reversible actions; access, data, and policy changes always require human approval
 
 ## Entity Verification
 

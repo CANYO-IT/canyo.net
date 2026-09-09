@@ -42,7 +42,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=20">
+  <link rel="stylesheet" href="../styles.css?v=21">
 
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="../assets/favicon-dark.png" sizes="512x512" media="(prefers-color-scheme: dark)">
@@ -459,6 +459,28 @@
         <p class="reveal" style="color: var(--text-dim); margin-bottom: 18px;">Automation is powerful. But automation shouldn't mean that every sensitive operation becomes possible without deliberate human involvement.</p>
         <p class="reveal" style="color: var(--text-dim); margin-bottom: 18px;">The provisioning of new infrastructure that touches our most sensitive master credential remains a deliberate human step. It isn't something we allow an unattended process to perform automatically — a real person has to trigger it intentionally when it's needed.</p>
         <p class="reveal" style="font-weight: 600;">We deliberately accept that small amount of friction, because the alternative is allowing one more highly privileged operation to happen without human intent.</p>
+
+        <p class="kicker mono reveal" style="margin-top: 44px;">// WHERE THE LINE IS</p>
+        <h3 class="reveal" style="font-size: 1.4rem; margin-bottom: 18px;">What Automation Is Allowed to Do</h3>
+        <p class="reveal" style="color: var(--text-dim); margin-bottom: 22px;">"AI-assisted" and "automated" shouldn't be vague. These are the permission boundaries we operate under:</p>
+
+        <div class="matrix reveal">
+          <div class="matrix__row matrix__row--head">
+            <span class="mono">ACTION</span>
+            <span class="mono">AUTOMATED?</span>
+            <span class="mono">HUMAN APPROVAL?</span>
+          </div>
+          <div class="matrix__row"><span>Restart a failed service</span><span class="matrix__yes">Yes</span><span>No — pre-approved procedure</span></div>
+          <div class="matrix__row"><span>Install routine patches</span><span class="matrix__yes">Yes</span><span>No — scheduled maintenance</span></div>
+          <div class="matrix__row"><span>Isolate an infected endpoint</span><span class="matrix__yes">Yes</span><span>No — containment can't wait</span></div>
+          <div class="matrix__row"><span>Run approved remediation scripts</span><span class="matrix__yes">Yes</span><span>No — tested and reversible</span></div>
+          <div class="matrix__row"><span>Disable a user account</span><span class="matrix__no">No</span><span>Yes — always</span></div>
+          <div class="matrix__row"><span>Modify firewall or network policy</span><span class="matrix__no">No</span><span>Yes — always</span></div>
+          <div class="matrix__row"><span>Delete or alter data</span><span class="matrix__no">No</span><span>Yes — always</span></div>
+          <div class="matrix__row"><span>Change security policy</span><span class="matrix__no">No</span><span>Yes — always</span></div>
+          <div class="matrix__row"><span>Restore from backup</span><span class="matrix__no">No</span><span>Yes — verified and approved</span></div>
+        </div>
+        <p class="reveal" style="margin-top: 22px; color: var(--text-dim);">The pattern is deliberate: automation handles <strong>known, reversible, low-risk</strong> actions. Anything that changes access, data, or policy requires a human.</p>
       </div>
     </section>
 
@@ -543,6 +565,48 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+
+    <!-- ============ RANSOMWARE SCENARIO ============ -->
+    <section class="section section--alt">
+      <div class="container">
+        <p class="kicker mono reveal">// AN ILLUSTRATIVE SCENARIO</p>
+        <h2 class="section__title reveal">What Happens When<br><span class="accent">Ransomware Hits</span></h2>
+        <p class="section__sub reveal" style="margin-top: 0; max-width: 720px;">The sequence above describes the discipline. This is what it looks like against the clock. <strong>This is an illustrative scenario, not a promised timeline</strong> — real incidents vary. What doesn't vary is the order of operations.</p>
+
+        <div class="scenario reveal">
+          <div class="scenario__step">
+            <span class="scenario__time mono">10:02 AM</span>
+            <div class="scenario__body"><h4>Endpoint detects malicious activity</h4><p>SentinelOne flags ransomware behavior on a managed workstation.</p></div>
+          </div>
+          <div class="scenario__step">
+            <span class="scenario__time mono">10:02 AM</span>
+            <div class="scenario__body"><h4>Endpoint isolated</h4><p>The device's network access is automatically restricted through Tailscale — lateral movement is cut off before a human even opens the alert.</p></div>
+          </div>
+          <div class="scenario__step">
+            <span class="scenario__time mono">10:04 AM</span>
+            <div class="scenario__body"><h4>Incident investigated</h4><p>A technician confirms the detection, scopes the blast radius, and checks whether any other system was touched.</p></div>
+          </div>
+          <div class="scenario__step">
+            <span class="scenario__time mono">10:17 AM</span>
+            <div class="scenario__body"><h4>Threat removed</h4><p>The malicious process and its persistence mechanisms are remediated using controlled procedures.</p></div>
+          </div>
+          <div class="scenario__step">
+            <span class="scenario__time mono">10:25 AM</span>
+            <div class="scenario__body"><h4>Backup integrity checked</h4><p>The most recent clean restore point is identified and backup data is verified readable.</p></div>
+          </div>
+          <div class="scenario__step">
+            <span class="scenario__time mono">10:41 AM</span>
+            <div class="scenario__body"><h4>Required data restored</h4><p>Affected files are recovered from the verified snapshot — not from the encrypted copies.</p></div>
+          </div>
+          <div class="scenario__step">
+            <span class="scenario__time mono">11:00 AM</span>
+            <div class="scenario__body"><h4>Recovery verified</h4><p>The workstation is confirmed clean, data is confirmed intact, and the incident is documented — what happened, what was done, what the result was.</p></div>
+          </div>
+        </div>
+        <p class="reveal" style="text-align: center; margin-top: 30px; font-weight: 600;">Notice what didn't happen: nobody negotiated with an attacker, and nobody hoped the backup worked.</p>
       </div>
     </section>
 

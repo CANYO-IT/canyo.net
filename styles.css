@@ -1244,3 +1244,231 @@ a { color: inherit; text-decoration: none; }
   .loop__step p { font-size: 0.88rem; }
   .loop__arrow { transform: rotate(90deg); padding: 6px 0; font-size: 1.3rem; }
 }
+
+/* ============================================================
+   NEW SECTIONS — Who It's For, First 30 Days, Example Report,
+   Comparison Table, Ransomware Scenario, Automation Matrix
+   ============================================================ */
+
+/* ---------- Who It's For (fit) ---------- */
+.fit {
+  display: grid; grid-template-columns: 1.4fr 1fr; gap: 22px;
+  align-items: stretch; max-width: 980px;
+}
+.fit__list {
+  list-style: none; display: grid; gap: 0;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+}
+.fit__list li {
+  padding: 16px 22px 16px 46px; position: relative;
+  font-size: 0.95rem; color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+  transition: background-color var(--transition);
+}
+.fit__list li:last-child { border-bottom: none; }
+.fit__list li::before {
+  content: '✓'; position: absolute; left: 20px;
+  color: var(--accent); font-weight: 700;
+}
+.fit__list li:hover { background: var(--surface-hover, rgba(128,128,128,0.04)); }
+.fit__aside {
+  background: var(--surface); border: 1px solid var(--border-strong);
+  border-radius: var(--radius); padding: 30px 28px;
+  display: flex; flex-direction: column; justify-content: center; gap: 14px;
+}
+.fit__aside-label { color: var(--accent); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; }
+.fit__aside p { color: var(--text-dim); font-size: 0.98rem; line-height: 1.6; }
+.fit__aside .card__link { margin-top: 4px; align-self: flex-start; }
+@media (max-width: 860px) {
+  .fit { grid-template-columns: 1fr; }
+}
+
+/* ---------- First 30 Days (timeline) ---------- */
+.timeline {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  counter-reset: week;
+}
+.timeline__week {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 26px 24px;
+  position: relative; overflow: hidden;
+  transition: border-color var(--transition), transform var(--transition);
+}
+.timeline__week::before {
+  content: ''; position: absolute; inset: 0 0 auto 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+.timeline__week:hover { border-color: var(--accent); transform: translateY(-3px); }
+.timeline__label {
+  display: inline-block; color: var(--accent); font-size: 0.7rem;
+  font-weight: 700; letter-spacing: 0.18em; margin-bottom: 12px;
+  padding: 4px 10px; border: 1px solid var(--accent); border-radius: 999px;
+}
+.timeline__week h3 { font-size: 1.12rem; margin-bottom: 14px; }
+.timeline__week ul { list-style: none; display: grid; gap: 9px; }
+.timeline__week li {
+  font-size: 0.88rem; color: var(--text-dim);
+  padding-left: 16px; position: relative; line-height: 1.45;
+}
+.timeline__week li::before {
+  content: '—'; position: absolute; left: 0; color: var(--text-faint);
+}
+@media (max-width: 1024px) {
+  .timeline { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .timeline { grid-template-columns: 1fr; }
+  .timeline__week { padding: 24px 22px; }
+}
+
+/* ---------- Example Monthly Report ---------- */
+.report {
+  max-width: 860px; margin: 0 auto;
+  background: var(--surface); border: 1px solid var(--border-strong);
+  border-radius: 20px; overflow: hidden; box-shadow: var(--shadow);
+}
+.report__head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 14px; flex-wrap: wrap;
+  padding: 20px 28px; border-bottom: 1px solid var(--border);
+  background: linear-gradient(90deg, rgba(128,128,128,0.05), transparent);
+}
+.report__title { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.14em; }
+.report__badge {
+  font-size: 0.66rem; font-weight: 700; letter-spacing: 0.14em;
+  color: var(--accent); padding: 5px 12px;
+  border: 1px dashed var(--accent); border-radius: 999px;
+}
+.report__grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.report__metric {
+  padding: 24px 20px; text-align: center;
+  border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 6px;
+}
+.report__metric:nth-child(4n) { border-right: none; }
+.report__metric:nth-child(n+5) { border-bottom: none; }
+.report__value { font-size: 1.7rem; font-weight: 700; color: var(--accent); line-height: 1; }
+.report__label { font-size: 0.78rem; color: var(--text-dim); }
+.report__changes { padding: 24px 28px 28px; }
+.report__changes-title {
+  color: var(--accent); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.16em; margin-bottom: 14px;
+}
+.report__changes ul { list-style: none; display: grid; gap: 10px; }
+.report__changes li {
+  font-size: 0.92rem; color: var(--text-dim);
+  padding-left: 20px; position: relative;
+}
+.report__changes li::before {
+  content: '→'; position: absolute; left: 0; color: var(--accent);
+}
+@media (max-width: 760px) {
+  .report__grid { grid-template-columns: repeat(2, 1fr); }
+  .report__metric:nth-child(4n) { border-right: 1px solid var(--border); }
+  .report__metric:nth-child(2n) { border-right: none; }
+  .report__metric { border-bottom: 1px solid var(--border) !important; }
+  .report__metric:nth-child(n+7) { border-bottom: none !important; }
+  .report__head { padding: 18px 20px; }
+  .report__changes { padding: 20px 20px 24px; }
+}
+@media (max-width: 400px) {
+  .report__value { font-size: 1.4rem; }
+  .report__metric { padding: 18px 12px; }
+}
+
+/* ---------- CANYO vs Traditional (vs table) ---------- */
+.vs {
+  max-width: 860px; margin: 0 auto;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+}
+.vs__row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+}
+.vs__row:last-child { border-bottom: none; }
+.vs__row span { padding: 15px 22px; font-size: 0.92rem; }
+.vs__row span:first-child {
+  color: var(--text-faint); border-right: 1px solid var(--border);
+}
+.vs__row span:last-child { color: var(--text); font-weight: 500; }
+.vs__row--head {
+  background: linear-gradient(90deg, rgba(128,128,128,0.06), transparent);
+}
+.vs__row--head span {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+  padding: 16px 22px;
+}
+.vs__row--head span:first-child { color: var(--text-faint); }
+.vs__row--head span:last-child { color: var(--accent); }
+.vs__row:not(.vs__row--head):hover { background: var(--surface-hover, rgba(128,128,128,0.04)); }
+@media (max-width: 560px) {
+  .vs__row span { padding: 13px 14px; font-size: 0.85rem; }
+  .vs__row--head span { padding: 14px; font-size: 0.64rem; letter-spacing: 0.08em; }
+}
+
+/* ---------- Ransomware Scenario (Inside CANYO) ---------- */
+.scenario { max-width: 720px; margin: 0 auto; position: relative; }
+.scenario::before {
+  content: ''; position: absolute; left: 89px; top: 10px; bottom: 10px;
+  width: 2px; background: linear-gradient(180deg, var(--accent), var(--border));
+  opacity: 0.5;
+}
+.scenario__step {
+  display: flex; gap: 24px; align-items: flex-start;
+  padding: 16px 0; position: relative;
+}
+.scenario__time {
+  flex: 0 0 76px; text-align: right;
+  color: var(--accent); font-size: 0.78rem; font-weight: 700;
+  padding-top: 3px; letter-spacing: 0.02em;
+}
+.scenario__body {
+  position: relative; padding-left: 22px;
+}
+.scenario__body::before {
+  content: ''; position: absolute; left: -6px; top: 6px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 0 4px var(--bg);
+}
+.scenario__body h4 { font-size: 1.02rem; margin-bottom: 5px; }
+.scenario__body p { font-size: 0.9rem; color: var(--text-dim); line-height: 1.55; }
+@media (max-width: 560px) {
+  .scenario::before { left: 0; }
+  .scenario__step { flex-direction: column; gap: 4px; padding: 14px 0 14px 22px; }
+  .scenario__time { flex: none; text-align: left; padding-top: 0; }
+  .scenario__body { padding-left: 0; }
+  .scenario__body::before { left: -26px; top: -24px; }
+}
+
+/* ---------- Automation Permissions Matrix (Inside CANYO) ---------- */
+.matrix {
+  max-width: 860px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+}
+.matrix__row {
+  display: grid; grid-template-columns: 1.6fr 0.7fr 1.4fr;
+  border-bottom: 1px solid var(--border); align-items: center;
+}
+.matrix__row:last-child { border-bottom: none; }
+.matrix__row span { padding: 13px 18px; font-size: 0.88rem; color: var(--text-dim); }
+.matrix__row span:first-child { color: var(--text); font-weight: 500; }
+.matrix__row--head {
+  background: linear-gradient(90deg, rgba(128,128,128,0.06), transparent);
+}
+.matrix__row--head span {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+  color: var(--text-faint) !important; padding: 14px 18px;
+}
+.matrix__yes { color: #2ecb71 !important; font-weight: 700; }
+.matrix__no { color: #e06c6c !important; font-weight: 700; }
+.matrix__row:not(.matrix__row--head):hover { background: var(--surface-hover, rgba(128,128,128,0.04)); }
+@media (max-width: 640px) {
+  .matrix__row { grid-template-columns: 1.3fr 0.6fr 1.1fr; }
+  .matrix__row span { padding: 11px 12px; font-size: 0.8rem; }
+  .matrix__row--head span { padding: 12px; font-size: 0.6rem; letter-spacing: 0.08em; }
+}
