@@ -2,7 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content">
 <title>The CANYO Machine — A Day in Managed IT</title>
 <meta name="description" content="An interactive simulation of a day in managed IT. Watch CANYO's machine auto-fix problems in the background, restore files securely, and work tickets — some handled by AI, some escalated to humans, some needing your own hands.">
 <meta name="robots" content="index, follow">
@@ -13,6 +13,17 @@
 <meta property="og:description" content="A day in managed IT — auto-remediation, secure file restore, AI ticketing, and human escalation.">
 <meta property="og:url" content="https://canyo.net/machine/">
 <meta property="og:image" content="https://canyo.net/assets/og-image.png">
+<meta property="og:site_name" content="CANYO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The CANYO Machine — A Day in Managed IT">
+<meta name="twitter:description" content="An interactive simulation of managed IT: auto-remediation, secure file restore, AI ticketing, and human escalation.">
+<meta name="twitter:image" content="https://canyo.net/assets/og-image.png">
+<meta name="author" content="CANYO LLC">
+<link rel="icon" href="https://canyo.net/assets/canyo-logo-white.png" type="image/png">
+<link rel="apple-touch-icon" href="https://canyo.net/assets/canyo-logo-white.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"The CANYO Machine","url":"https://canyo.net/machine/","description":"An interactive simulation of a day in managed IT — auto-remediation, secure file restore, AI ticketing, and human escalation.","isPartOf":{"@type":"WebSite","name":"CANYO","url":"https://canyo.net/"},"about":{"@type":"Organization","name":"CANYO LLC","url":"https://canyo.net/"}}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -24,7 +35,8 @@
   --fd:'Montserrat',system-ui,sans-serif; --fm:'JetBrains Mono',ui-monospace,monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%}
+html{height:100%;height:-webkit-fill-available}
+body{position:fixed;inset:0;width:100%;height:100%;height:100dvh;overflow:hidden;overscroll-behavior:none}
 body{background:var(--bg);color:var(--ink);font-family:var(--fd);overflow:hidden;-webkit-tap-highlight-color:transparent}
 button{font-family:inherit;cursor:pointer}
 input{font-family:var(--fm)}
@@ -164,15 +176,41 @@ input{font-family:var(--fm)}
 
 /* responsive */
 @media(max-width:920px){
-  #app.on{grid-template-columns:1fr;grid-template-rows:1fr auto}
-  #side{flex-direction:column;max-height:38vh;border-right:none;border-top:1px solid var(--line)}
+  #chrome{flex-wrap:nowrap;gap:10px}
+  #vpnWrap{position:fixed !important;top:64px !important;left:50% !important;right:auto !important;transform:translateX(-50%);z-index:110}
+  #vpnArrow{top:auto !important;bottom:-22px !important;right:50% !important;transform:translateX(50%);white-space:nowrap}
+  #app.on{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto}
+  #stage{border-right:none;border-bottom:1px solid var(--line)}
+  #side{flex-direction:column;max-height:42vh;border-right:none;border-top:1px solid var(--line)}
+  #autofeed{padding:8px 12px}
   #stageInner{padding:64px 18px 16px}
-  #mailPanel{right:12px;bottom:84px}
+  #objective{padding:13px 15px}
+  #mailPanel{right:12px;left:12px;width:auto;bottom:84px;max-height:56vh}
   #mailBtn{right:16px;bottom:16px}
+  #term{left:12px;right:12px;width:auto;transform:none;bottom:16px}
+  #toast{top:64px;left:12px;right:12px;transform:none;max-width:none}
+  #vpnWrap .btn{padding:9px 12px !important;font-size:10px}
 }
 @media(max-width:520px){
-  .bigword{font-size:clamp(30px,9vw,44px)}
+  .modal{align-items:center;padding:12px}
+  .card{max-height:88dvh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .priv{flex-direction:row}
+  .bigword{font-size:clamp(28px,8.6vw,42px)}
+  .bigsub{font-size:10px;max-width:none}
   #chrome{padding:12px 14px}
+  #chrome .who{display:none}
+  .card{width:100%;border-radius:12px}
+  .card__body{padding:18px}
+  .modal{padding:14px;align-items:flex-end}
+  .ctitle{font-size:18px}
+  .btn{padding:15px;font-size:11px}
+  .field input{font-size:16px} /* prevent iOS zoom on focus */
+  .frow .nm{font-size:11px}
+  .frow .mt{font-size:8.5px}
+  #mailBtn{width:56px;height:56px}
+  #flash .big{font-size:clamp(26px,8vw,44px)}
+  #flash .sm{font-size:10px;line-height:1.9}
+  .card__x{padding:5px 10px}
 }
 </style>
 </head>
@@ -308,6 +346,15 @@ input{font-family:var(--fm)}
 <script>
 'use strict';
 var $=function(s){return document.querySelector(s);};
+
+/* ---- lock the viewport: no pinch / double-tap zoom, no keyboard reflow ---- */
+['gesturestart','gesturechange','gestureend'].forEach(function(ev){document.addEventListener(ev,function(e){e.preventDefault();},{passive:false});});
+document.addEventListener('dblclick',function(e){e.preventDefault();},{passive:false});
+var lastTouch=0;
+document.addEventListener('touchend',function(e){var n=Date.now();if(n-lastTouch<=300)e.preventDefault();lastTouch=n;},{passive:false});
+function lockVP(){document.body.style.height=window.innerHeight+'px';}
+lockVP();window.addEventListener('resize',lockVP);
+if(window.visualViewport){visualViewport.addEventListener('resize',lockVP);visualViewport.addEventListener('scroll',function(){window.scrollTo(0,0);});}
 function rnd(a,b){return a+Math.random()*(b-a);}
 function pick(a){return a[Math.floor(Math.random()*a.length)];}
 function el(id){return document.getElementById(id);}
@@ -316,7 +363,8 @@ function el(id){return document.getElementById(id);}
 var cv=el('net'),cx2=cv.getContext('2d'),W,H,pts=[];
 function size(){W=cv.width=innerWidth;H=cv.height=innerHeight;}
 size();addEventListener('resize',size);
-for(var i=0;i<60;i++)pts.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:rnd(-.2,.2),vy:rnd(-.2,.2)});
+var NPT=innerWidth<640?26:60;
+for(var i=0;i<NPT;i++)pts.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:rnd(-.2,.2),vy:rnd(-.2,.2)});
 (function frame(){
   cx2.clearRect(0,0,W,H);
   cx2.strokeStyle='rgba(255,255,255,.05)';cx2.lineWidth=1;
