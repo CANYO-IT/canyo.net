@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CANYO Machine — A Day in Managed IT</title>
+<meta name="description" content="An interactive simulation of a day in managed IT. Watch CANYO's machine auto-fix problems in the background, restore files securely, and work tickets — some handled by AI, some escalated to humans, some needing your own hands.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0a0c">
+<link rel="canonical" href="https://canyo.net/machine/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The CANYO Machine">
+<meta property="og:description" content="A day in managed IT — auto-remediation, secure file restore, AI ticketing, and human escalation.">
+<meta property="og:url" content="https://canyo.net/machine/">
+<meta property="og:image" content="https://canyo.net/assets/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0c; --bg2:#121216; --bg3:#18181d;
+  --ink:#ececf0; --dim:#9a9aa4; --faint:#55555e;
+  --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.16);
+  --ok:#3ecf6f; --warn:#e06c6c; --amber:#e0a05a; --acc:#c8ccd2;
+  --fd:'Montserrat',system-ui,sans-serif; --fm:'JetBrains Mono',ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--fd);overflow:hidden;-webkit-tap-highlight-color:transparent}
+button{font-family:inherit;cursor:pointer}
+input{font-family:var(--fm)}
+::selection{background:var(--acc);color:var(--bg)}
+
+/* ============ CANVAS BACKDROP ============ */
+#net{position:fixed;inset:0;z-index:0}
+
+/* ============ CHROME (top bar + persistent) ============ */
+#chrome{position:fixed;top:0;left:0;right:0;z-index:130;display:flex;align-items:center;gap:14px;padding:14px 20px;pointer-events:none}
+#chrome>*{pointer-events:auto}
+#chrome .logo{display:flex;align-items:center;gap:10px}
+#chrome .logo img{height:20px;display:block}
+#chrome .who{font-family:var(--fm);font-size:9px;letter-spacing:.22em;color:var(--faint)}
+#chrome .who b{color:var(--dim)}
+#chromeRight{margin-left:auto;display:flex;align-items:center;gap:10px}
+.homebtn{font-family:var(--fm);font-size:10px;letter-spacing:.18em;color:var(--dim);text-decoration:none;padding:8px 12px;border:1px solid var(--line);border-radius:4px;background:rgba(10,10,12,.6)}
+.homebtn:hover{color:var(--ink);border-color:var(--ink)}
+
+/* ============ GENERIC MODAL (one consistent system) ============ */
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(6,6,8,.72);backdrop-filter:blur(4px)}
+.modal.on{display:flex;animation:mfade .25s ease}
+@keyframes mfade{from{opacity:0}to{opacity:1}}
+.card{width:min(460px,94vw);background:var(--bg2);border:1px solid var(--line2);border-radius:10px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.card__head{display:flex;align-items:center;gap:8px;padding:13px 18px;border-bottom:1px solid var(--line)}
+.card__head .d{width:9px;height:9px;border-radius:50%;background:var(--line2)}
+.card__x{margin-left:auto;font-family:var(--fm);font-size:11px;color:var(--faint);background:none;border:1px solid var(--line);border-radius:4px;padding:3px 9px;cursor:pointer;letter-spacing:.1em}
+.card__x:hover{color:var(--ink);border-color:var(--ink)}
+.card__head .t{margin-left:auto;font-family:var(--fm);font-size:9px;letter-spacing:.2em;color:var(--faint)}
+.card__body{padding:22px}
+.kick{font-family:var(--fm);font-size:9px;letter-spacing:.26em;color:var(--faint);margin-bottom:8px}
+.ctitle{font-weight:800;font-size:20px;letter-spacing:-.01em;line-height:1.2;margin-bottom:6px}
+.csub{font-family:var(--fm);font-size:11px;line-height:1.6;color:var(--dim)}
+.hint{margin-top:12px;font-family:var(--fm);font-size:10px;line-height:1.6;color:var(--amber);background:rgba(224,160,90,.07);border:1px solid rgba(224,160,90,.25);border-radius:6px;padding:9px 12px}
+.hint b{color:var(--ink)}
+.btn{display:block;width:100%;background:var(--ink);color:var(--bg);border:none;font-family:var(--fm);font-weight:700;font-size:11px;letter-spacing:.18em;padding:14px;border-radius:6px;margin-top:16px;transition:all .15s}
+.btn:hover{background:var(--acc)}
+.btn:disabled{opacity:.35;cursor:not-allowed}
+.btn.ghost{background:none;border:1px solid var(--line2);color:var(--dim)}
+.btn.ghost:hover{color:var(--ink);border-color:var(--ink)}
+.field{margin-top:14px}
+.field label{display:block;font-family:var(--fm);font-size:9px;letter-spacing:.2em;color:var(--faint);margin-bottom:6px}
+.field input{width:100%;background:var(--bg);border:1px solid var(--line2);border-radius:6px;color:var(--ink);font-size:14px;letter-spacing:.06em;padding:12px 14px;outline:none;transition:border .15s}
+.field input:focus{border-color:var(--ink)}
+.field .given{font-size:9px;color:var(--amber);margin-top:5px;letter-spacing:.08em}
+.field .given b{color:var(--ink);background:rgba(255,255,255,.06);padding:1px 6px;border-radius:3px}
+.priv{margin-top:10px;font-family:var(--fm);font-size:9px;line-height:1.6;color:var(--faint);letter-spacing:.04em;display:flex;gap:7px;align-items:flex-start}
+.priv span{flex:1}
+.err{font-family:var(--fm);font-size:10px;color:var(--warn);margin-top:10px;min-height:1.2em}
+.shake{animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.stepsdots{display:flex;gap:6px;justify-content:center;margin-top:16px}
+.stepsdots i{width:22px;height:3px;background:var(--line);border-radius:2px;transition:background .3s}
+.stepsdots i.on{background:var(--ok)}
+
+/* ============ MAIN LAYOUT (once connected) ============ */
+#app{position:fixed;inset:0;z-index:10;display:none;grid-template-columns:1fr 360px;gap:0}
+#app.on{display:grid}
+#stage{position:relative;overflow:hidden;border-right:1px solid var(--line)}
+#side{position:relative;background:var(--bg2);display:flex;flex-direction:column;overflow:hidden}
+
+/* stage inner */
+#stageInner{position:absolute;inset:0;display:flex;flex-direction:column;padding:70px 26px 20px}
+.stagetag{font-family:var(--fm);font-size:9px;letter-spacing:.3em;color:var(--faint)}
+.bigword{font-weight:900;font-size:clamp(34px,5.2vw,76px);letter-spacing:-.03em;line-height:.95;margin-top:8px}
+.bigsub{font-family:var(--fm);font-size:11px;letter-spacing:.12em;color:var(--dim);margin-top:14px;max-width:46ch;line-height:1.7}
+#objective{margin-top:auto;background:var(--bg2);border:1px solid var(--line2);border-radius:8px;padding:16px 18px}
+#objective .l{font-family:var(--fm);font-size:8px;letter-spacing:.26em;color:var(--faint)}
+#objective .t{font-weight:800;font-size:15px;margin-top:6px}
+#objective .d{font-family:var(--fm);font-size:10px;color:var(--dim);margin-top:5px;line-height:1.6}
+#objBar{height:4px;background:var(--line);border-radius:2px;margin-top:12px;overflow:hidden}
+#objFill{height:100%;background:var(--ok);width:0;transition:width .4s}
+
+/* ============ SIDE PANEL: the machine working ============ */
+#sideHead{padding:18px 18px 12px;border-bottom:1px solid var(--line)}
+#sideHead .l{font-family:var(--fm);font-size:8px;letter-spacing:.26em;color:var(--faint)}
+#sideHead .t{font-weight:800;font-size:14px;margin-top:5px}
+#sideHead .t .pulse{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ok);margin-right:7px;animation:pl 1.6s infinite}
+@keyframes pl{50%{opacity:.3}}
+#autofeed{flex:1;overflow-y:auto;padding:10px 14px;display:flex;flex-direction:column;gap:8px}
+.af{background:var(--bg3);border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-family:var(--fm);font-size:10px;line-height:1.5;animation:afin .4s ease}
+@keyframes afin{from{opacity:0;transform:translateY(-6px)}}
+.af .tt{color:var(--dim);letter-spacing:.04em}
+.af .prog{color:var(--amber);margin-top:4px}
+.af .done{color:var(--ok);margin-top:4px}
+.af .st{color:var(--faint);font-size:8px;letter-spacing:.2em;margin-top:5px}
+#sideFoot{padding:12px 18px;border-top:1px solid var(--line);font-family:var(--fm);font-size:9px;color:var(--faint);letter-spacing:.1em}
+#sideFoot b{color:var(--dim)}
+
+/* ============ FLOATING: notifications ============ */
+#mailBtn{position:fixed;bottom:22px;right:22px;z-index:60;width:52px;height:52px;border-radius:50%;background:var(--ink);border:none;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+#mailBtn svg{width:22px;height:22px;stroke:var(--bg)}
+#mailBadge{position:absolute;top:-3px;right:-3px;min-width:19px;height:19px;border-radius:10px;background:var(--warn);color:#fff;font-family:var(--fm);font-size:9px;font-weight:700;display:none;align-items:center;justify-content:center;padding:0 5px}
+#mailBadge.on{display:flex;animation:pl 1.2s infinite}
+#mailPanel{position:fixed;bottom:84px;right:22px;z-index:60;width:min(340px,92vw);max-height:60vh;background:var(--bg2);border:1px solid var(--line2);border-radius:10px;display:none;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+#mailPanel.on{display:flex}
+#mailPanel .mh{padding:13px 16px;border-bottom:1px solid var(--line);font-family:var(--fm);font-size:9px;letter-spacing:.2em;color:var(--faint);display:flex;justify-content:space-between}
+#mailList{overflow-y:auto}
+.mi{padding:13px 16px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .15s}
+.mi:hover{background:var(--bg3)}
+.mi .a{font-weight:700;font-size:12px}
+.mi .b{font-family:var(--fm);font-size:9.5px;color:var(--dim);margin-top:3px;line-height:1.5}
+.mi .c{font-family:var(--fm);font-size:8px;letter-spacing:.16em;margin-top:6px}
+.mi .c.req{color:var(--amber)} .mi .c.auto{color:var(--acc)} .mi .c.esc{color:var(--warn)}
+.mi.done{opacity:.4} .mi.done .c{color:var(--ok)}
+
+/* ============ file restore modal ============ */
+.flist{margin-top:14px;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.frow{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .12s}
+.frow:last-child{border-bottom:none}
+.frow:hover{background:var(--bg3)}
+.frow.sel{background:rgba(200,204,210,.06);box-shadow:inset 2px 0 0 var(--ok)}
+.frow .ic{font-size:14px}
+.frow .nm{font-size:12px;font-weight:600}
+.frow .mt{font-family:var(--fm);font-size:9px;color:var(--faint);margin-left:auto;text-align:right;line-height:1.5}
+.frow .lock{font-size:10px}
+.privnote{font-family:var(--fm);font-size:9px;color:var(--dim);margin-top:10px;line-height:1.6;display:flex;gap:7px;align-items:flex-start}
+.privnote .lk{color:var(--ok)}
+
+/* ============ terminal (script run) ============ */
+#term{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:70;width:min(480px,92vw);background:#000;border:1px solid var(--line2);border-radius:8px;font-family:var(--fm);font-size:10.5px;line-height:1.7;padding:12px 16px;display:none;max-height:200px;overflow-y:auto}
+#term.on{display:block}
+#term .th{color:var(--faint);font-size:8px;letter-spacing:.24em;margin-bottom:6px}
+#term .tl{color:var(--dim)}
+#term .tl.ok{color:var(--ok)} #term .tl.wr{color:var(--warn)} #term .tl.hd{color:var(--acc)}
+
+/* toast (small, top center) */
+#toast{position:fixed;top:70px;left:50%;transform:translateX(-50%);z-index:90;background:var(--bg2);border:1px solid var(--line2);border-left:3px solid var(--ok);border-radius:8px;padding:12px 18px;font-family:var(--fm);font-size:11px;max-width:min(420px,92vw);display:none;box-shadow:0 16px 40px rgba(0,0,0,.4)}
+#toast.on{display:block;animation:afin .3s}
+#toast.warn{border-left-color:var(--warn)}
+
+/* big center flash for stage transitions */
+#flash{position:fixed;inset:0;z-index:120;background:var(--bg);display:none;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:20px}
+#flash.on{display:flex}
+#flash .big{font-weight:900;font-size:clamp(30px,6vw,64px);letter-spacing:-.02em}
+#flash .sm{font-family:var(--fm);font-size:11px;letter-spacing:.2em;color:var(--dim);margin-top:14px;line-height:2}
+
+/* responsive */
+@media(max-width:920px){
+  #app.on{grid-template-columns:1fr;grid-template-rows:1fr auto}
+  #side{flex-direction:column;max-height:38vh;border-right:none;border-top:1px solid var(--line)}
+  #stageInner{padding:64px 18px 16px}
+  #mailPanel{right:12px;bottom:84px}
+  #mailBtn{right:16px;bottom:16px}
+}
+@media(max-width:520px){
+  .bigword{font-size:clamp(30px,9vw,44px)}
+  #chrome{padding:12px 14px}
+}
+</style>
+</head>
+<body>
+
+<canvas id="net"></canvas>
+
+<!-- AI-readable summary (hidden) -->
+<main aria-label="About" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">
+  <h1>The CANYO Machine — a day in managed IT</h1>
+  <p>An interactive simulation of CANYO's operations. Watch the machine auto-fix background problems (print spoolers, services, sync), restore files securely through least-privilege access, and work a ticket queue — some auto-handled by AI, some escalated to humans, and some you fix yourself by writing the procedure. Mirrors CANYO's real model: monitor, detect, respond, verify, document, improve.</p>
+</main>
+
+<!-- top chrome -->
+<div id="chrome">
+  <div class="logo"><img src="../assets/canyo-logo-white.png" alt="CANYO"><span class="who">INTERNAL<br><b>OPS CONSOLE</b></span></div>
+  <div id="chromeRight">
+    <a class="homebtn" href="../" title="Back to canyo.net">← HOME</a>
+  </div>
+</div>
+
+<!-- ============ AUTH SEQUENCE (modal cards) ============ -->
+<div class="modal on" id="m0">
+  <div class="card">
+    <div class="card__head"><span class="d"></span><span class="d"></span><span class="d"></span><span class="t">SECURE ACCESS</span></div>
+    <div class="card__body">
+      <div class="kick">INTERACTIVE GAME</div>
+      <div class="ctitle">You're not on the network.</div>
+      <p class="csub">This is a hands-on simulation of a day running managed IT at CANYO. Everything is fake and safe to click. To begin, connect to the private network.</p>
+      <div class="hint">Look at the <b>top-right corner</b> of your screen.</div>
+      <div class="priv"><span>🔒</span><span>Nothing you type here is collected, stored, or sent anywhere. This is a front-end demo — the credentials below are fake, and anything you enter stays in your browser and disappears when you leave.</span></div>
+      <div class="stepsdots"><i class="on"></i><i></i><i></i><i></i></div>
+    </div>
+  </div>
+</div>
+
+<!-- the connect button lives top-right, revealed with an arrow -->
+<div id="vpnWrap" style="position:fixed;top:14px;right:120px;z-index:110;display:none">
+  <div id="vpnArrow" style="position:absolute;top:44px;right:8px;font-family:var(--fm);font-size:9px;letter-spacing:.14em;color:var(--amber);animation:pl 1.2s infinite">↑ CLICK HERE</div>
+  <button class="btn" id="vpnBtn" style="margin:0;padding:11px 16px;width:auto">CONNECT TO VPN</button>
+</div>
+
+<div class="modal" id="m1">
+  <div class="card">
+    <div class="card__head"><span class="d"></span><span class="d"></span><span class="d"></span><span class="t">STEP 1 / 3 · IDENTITY</span></div>
+    <div class="card__body">
+      <div class="ctitle">Sign in</div>
+      <p class="csub">Enter the demo credentials shown. (Not real — just type them exactly.)</p>
+      <div class="field"><label>USERNAME</label><input id="u1" autocomplete="off" spellcheck="false"><div class="given">use: <b>tech</b></div></div>
+      <div class="field"><label>PASSWORD</label><input id="p1" type="password" maxlength="7" autocomplete="off"><div class="given">use: <b id="gpass">k7#x2Qm</b></div></div>
+      <div class="priv"><span>🔒</span><span>These are fake demo credentials. Nothing is recorded or transmitted.</span></div>
+      <div class="err" id="e1"></div>
+      <button class="btn" id="b1">CONTINUE</button>
+      <div class="stepsdots"><i class="on"></i><i class="on"></i><i></i><i></i></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="m2">
+  <div class="card">
+    <div class="card__head"><span class="d"></span><span class="d"></span><span class="d"></span><span class="t">STEP 2 / 3 · TWO-FACTOR</span></div>
+    <div class="card__body">
+      <div class="ctitle">Two-factor check</div>
+      <p class="csub">A code was "sent to your device." Type it below.</p>
+      <div class="field"><label>6-DIGIT CODE</label><input id="p2" inputmode="numeric" maxlength="6" autocomplete="off"><div class="given">use: <b id="g2fa">482 916</b></div></div>
+      <div class="priv"><span>🔒</span><span>Demo only — this code is not real and is not stored.</span></div>
+      <div class="err" id="e2"></div>
+      <button class="btn" id="b2">VERIFY</button>
+      <div class="stepsdots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="m3">
+  <div class="card">
+    <div class="card__head"><span class="d"></span><span class="d"></span><span class="d"></span><span class="t">STEP 3 / 3 · APP ACCESS</span></div>
+    <div class="card__body">
+      <div class="ctitle">Open the console</div>
+      <p class="csub">One last key for the ops console itself — CANYO layers access so no single login opens everything.</p>
+      <div class="field"><label>CONSOLE KEY</label><input id="p3" maxlength="7" autocomplete="off" spellcheck="false"><div class="given">use: <b id="gkey">Q9#m2Lz</b></div></div>
+      <div class="priv"><span>🔒</span><span>Demo only — nothing you enter leaves this page.</span></div>
+      <div class="err" id="e3"></div>
+      <button class="btn" id="b3">ENTER CONSOLE</button>
+      <div class="stepsdots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MAIN APP ============ -->
+<div id="app">
+  <div id="stage">
+    <div id="stageInner">
+      <div class="stagetag">// LIVE OPERATIONS</div>
+      <div class="bigword" id="bigword">THE MACHINE<br>IS WORKING.</div>
+      <p class="bigsub" id="bigsub">On the right, the machine is fixing routine problems on its own — that's most of the job. Your work shows up as notifications. Open one.</p>
+      <div id="objective">
+        <div class="l">CURRENT TASK</div>
+        <div class="t" id="objT">Get situated</div>
+        <div class="d" id="objD">Watch the machine work, then open your first notification (bottom-right).</div>
+        <div id="objBar"><div id="objFill"></div></div>
+      </div>
+    </div>
+  </div>
+  <div id="side">
+    <div id="sideHead"><div class="l">BACKGROUND · HANDLED BY AUTOMATION</div><div class="t"><span class="pulse"></span>The machine, working</div></div>
+    <div id="autofeed"></div>
+    <div id="sideFoot">ROUTINE ISSUES AUTO-FIXED: <b id="afCount">0</b> · YOUR TICKETS DONE: <b id="tkCount">0</b></div>
+  </div>
+</div>
+
+<!-- notifications -->
+<button id="mailBtn" title="Notifications" aria-label="Notifications">
+  <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6L22 7"/></svg>
+  <span id="mailBadge">0</span>
+</button>
+<div id="mailPanel">
+  <div class="mh"><span>INCOMING · TICKETS &amp; REQUESTS</span><span id="mailCt"></span></div>
+  <div id="mailList"></div>
+</div>
+
+<!-- generic work modal (ticket detail / restore / typing) -->
+<div class="modal" id="work">
+  <div class="card">
+    <div class="card__head"><span class="d"></span><span class="d"></span><span class="d"></span><span class="t" id="workTag">TICKET</span><button class="card__x" id="workX" title="Close ticket">✕ ESC</button></div>
+    <div class="card__body" id="workBody"></div>
+  </div>
+</div>
+
+<div id="term"></div>
+<div id="toast"></div>
+<div id="flash"></div>
+
+<script>
+'use strict';
+var $=function(s){return document.querySelector(s);};
+function rnd(a,b){return a+Math.random()*(b-a);}
+function pick(a){return a[Math.floor(Math.random()*a.length)];}
+function el(id){return document.getElementById(id);}
+
+/* ================= BACKDROP NETWORK ================= */
+var cv=el('net'),cx2=cv.getContext('2d'),W,H,pts=[];
+function size(){W=cv.width=innerWidth;H=cv.height=innerHeight;}
+size();addEventListener('resize',size);
+for(var i=0;i<60;i++)pts.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:rnd(-.2,.2),vy:rnd(-.2,.2)});
+(function frame(){
+  cx2.clearRect(0,0,W,H);
+  cx2.strokeStyle='rgba(255,255,255,.05)';cx2.lineWidth=1;
+  for(var i=0;i<pts.length;i++){var p=pts[i];p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+    for(var j=i+1;j<pts.length;j++){var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<140){cx2.globalAlpha=1-d/140;cx2.beginPath();cx2.moveTo(p.x,p.y);cx2.lineTo(q.x,q.y);cx2.stroke();}}
+    cx2.globalAlpha=1;cx2.fillStyle='rgba(200,204,210,.4)';cx2.fillRect(p.x-1,p.y-1,2,2);}
+  requestAnimationFrame(frame);
+})();
+
+/* ================= TOAST + TERM helpers ================= */
+var toastT;
+function toast(msg,warn){var t=el('toast');t.textContent=msg;t.className=warn?'on warn':'on';
+  clearTimeout(toastT);toastT=setTimeout(function(){t.className='';},3200);}
+function termRun(lines,done){
+  var t=el('term');t.classList.add('on');
+  t.innerHTML='<div class="th">HOW CANYO FIXES IT — DETECT · ISOLATE · FIX · VERIFY · LOG</div>';
+  var i=0;
+  var iv=setInterval(function(){
+    if(i>=lines.length){clearInterval(iv);setTimeout(function(){t.classList.remove('on');if(done)done();},900);return;}
+    var L=lines[i],d=document.createElement('div');d.className='tl';
+    if(/^\[OK|^\[DONE|✓/.test(L))d.classList.add('ok');
+    else if(/^\[WARN|^\[FAIL|✗/.test(L))d.classList.add('wr');
+    else if(/^\[/.test(L))d.classList.add('hd');
+    d.textContent=L;t.appendChild(d);t.scrollTop=t.scrollHeight;i++;
+  },300);
+}
+
+/* ================= AUTH SEQUENCE ================= */
+function openM(id){['m0','m1','m2','m3'].forEach(function(m){el(m).classList.toggle('on',m===id);});}
+/* m0 -> show connect button top-right */
+el('vpnWrap').style.display='block';
+el('vpnBtn').addEventListener('click',function(){
+  el('vpnWrap').style.display='none';
+  termRun(['> opening secure tunnel (WireGuard)','> verifying device posture','[OK] CONNECTED · ENCRYPTED'],function(){ openM('m1'); el('u1').focus(); });
+});
+function bad(id,msg,inp){var e=el(id);e.textContent=msg;var c=e.closest('.card');c.classList.remove('shake');void c.offsetWidth;c.classList.add('shake');el(inp).select();}
+el('b1').addEventListener('click',function(){
+  var u=el('u1').value.trim().toLowerCase(),p=el('p1').value.trim();
+  if(u!=='tech')return bad('e1','That doesn\u2019t match. It should be \u201ctech\u201d.','u1');
+  if(p!=='k7#x2Qm')return bad('e1','That doesn\u2019t match. The password is \u201ck7#x2Qm\u201d.','p1');
+  el('e1').textContent='';openM('m2');el('p2').focus();
+});
+el('b2').addEventListener('click',function(){
+  var c=el('p2').value.replace(/\s/g,'');
+  if(c!=='482916')return bad('e2','That doesn\u2019t match. The code is \u201c482916\u201d.','p2');
+  el('e2').textContent='';openM('m3');el('p3').focus();
+});
+el('b3').addEventListener('click',function(){
+  var k=el('p3').value.trim();
+  if(k!=='Q9#m2Lz')return bad('e3','That doesn\u2019t match. The key is \u201cQ9#m2Lz\u201d.','p3');
+  el('e3').textContent='';openM(null);
+  enterApp();
+});
+['u1','p1'].forEach(function(i){el(i).addEventListener('keydown',function(e){if(e.key==='Enter')el('b1').click();});});
+el('p2').addEventListener('keydown',function(e){if(e.key==='Enter')el('b2').click();});
+el('p3').addEventListener('keydown',function(e){if(e.key==='Enter')el('b3').click();});
+
+/* ================= ENTER APP ================= */
+var AF=0,TK=0;
+function enterApp(){
+  el('app').classList.add('on');
+  toast('Connected. The machine is already working — watch the right side.');
+  startAutoFeed();
+  setObjective('Get situated','Watch the machine work, then open your first notification (bottom-right).',5);
+  setTimeout(function(){ pushTickets(); },4000);
+}
+
+/* ================= AUTO-FIX SIDE FEED ================= */
+var AUTO=[
+ {t:'Print spooler not responding',p:'Restarting spooler service',d:'Confirmed printing again'},
+ {t:'Backup agent missed a beat',p:'Restarting agent + forcing snapshot',d:'Backup verified restorable'},
+ {t:'Cloud sync stalled on 3 files',p:'Re-authing sync client',d:'Sync resumed · 0 conflicts'},
+ {t:'Workstation running hot',p:'Throttling background indexer',d:'Temps back to normal'},
+ {t:'Disk hit 88% on a laptop',p:'Clearing caches + old logs',d:'22 GB freed'},
+ {t:'Antivirus definitions 2 days old',p:'Pushing latest definitions',d:'Fleet fully current'},
+ {t:'A service stopped after update',p:'Restarting + pinning dependency',d:'Service stable'},
+ {t:'Wi-Fi roaming complaint',p:'Rebalancing access-point channel',d:'Signal steady at desk'},
+ {t:'OneDrive auth token expired',p:'Refreshing token silently',d:'User never noticed'},
+ {t:'Firmware update pending',p:'Scheduling for tonight 2 AM',d:'Queued · no downtime'}
+];
+var afTimer;
+function startAutoFeed(){
+  pushAuto();afTimer=setInterval(pushAuto,3800);
+}
+function pushAuto(){
+  var a=pick(AUTO);
+  var feed=el('autofeed');
+  var d=document.createElement('div');d.className='af';
+  d.innerHTML='<div class="tt">'+a.t+'</div><div class="prog">▸ '+a.p+'…</div>';
+  feed.prepend(d);
+  while(feed.children.length>7)feed.lastChild.remove();
+  setTimeout(function(){
+    d.querySelector('.prog').outerHTML='<div class="done">✓ '+a.d+'</div><div class="st">AUTO · NO HUMAN NEEDED</div>';
+    AF++;el('afCount').textContent=AF;
+  },1600);
+}
+
+/* ================= NOTIFICATIONS / TICKETS ================= */
+var tickets=[
+ {id:'restore',kind:'req',a:'Maya needs a file restored',b:'Client: Acme Realty · Device: FRONT-DESK-02',c:'ACTION NEEDED · SECURE RESTORE'},
+ {id:'auto',kind:'auto',a:'Laptop disk at 96% — cleanup',b:'FRONT-DESK-02 · low storage warning',c:'AI AGENT HANDLING'},
+ {id:'escal',kind:'esc',a:'Password reset request',b:'J. Park · locked out after vacation',c:'ESCALATED TO HUMAN'},
+ {id:'manual1',kind:'req',a:'Printer won\'t print — wrong driver',b:'Front office · HP LaserJet',c:'ACTION NEEDED · HANDS-ON'},
+ {id:'manual2',kind:'req',a:'Email not syncing on a phone',b:'Sales lead · iPhone 15',c:'ACTION NEEDED · HANDS-ON'}
+];
+var doneT={};
+function pushTickets(){
+  renderMail();
+  setObjective('Work your queue','Open notifications (bottom-right) and work each ticket. Some the machine does, some need a human, some need you.',10);
+}
+function renderMail(){
+  var list=el('mailList');list.innerHTML='';
+  var pending=0;
+  tickets.forEach(function(t){
+    if(!doneT[t.id])pending++;
+    var d=document.createElement('div');d.className='mi'+(doneT[t.id]?' done':'');d.dataset.k=t.id;
+    d.innerHTML='<div class="a">'+t.a+'</div><div class="b">'+t.b+'</div><div class="c '+t.kind+'">'+(doneT[t.id]?'✓ DONE':t.c)+'</div>';
+    d.addEventListener('click',function(){ if(!doneT[t.id])openTicket(t); });
+    list.appendChild(d);
+  });
+  el('mailCt').textContent=pending+' OPEN';
+  var b=el('mailBadge');b.textContent=pending;b.classList.toggle('on',pending>0);
+}
+el('mailBtn').addEventListener('click',function(){ el('mailPanel').classList.toggle('on'); });
+
+/* objective helper */
+function setObjective(t,d,pct){
+  el('objT').textContent=t;el('objD').textContent=d;
+  el('objFill').style.width=(pct||0)+'%';
+}
+
+/* ================= TICKET DISPATCHER ================= */
+function openTicket(t){
+  el('mailPanel').classList.remove('on');
+  if(t.id==='restore')return ticketRestore(t);
+  if(t.id==='auto')return ticketAuto(t);
+  if(t.id==='escal')return ticketEscalate(t);
+  if(t.id==='manual1')return ticketManual(t,{goal:'install the correct HP printer driver',steps:['Open a browser and go to hp.com/support','Search the printer model: HP LaserJet Pro M404','Download the "Full Feature" driver for Windows','Run the installer and follow the prompts','Print a test page to confirm']});
+  if(t.id==='manual2')return ticketManual(t,{goal:'reconnect the email account',steps:['Open Settings on the iPhone','Tap Mail → Accounts','Tap the account and choose "Re-enter Password"','Enter the work password and tap Sign In','Wait for Mail to verify, then check inbox']});
+}
+
+/* ---- secure file restore (least privilege, not readable by us) ---- */
+function ticketRestore(t){
+  el('workTag').textContent='SECURE FILE RESTORE';
+  el('workBody').innerHTML=
+    '<div class="ctitle">Restore a file for Maya</div>'+
+    '<p class="csub">Maya accidentally deleted a contract. Backups are encrypted — <b>we can restore files, but we can never read their contents.</b> Pick the right one by name, type, and size.</p>'+
+    '<div class="hint">She asked for: <b>Contract_Final.pdf</b></div>'+
+    '<div class="flist" id="flist">'+
+      frow('📄','Contract_Final.pdf','PDF · 2.4 MB','🔒',true)+
+      frow('📊','Q3_Budget.xlsx','Spreadsheet · 812 KB','🔒')+
+      frow('🖼️','lobby_photo.png','Image · 5.1 MB','🔒')+
+      frow('📄','Contract_DRAFT_v2.pdf','PDF · 1.9 MB','🔒')+
+    '</div>'+
+    '<div class="privnote"><span class="lk">🔒</span><span>End-to-end encrypted. CANYO can move and restore these files, but the contents stay unreadable to us. That\'s on purpose.</span></div>'+
+    '<div class="err" id="re"></div>'+
+    '<button class="btn" id="rd">RESTORE SELECTED FILE</button>';
+  openWork();
+  var sel=null;
+  el('flist').addEventListener('click',function(e){
+    var r=e.target.closest('.frow');if(!r)return;
+    [].forEach.call(el('flist').children,function(x){x.classList.remove('sel');});
+    r.classList.add('sel');sel=r.dataset.correct==='1';
+  });
+  el('rd').addEventListener('click',function(){
+    if(sel===null){el('re').textContent='Pick a file first.';return;}
+    if(!sel){el('re').textContent='That\'s not the one she asked for — check the name.';return;}
+    el('work').classList.remove('on');
+    termRun(['> opening encrypted backup (contents stay locked)','> locating Contract_Final.pdf','> restoring to FRONT-DESK-02','> confirming it opens on her machine','[OK] FILE RESTORED · NEVER READ BY US'],function(){
+      finishTicket(t,'File restored securely — contents never exposed.');
+    });
+  });
+}
+function frow(ic,nm,mt,lock,correct){
+  return '<div class="frow" data-correct="'+(correct?1:0)+'"><span class="ic">'+ic+'</span><span class="nm">'+nm+'</span><span class="mt">'+mt+'</span><span class="lock">'+lock+'</span></div>';
+}
+
+/* ---- AI auto-handled ticket ---- */
+function ticketAuto(t){
+  el('workTag').textContent='AI AGENT · AUTO-HANDLED';
+  el('workBody').innerHTML=
+    '<div class="ctitle">The AI is on this one.</div>'+
+    '<p class="csub">Routine, reversible, low-risk — exactly what automation is for. Watch it work the ticket end to end.</p>'+
+    '<div id="aiTerm" style="margin-top:14px;background:#000;border:1px solid var(--line);border-radius:8px;padding:14px;font-family:var(--fm);font-size:10.5px;line-height:1.8;min-height:150px;color:var(--dim)"></div>'+
+    '<button class="btn ghost" id="aiClose" style="display:none">CLOSE</button>';
+  openWork();
+  var lines=['> ticket received: disk at 96% (FRONT-DESK-02)','> scanned for safe-to-clear temp + cache files','> cleared 22 GB of old logs and updates','> verified no user files touched','> confirmed free space back to healthy','[OK] DONE · LOGGED · NO HUMAN PULLED IN'];
+  var box=el('aiTerm'),i=0;
+  var iv=setInterval(function(){
+    if(i>=lines.length){clearInterval(iv);el('aiClose').style.display='block';return;}
+    var d=document.createElement('div');if(/OK/.test(lines[i]))d.style.color='var(--ok)';
+    d.textContent=lines[i];box.appendChild(d);i++;
+  },550);
+  el('aiClose').addEventListener('click',function(){ el('work').classList.remove('on'); finishTicket(t,'The AI resolved it — a human was never interrupted.'); });
+}
+
+/* ---- escalated to human ---- */
+function ticketEscalate(t){
+  el('workTag').textContent='ESCALATED TO A HUMAN';
+  el('workBody').innerHTML=
+    '<div class="ctitle">This one needs a person.</div>'+
+    '<p class="csub">Resetting a password means proving someone is who they say they are. Identity can\'t be automated away — the AI gathers context, but a human verifies and decides.</p>'+
+    '<div id="escTerm" style="margin-top:14px;background:#000;border:1px solid var(--line);border-radius:8px;padding:14px;font-family:var(--fm);font-size:10.5px;line-height:1.8;min-height:150px;color:var(--dim)"></div>'+
+    '<button class="btn ghost" id="escClose" style="display:none">CLOSE</button>';
+  openWork();
+  var lines=['> AI: credential reset requested for J. Park','> AI: pulled account + recent sign-in activity','> AI: flagged for identity verification','[→] routed to a human engineer','[→] human verified identity over a live call','[OK] HUMAN VERIFIED · RESET COMPLETED · LOGGED'];
+  var box=el('escTerm'),i=0;
+  var iv=setInterval(function(){
+    if(i>=lines.length){clearInterval(iv);el('escClose').style.display='block';return;}
+    var d=document.createElement('div');if(/OK/.test(lines[i]))d.style.color='var(--ok)';else if(/→/.test(lines[i]))d.style.color='var(--warn)';
+    d.textContent=lines[i];box.appendChild(d);i++;
+  },550);
+  el('escClose').addEventListener('click',function(){ el('work').classList.remove('on'); finishTicket(t,'Escalated correctly — identity verified by a human, not the AI.'); });
+}
+
+/* ---- hands-on: you write the procedure (no script exists) ---- */
+var STOP=['open','with','then','that','this','from','your','their','them','into','follow','choose','wait','enter'];
+function ticketManual(t,guide){
+  el('workTag').textContent='HANDS-ON · NO SCRIPT EXISTS';
+  var stepsHtml=guide.steps.map(function(s,i){return '<div style="font-family:var(--fm);font-size:10px;color:var(--dim);line-height:1.7">'+(i+1)+'. '+s+'</div>';}).join('');
+  el('workBody').innerHTML=
+    '<div class="ctitle">No script for this — your turn.</div>'+
+    '<p class="csub">Some fixes aren\'t worth automating. Here\'s the general procedure. <b>Type the steps in order</b> to walk through it.</p>'+
+    '<div style="margin:14px 0;padding:12px;border:1px dashed var(--line2);border-radius:8px">'+stepsHtml+'</div>'+
+    '<div class="field"><label>TYPE STEP <span id="stN">1</span> OF '+guide.steps.length+'</label><input id="stIn" autocomplete="off" spellcheck="false" placeholder="type the step here…"></div>'+
+    '<div class="err" id="stE"></div>'+
+    '<button class="btn" id="stGo">CONFIRM STEP</button>';
+  openWork();
+  var idx=0;
+  el('stIn').focus();
+  function norm(x){return x.toLowerCase().replace(/[^a-z0-9]/g,'');}
+  el('stGo').addEventListener('click',function(){
+    var got=norm(el('stIn').value),want=norm(guide.steps[idx]);
+    // accept if it shares key tokens (lenient, friendly)
+    var keyTokens=(guide.steps[idx].toLowerCase().match(/[a-z0-9]{4,}/g)||[]).filter(function(k){return STOP.indexOf(k)===-1;});
+    var hit=keyTokens.filter(function(k){return got.indexOf(k)>-1;}).length;
+    if(hit>=Math.max(1,Math.ceil(keyTokens.length*0.5))){
+      idx++;el('stE').textContent='';el('stIn').value='';
+      if(idx>=guide.steps.length){
+        el('work').classList.remove('on');
+        termRun(['> hands-on procedure completed by technician','> verified the result with the user','[OK] FIXED · DOCUMENTED'],function(){ finishTicket(t,'You fixed it hands-on — no script needed.'); });
+        return;
+      }
+      el('stN').textContent=idx+1;el('stIn').focus();
+    }else{
+      var kw=(guide.steps[idx].toLowerCase().match(/[a-z0-9]{4,}/g)||[]).filter(function(k){return STOP.indexOf(k)===-1;});
+      el('stE').textContent='Not quite — re-read step '+(idx+1)+' above and include the key action (e.g. "'+(kw[0]||'step')+'").';
+      el('stIn').select();
+    }
+  });
+  el('stIn').addEventListener('keydown',function(e){if(e.key==='Enter')el('stGo').click();});
+}
+
+function openWork(){ el('work').classList.add('on'); }
+function closeWork(){ el('work').classList.remove('on'); }
+el('workX').addEventListener('click',closeWork);
+document.addEventListener('keydown',function(e){ if(e.key==='Escape' && el('work').classList.contains('on'))closeWork(); });
+
+function finishTicket(t,msg){
+  doneT[t.id]=1;TK++;el('tkCount').textContent=TK;
+  renderMail();toast('✓ '+msg);
+  var total=tickets.length,done=Object.keys(doneT).length;
+  setObjective('Work your queue', done+' of '+total+' tickets done. '+(total-done===0?'Queue clear — that\'s the goal.':(total-done)+' to go.'), Math.round(done/total*100));
+  if(done>=total){
+    setTimeout(function(){
+      el('flash').innerHTML='<div class="big">QUEUE CLEAR.</div><div class="sm">THE MACHINE HANDLED THE ROUTINE.<br>AI HANDLED THE REPETITIVE.<br>HUMANS HANDLED THE JUDGMENT.<br><br>THAT\'S THE JOB.<br><br><a href="../" style="color:var(--ink)">← BACK TO CANYO.NET</a></div>';
+      el('flash').classList.add('on');
+    },700);
+  }
+}
+</script>
+</body>
+</html>
