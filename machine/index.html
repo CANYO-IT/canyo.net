@@ -61,16 +61,20 @@ input{font-family:var(--fm)}
 .homebtn:hover{color:var(--ink);border-color:var(--ink)}
 
 /* ============ GENERIC MODAL (one consistent system) ============ */
-.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(6,6,8,.72);backdrop-filter:blur(4px)}
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(6,6,8,.72);backdrop-filter:blur(4px);overflow-y:auto;-webkit-overflow-scrolling:touch}
 .modal.on{display:flex;animation:mfade .25s ease}
+.modal.kb{align-items:flex-start !important;padding-top:12px !important;justify-content:center}
+.modal.kb .card{transition:margin .22s ease;max-height:calc(var(--vvh,100dvh) - 16px)}
+.modal.kb .card__body{padding-top:14px;padding-bottom:14px}
+.modal.kb .btn{margin-top:10px}
 @keyframes mfade{from{opacity:0}to{opacity:1}}
-.card{width:min(460px,94vw);background:var(--bg2);border:1px solid var(--line2);border-radius:10px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);transition:transform .28s cubic-bezier(.2,.8,.3,1);will-change:transform}
+.card{width:min(460px,94vw);background:var(--bg2);border:1px solid var(--line2);border-radius:10px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);transition:transform .28s cubic-bezier(.2,.8,.3,1);will-change:transform;display:flex;flex-direction:column}
 .card__head{display:flex;align-items:center;gap:8px;padding:13px 18px;border-bottom:1px solid var(--line)}
 .card__head .d{width:9px;height:9px;border-radius:50%;background:var(--line2)}
 .card__x{margin-left:auto;font-family:var(--fm);font-size:11px;color:var(--faint);background:none;border:1px solid var(--line);border-radius:4px;padding:3px 9px;cursor:pointer;letter-spacing:.1em}
 .card__x:hover{color:var(--ink);border-color:var(--ink)}
 .card__head .t{margin-left:auto;font-family:var(--fm);font-size:9px;letter-spacing:.2em;color:var(--faint)}
-.card__body{padding:22px}
+.card__body{padding:22px;overflow-y:auto;-webkit-overflow-scrolling:touch;flex:1;min-height:0}
 .kick{font-family:var(--fm);font-size:9px;letter-spacing:.26em;color:var(--faint);margin-bottom:8px}
 .ctitle{font-weight:800;font-size:20px;letter-spacing:-.01em;line-height:1.2;margin-bottom:6px}
 .csub{font-family:var(--fm);font-size:11px;line-height:1.6;color:var(--dim)}
@@ -198,6 +202,7 @@ input{font-family:var(--fm)}
 @media(max-width:520px){
   .modal{align-items:center;padding:12px}
   .card{max-height:88dvh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .modal.kb .card{max-height:calc(var(--vvh,100dvh) - 20px)}
   .priv{flex-direction:row}
   .bigword{font-size:clamp(28px,8.6vw,42px)}
   .bigsub{font-size:10px;max-width:none}
@@ -264,7 +269,7 @@ input{font-family:var(--fm)}
       <div class="ctitle">Sign in</div>
       <p class="csub">Enter the demo credentials shown. (Not real — just type them exactly.)</p>
       <div class="field"><label>USERNAME</label><input id="u1" autocomplete="off" spellcheck="false"><div class="given">use: <b>tech</b></div></div>
-      <div class="field"><label>PASSWORD</label><input id="p1" type="password" maxlength="7" autocomplete="off"><div class="given">use: <b id="gpass">k7#x2Qm</b></div></div>
+      <div class="field"><label>PASSWORD</label><input id="p1" type="text" maxlength="7" autocomplete="off" spellcheck="false"><div class="given">use: <b id="gpass">k7#x2Qm</b></div></div>
       <div class="priv"><span>🔒</span><span>These are fake demo credentials. Nothing is recorded or transmitted.</span></div>
       <div class="err" id="e1"></div>
       <button class="btn" id="b1">CONTINUE</button>
@@ -368,60 +373,77 @@ document.addEventListener('touchmove',function(e){
   }
   if(!scrollable)e.preventDefault();
 },{passive:false});
-document.addEventListener('touchend',function(e){var n=Date.now();if(n-lastTouch<=300)e.preventDefault();lastTouch=n;},{passive:false});
-function lockVP(){document.body.style.height=window.innerHeight+'px';}
-lockVP();window.addEventListener('resize',lockVP);
+document.addEventListener('touchend',function(e){var t=e.target;if(t&&t.closest&&t.closest('button,a,input,textarea,.frow,.mi'))return;var n=Date.now();if(n-lastTouch<=300)e.preventDefault();lastTouch=n;},{passive:false});
+/* ---- Viewport handling: browser resizes the layout viewport (interactive-widget=
+   resizes-content). We just keep the body pinned and scroll the focused input into
+   view above the keyboard. No manual card transforms => no fighting the keyboard. ---- */
+function lockVP(){ var h=(window.visualViewport?window.visualViewport.height:window.innerHeight); document.body.style.height=h+'px'; document.documentElement.style.setProperty('--vvh', h+'px'); }
+lockVP();
+window.addEventListener('resize',lockVP);
 if(window.visualViewport){visualViewport.addEventListener('resize',lockVP);visualViewport.addEventListener('scroll',function(){window.scrollTo(0,0);});}
 
-/* ---- keyboard-lift: focused input rides up above the keyboard ---- */
-function visibleModalCard(){
-  var ms=document.querySelectorAll('.modal.on');
-  for(var i=0;i<ms.length;i++){var c=ms[i].querySelector('.card');if(c)return c;}
-  return null;
-}
-var __liftRaf=0;
-function liftForKeyboard(){
-  var card=visibleModalCard();
-  if(!card)return;
-  cancelAnimationFrame(__liftRaf);
-  __liftRaf=requestAnimationFrame(function(){
-    var active=document.activeElement;
-    var focused=active && (active.tagName==='INPUT'||active.tagName==='TEXTAREA');
-    if(!focused || !window.visualViewport){ card.style.transform=''; card.__lift=0; return; }
-    var vv=window.visualViewport;
-    var kb=window.innerHeight - vv.height;
-    var pad=10;
-    // Measure the resting (centered) position: clear transform AND transition,
-    // otherwise the 0.28s ease-out means we read a mid-animation position.
-    card.style.transition='none';
-    card.style.transform='none';
-    void card.offsetHeight;                       // force sync reflow
-    var r=card.getBoundingClientRect();
-    card.style.transition='';                     // restore the smooth slide
-    var visH=vv.height, availTop=8, availBot=visH-pad, shift=0;
-    if(kb>0){
-      if(r.height <= (availBot-availTop)){
-        var centeredTop = availTop + ((availBot-availTop)-r.height)/2;
-        shift = r.top - centeredTop;              // center within the space above keyboard
-      }else{
-        shift = r.top - availTop;                  // too tall: pin to top of visible area
-      }
-      if(shift<0)shift=0;
+function activeModal(){ var ms=document.querySelectorAll('.modal.on'); return ms.length?ms[ms.length-1]:null; }
+
+function ensureInputVisible(){
+  var a=document.activeElement;
+  if(!a || (a.tagName!=='INPUT' && a.tagName!=='TEXTAREA'))return;
+  var vv=window.visualViewport;
+  var adjust=function(){
+    if(!vv)return;
+    var kbTop=vv.height - 12;                 // keep input + its confirm button above the keyboard
+    // target the confirm button if one follows the input in the same card, else the input
+    var card=a.closest('.card');
+    var target=a;
+    if(card){
+      var btn=card.querySelector('.btn');
+      if(btn && btn.getBoundingClientRect().bottom > a.getBoundingClientRect().bottom) target=btn;
     }
-    card.__lift=Math.round(shift);
-    card.style.transform = shift?('translateY(-'+Math.round(shift)+'px)'):'';
-  });
+    var r=target.getBoundingClientRect();
+    if(r.bottom > kbTop){
+      var delta = r.bottom - kbTop;
+      // scroll every scrollable ancestor so the input rises above the keyboard
+      var el=a.parentElement;
+      while(el && el!==document.body){
+        if(el.scrollHeight>el.clientHeight+1){ el.scrollTop += delta; }
+        el=el.parentElement;
+      }
+      // explicitly nudge the card body (the main scroll container in kb mode)
+      var card=a.closest('.card');
+      if(card){var bd=card.querySelector('.card__body'); if(bd && bd.scrollHeight>bd.clientHeight+1){ bd.scrollTop += delta; }}
+      // native fallback for whatever we couldn't scroll manually
+      try{ a.scrollIntoView({block:'center',behavior:'smooth'}); }catch(e){ try{a.scrollIntoView();}catch(_){}}
+    }else if(r.top < 8){
+      try{ a.scrollIntoView({block:'center',behavior:'smooth'}); }catch(e){ try{a.scrollIntoView();}catch(_){}}
+    }
+  };
+  setTimeout(adjust,60);
+  setTimeout(adjust,380);                     // after the keyboard finishes animating
 }
+
+function onKB(){
+  var m=activeModal(); if(!m)return;
+  var vv=window.visualViewport;
+  var kb = vv ? (window.innerHeight - vv.height) : 0;
+  m.classList.toggle('kb', kb>80);       // align to top when keyboard is up
+  if(kb>80) ensureInputVisible();
+}
+
 document.addEventListener('focusin',function(e){
-  if(e.target && (e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')){
-    liftForKeyboard();
-    setTimeout(liftForKeyboard,300);   // re-check once the keyboard finishes animating
-  }
+  if(e.target && (e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')) onKB();
 });
 document.addEventListener('focusout',function(){
-  var card=visibleModalCard();if(card){card.style.transform='';card.__lift=0;}
+  setTimeout(function(){
+    var a=document.activeElement;
+    if(a && (a.tagName==='INPUT'||a.tagName==='TEXTAREA'))return;  // moved to another field
+    // only drop kb once the keyboard has actually closed
+    var vv=window.visualViewport;
+    if(vv && (window.innerHeight - vv.height) > 80)return;
+    var m=activeModal(); if(m)m.classList.remove('kb');
+  },250);
 });
-if(window.visualViewport){visualViewport.addEventListener('resize',liftForKeyboard);}
+if(window.visualViewport){visualViewport.addEventListener('resize',onKB);}
+window.addEventListener('resize',onKB);
+
 function rnd(a,b){return a+Math.random()*(b-a);}
 function pick(a){return a[Math.floor(Math.random()*a.length)];}
 function el(id){return document.getElementById(id);}
