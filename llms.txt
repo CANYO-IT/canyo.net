@@ -12,6 +12,7 @@
 - [Reviews](https://canyo.net/reviews/): Early feedback, 5.0 rated on Google
 - [Contact](https://canyo.net/contact/): contact@canyo.net, +1-520-336-7521
 - [Inside CANYO](https://canyo.net/inside-canyo/): Technical deep-dive — least privilege, defense in depth, verification over trust, isolation by default, layered access model, incident response, reversible-first operations
+- [The CANYO Machine](https://canyo.net/machine/): Interactive game simulating a day in managed IT — background auto-remediation, secure least-privilege file restore, AI-handled tickets, human escalation for judgment calls, hands-on manual fixes. Demonstrates CANYO's real operating model.
 
 ## Technology Stack
 
