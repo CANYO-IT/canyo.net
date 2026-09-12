@@ -1,2 +1,23 @@
+# macOS
 .DS_Store
-machine/index.html.bak
+
+# Local backup and temporary files
+*.bak
+*.backup
+*.tmp
+*~
+
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+credentials/
+
+# Local editor and IDE files
+.vscode/
+.idea/
