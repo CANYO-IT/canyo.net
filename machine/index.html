@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en-US" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content">
-<title>The CANYO Machine — A Day in Managed IT</title>
-<meta name="description" content="An interactive simulation of a day in managed IT. Watch CANYO's machine auto-fix problems in the background, restore files securely, and work tickets — some handled by AI, some escalated to humans, some needing your own hands.">
+<title>The Machine | Interactive CANYO Operating Loop Demo</title>
+<meta name="description" content="A simulated, interactive demo of the CANYO Operating Loop. No real credentials or data — just the same sequence we use on incidents.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="keywords" content="managed IT, interactive demo, IT automation, AI ticketing, managed service provider, Tucson IT, CANYO, secure file restore, IT simulation">
 <meta name="theme-color" content="#0a0a0c">
@@ -14,6 +14,8 @@
 <meta property="og:description" content="A day in managed IT — auto-remediation, secure file restore, AI ticketing, and human escalation.">
 <meta property="og:url" content="https://canyo.net/machine/">
 <meta property="og:image" content="https://canyo.net/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="CANYO">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The CANYO Machine — A Day in Managed IT">
@@ -182,6 +184,56 @@ input{font-family:var(--fm)}
 #flash .big{font-weight:900;font-size:clamp(30px,6vw,64px);letter-spacing:-.02em}
 #flash .sm{font-family:var(--fm);font-size:11px;letter-spacing:.2em;color:var(--dim);margin-top:14px;line-height:2}
 
+/* ============ CONSOLE: pipeline, findings, POLARIS feed ============ */
+#pipeline{display:flex;align-items:flex-start;justify-content:space-between;gap:4px;margin-bottom:14px;position:relative}
+.pipeline-node{flex:1;text-align:center;position:relative;cursor:pointer}
+.pipeline-node .node-dot{width:18px;height:18px;border-radius:50%;background:var(--bg3);border:2px solid var(--line2);margin:0 auto 6px;transition:.3s}
+.pipeline-node .node-label{font-family:var(--fm);font-size:7px;letter-spacing:.05em;color:var(--faint);text-transform:uppercase;display:block}
+.pipeline-node.active .node-dot{background:var(--amber);border-color:var(--amber);animation:pulseNode 1.2s infinite}
+.pipeline-node.done .node-dot{background:var(--ok);border-color:var(--ok)}
+.pipeline-node.active .node-label{color:var(--amber)}
+.pipeline-node.done .node-label{color:var(--ok)}
+.pipeline-connector{flex:1;height:2px;background:var(--line);margin-top:8px}
+#pipelineTip{position:absolute;top:54px;left:0;right:0;text-align:center;font-family:var(--fm);font-size:9px;color:var(--dim);background:var(--bg3);border:1px solid var(--line2);border-radius:6px;padding:8px 12px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:5}
+#pipelineTip.show{opacity:1}
+@keyframes pulseNode{0%{box-shadow:0 0 0 0 rgba(224,160,90,.35)}70%{box-shadow:0 0 0 10px rgba(224,160,90,0)}100%{box-shadow:0 0 0 0 rgba(224,160,90,0)}}
+
+/* findings */
+#findings{flex:1;overflow-y:auto;margin:6px 0 14px}
+#findings .fh{font-family:var(--fm);font-size:8px;letter-spacing:.24em;color:var(--faint);margin-bottom:10px}
+.finding-card{background:var(--bg2);border:1px solid var(--line2);border-radius:8px;padding:13px 14px;margin-bottom:10px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;animation:afin .4s ease}
+.finding-card.resolved{opacity:.45}
+.finding-card .meta{flex:1;min-width:0}
+.finding-card .dev{font-family:var(--fm);font-size:8.5px;color:var(--faint);letter-spacing:.08em;text-transform:uppercase}
+.finding-card .txt{font-size:12px;font-weight:700;margin-top:4px;line-height:1.35}
+.finding-card .acts{display:flex;align-items:center;gap:8px}
+.sev{display:inline-block;font-family:var(--fm);font-size:7.5px;letter-spacing:.1em;padding:3px 7px;border-radius:4px;font-weight:700}
+.sev.crit{background:rgba(224,108,108,.14);color:var(--warn);border:1px solid rgba(224,108,108,.35)}
+.sev.high{background:rgba(224,160,90,.14);color:var(--amber);border:1px solid rgba(224,160,90,.35)}
+.sev.med{background:rgba(224,224,100,.1);color:#d8d85f;border:1px solid rgba(224,224,100,.28)}
+.sev.low{background:rgba(200,204,210,.1);color:var(--dim);border:1px solid var(--line2)}
+.btn.sm{width:auto;padding:7px 12px;font-size:9px;margin:0;letter-spacing:.12em}
+
+/* POLARIS feed */
+.af .who{color:var(--acc);font-weight:700}
+
+/* approval modal */
+#approvalModal .card{width:min(420px,92vw)}
+
+@media(max-width:920px){
+  #pipeline{margin-bottom:10px}
+  .pipeline-node .node-dot{width:14px;height:14px;margin-bottom:4px}
+  .pipeline-node .node-label{font-size:6px}
+  #pipelineTip{top:42px}
+  #findings{margin:4px 0 10px}
+}
+@media(max-width:520px){
+  .pipeline-node .node-dot{width:12px;height:12px}
+  .pipeline-node .node-label{font-size:5.5px;letter-spacing:.02em}
+  .finding-card{padding:11px 12px}
+  .finding-card .txt{font-size:11px}
+}
+
 /* responsive */
 @media(max-width:920px){
   #chrome{flex-wrap:nowrap;gap:10px}
@@ -245,6 +297,8 @@ input{font-family:var(--fm)}
 </style>
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
 
 <canvas id="net"></canvas>
 
@@ -333,9 +387,31 @@ input{font-family:var(--fm)}
 <div id="app">
   <div id="stage">
     <div id="stageInner">
+      <div id="pipeline">
+        <div class="pipeline-node" data-stage="0"><div class="node-dot"></div><span class="node-label">Observe</span></div>
+        <div class="pipeline-connector"></div>
+        <div class="pipeline-node" data-stage="1"><div class="node-dot"></div><span class="node-label">Decide</span></div>
+        <div class="pipeline-connector"></div>
+        <div class="pipeline-node" data-stage="2"><div class="node-dot"></div><span class="node-label">Authorize</span></div>
+        <div class="pipeline-connector"></div>
+        <div class="pipeline-node" data-stage="3"><div class="node-dot"></div><span class="node-label">Preview</span></div>
+        <div class="pipeline-connector"></div>
+        <div class="pipeline-node" data-stage="4"><div class="node-dot"></div><span class="node-label">Execute</span></div>
+        <div class="pipeline-connector"></div>
+        <div class="pipeline-node" data-stage="5"><div class="node-dot"></div><span class="node-label">Verify</span></div>
+        <div class="pipeline-connector"></div>
+        <div class="pipeline-node" data-stage="6"><div class="node-dot"></div><span class="node-label">Record</span></div>
+        <div class="pipeline-connector"></div>
+        <div class="pipeline-node" data-stage="7"><div class="node-dot"></div><span class="node-label">Escalate</span></div>
+        <div id="pipelineTip"></div>
+      </div>
       <div class="stagetag">// LIVE OPERATIONS</div>
       <div class="bigword" id="bigword">THE MACHINE<br>IS WORKING.</div>
       <p class="bigsub" id="bigsub">On the right, the machine is fixing routine problems on its own — that's most of the job. Your work shows up as notifications. Open one.</p>
+      <div id="findings">
+        <div class="fh">SECURITY FINDINGS</div>
+        <div id="findingList"></div>
+      </div>
       <div id="objective">
         <div class="l">CURRENT TASK</div>
         <div class="t" id="objT">Get situated</div>
@@ -345,9 +421,9 @@ input{font-family:var(--fm)}
     </div>
   </div>
   <div id="side">
-    <div id="sideHead"><div class="l">BACKGROUND · HANDLED BY AUTOMATION</div><div class="t"><span class="pulse"></span>The machine, working</div><div style="font-family:var(--fm);font-size:8.5px;color:var(--faint);margin-top:7px;letter-spacing:.06em;line-height:1.5">Known, reversible, low-risk fixes only. Access, data &amp; policy changes always go to a human.</div></div>
+    <div id="sideHead"><div class="l">POLARIS ACTIVITY FEED</div><div class="t"><span class="pulse"></span>AI agent on watch</div><div style="font-family:var(--fm);font-size:8.5px;color:var(--faint);margin-top:7px;letter-spacing:.06em;line-height:1.5">Known, reversible, low-risk fixes only. Access, data &amp; policy changes always go to a human.</div></div>
     <div id="autofeed"></div>
-    <div id="sideFoot">ROUTINE ISSUES AUTO-FIXED: <b id="afCount">0</b> · YOUR TICKETS DONE: <b id="tkCount">0</b></div>
+    <div id="sideFoot">ROUTINE ISSUES AUTO-FIXED: <b id="afCount">0</b> · YOUR TICKETS DONE: <b id="tkCount">0</b> · PENDING YOUR APPROVAL: <b id="apCount">0</b></div>
   </div>
 </div>
 
@@ -359,6 +435,22 @@ input{font-family:var(--fm)}
 <div id="mailPanel">
   <div class="mh"><span>INCOMING · TICKETS &amp; REQUESTS</span><span id="mailCt"></span></div>
   <div id="mailList"></div>
+</div>
+
+<!-- approval gate modal -->
+<div class="modal" id="approvalModal">
+  <div class="card">
+    <div class="card__head"><span class="d"></span><span class="d"></span><span class="d"></span><span class="t">APPROVAL REQUIRED</span></div>
+    <div class="card__body">
+      <div class="kick">HUMAN IN THE LOOP</div>
+      <div class="ctitle">POLARIS wants to act on something consequential.</div>
+      <p class="csub">A finding has reached the <b>Authorize</b> stage. Before it runs, the system needs your explicit approval.</p>
+      <div class="hint" id="approvalTarget">Finding on FRONT-DESK-02 · New PowerShell process flagged</div>
+      <div class="priv"><span>🔒</span><span>This is a demo. Nothing is executed on any real device.</span></div>
+      <button class="btn" id="approvalYes">APPROVE ACTION</button>
+      <button class="btn ghost" id="approvalNo">DENY / ESCALATE</button>
+    </div>
+  </div>
 </div>
 
 <!-- generic work modal (ticket detail / restore / typing) -->
@@ -535,13 +627,124 @@ el('p2').addEventListener('keydown',function(e){if(e.key==='Enter')el('b2').clic
 el('p3').addEventListener('keydown',function(e){if(e.key==='Enter')el('b3').click();});
 
 /* ================= ENTER APP ================= */
-var AF=0,TK=0;
+var AF=0,TK=0,AP=0;
+var PIPELINE=['Observe','Decide','Authorize','Preview','Execute','Verify','Record','Escalate'];
+var pipelineTipText=[
+  'Observe: continuous telemetry from every device',
+  'Decide: check against known-good baselines',
+  'Authorize: anything consequential needs human approval',
+  'Preview: show exactly what the change will do',
+  'Execute: run the approved action',
+  'Verify: confirm the fix held',
+  'Record: permanent log of what happened',
+  'Escalate: hand off ambiguous outcomes to a human'
+];
+function setPipelineStage(idx){
+  var nodes=document.querySelectorAll('.pipeline-node');
+  nodes.forEach(function(n,i){
+    n.classList.remove('active','done');
+    if(i<idx)n.classList.add('done');
+    else if(i===idx)n.classList.add('active');
+  });
+  var tip=el('pipelineTip');
+  if(idx>=0 && idx<PIPELINE.length){tip.textContent=pipelineTipText[idx];tip.classList.add('show');}
+  else{tip.classList.remove('show');}
+}
+document.querySelectorAll('.pipeline-node').forEach(function(n){
+  n.addEventListener('mouseenter',function(){
+    var idx=parseInt(n.dataset.stage,10);
+    el('pipelineTip').textContent=pipelineTipText[idx];el('pipelineTip').classList.add('show');
+  });
+  n.addEventListener('mouseleave',function(){ el('pipelineTip').classList.remove('show'); });
+  n.addEventListener('click',function(){ setPipelineStage(parseInt(n.dataset.stage,10)); });
+});
+
 function enterApp(){
   el('app').classList.add('on');
   toast('Connected. The machine is already working — watch the right side.');
   startAutoFeed();
+  renderFindings();
+  startIncidentDemo();
   setObjective('Get situated','Watch the machine work, then open your first notification (bottom-right).',5);
   setTimeout(function(){ pushTickets(); },4000);
+}
+
+/* ================= SECURITY FINDINGS PANEL ================= */
+var FINDINGS=[
+  {id:'f1',dev:'WKSTN-04',txt:'New scheduled task created by unknown process',sev:'high',resolved:false},
+  {id:'f2',dev:'FRONT-DESK-02',txt:'PrintNightmare-style driver load attempt',sev:'crit',resolved:false},
+  {id:'f3',dev:'LAPTOP-07',txt:'USB storage device mounted after hours',sev:'med',resolved:false}
+];
+function renderFindings(){
+  var box=el('findingList');if(!box)return;box.innerHTML='';
+  FINDINGS.forEach(function(f){
+    var d=document.createElement('div');d.className='finding-card'+(f.resolved?' resolved':'');d.dataset.id=f.id;
+    var sevClass={crit:'crit',high:'high',med:'med',low:'low'}[f.sev]||'low';
+    var sevLabel={crit:'CRITICAL',high:'HIGH',med:'MEDIUM',low:'LOW'}[f.sev]||'LOW';
+    d.innerHTML='<div class="meta"><div class="dev">'+f.dev+'</div><div class="txt">'+f.txt+'</div></div><div class="acts"><span class="sev '+sevClass+'">'+sevLabel+'</span>'+(f.resolved?'':'<button class="btn sm" data-resolve="'+f.id+'">Resolve</button>')+'</div>';
+    box.appendChild(d);
+  });
+  box.querySelectorAll('button[data-resolve]').forEach(function(b){
+    b.addEventListener('click',function(){ resolveFinding(b.dataset.resolve); });
+  });
+}
+function resolveFinding(id){
+  var f=FINDINGS.find(function(x){return x.id===id;});
+  if(!f || f.resolved)return;
+  f.resolved=true;AP=Math.max(0,AP-1);updateSideFoot();
+  renderFindings();
+  polarisLog('Finding resolved by technician · '+f.dev);
+  setPipelineStage(5);
+  setTimeout(function(){ setPipelineStage(6); polarisLog('Verified: change held · '+f.dev); },900);
+  setTimeout(function(){ setPipelineStage(7); polarisLog('Recorded: permanent audit log written'); },1800);
+  setTimeout(function(){ setPipelineStage(-1); },2800);
+}
+
+/* ================= DEMO INCIDENT / APPROVAL GATE ================= */
+var incidentRunning=false;
+function startIncidentDemo(){
+  if(incidentRunning)return;incidentRunning=true;
+  runIncident();
+  setInterval(function(){ if(!document.hidden)runIncident(); },24000);
+}
+function runIncident(){
+  var f=FINDINGS.find(function(x){return !x.resolved;});
+  if(!f)return; // all resolved; no new incident
+  setPipelineStage(0);
+  polarisLog('POLARIS: anomaly detected on '+f.dev+' · '+f.txt);
+  setTimeout(function(){ setPipelineStage(1); polarisLog('POLARIS: measured against baseline'); },1400);
+  setTimeout(function(){ setPipelineStage(2); polarisLog('POLARIS: awaiting technician confirmation'); showApproval(f); },2800);
+}
+function showApproval(f){
+  el('approvalTarget').textContent=f.dev+' · '+f.txt;
+  el('approvalModal').classList.add('on');
+  AP++;updateSideFoot();
+}
+el('approvalYes').addEventListener('click',function(){
+  el('approvalModal').classList.remove('on');
+  AP=Math.max(0,AP-1);updateSideFoot();
+  polarisLog('POLARIS: approval granted · containment executing');
+  setPipelineStage(3);
+  setTimeout(function(){ setPipelineStage(4); polarisLog('POLARIS: action executed'); },800);
+  setTimeout(function(){ setPipelineStage(5); polarisLog('POLARIS: verifying outcome'); },1600);
+  setTimeout(function(){ setPipelineStage(6); polarisLog('POLARIS: log recorded'); },2400);
+  setTimeout(function(){ setPipelineStage(7); polarisLog('POLARIS: continuing monitoring'); incidentRunning=false; },3200);
+});
+el('approvalNo').addEventListener('click',function(){
+  el('approvalModal').classList.remove('on');
+  AP=Math.max(0,AP-1);updateSideFoot();
+  polarisLog('POLARIS: denied · escalating to human engineer');
+  toast('Escalated to a human engineer.','warn');
+  setPipelineStage(7);
+  setTimeout(function(){ setPipelineStage(-1); incidentRunning=false; },1800);
+});
+function updateSideFoot(){ el('apCount').textContent=AP; }
+function polarisLog(msg){
+  var feed=el('autofeed');
+  var d=document.createElement('div');d.className='af';
+  d.innerHTML='<div class="who">POLARIS</div><div class="tt">'+msg+'</div>';
+  feed.prepend(d);
+  while(feed.children.length>8)feed.lastChild.remove();
 }
 
 /* ================= AUTO-FIX SIDE FEED ================= */

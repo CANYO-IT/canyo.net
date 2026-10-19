@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en-US" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CanyoOS — The operating layer for managed security.</title>
-  <meta name="description" content="CanyoOS watches, decides, and acts across every endpoint you manage — so nothing drifts, nothing slips, and nothing happens without a record.">
+  <title>CanyoOS | The Operating Layer for Managed Security</title>
+  <meta name="description" content="CanyoOS is CANYO's internal operating layer: observe, decide, authorize, preview, execute, verify, record, escalate.">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -81,7 +81,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=29">
+  <link rel="stylesheet" href="../styles.css?v=31">
   <link rel="icon" type="image/png" href="../assets/favicon-dark.png" sizes="512x512" media="(prefers-color-scheme: dark)">
   <link rel="icon" type="image/png" href="../assets/favicon-light.png" sizes="512x512" media="(prefers-color-scheme: light)">
   <link rel="icon" type="image/png" href="../assets/favicon-dark-32.png" sizes="32x32" media="(prefers-color-scheme: dark)">
@@ -215,21 +215,23 @@
       animation: flow 4.5s linear infinite;
     }
     @keyframes flow { to { left: 100%; } }
-    .os-loop__nodes { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; position: relative; z-index: 2; }
+    .os-loop__nodes { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; position: relative; z-index: 2; }
     .os-loop__node { text-align: center; opacity: .55; transform: translateY(8px); transition: opacity .6s, transform .6s; }
     .os-loop__node.in { opacity: 1; transform: none; }
     .os-loop__icon {
-      width: 68px; height: 68px; margin: 0 auto 16px; border-radius: 50%;
+      width: 52px; height: 52px; margin: 0 auto 14px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       border: 1px solid var(--os-line); background: color-mix(in srgb, var(--os-charcoal) 70%, transparent);
       transition: border-color .4s, box-shadow .4s, transform .4s;
     }
-    .os-loop__node.in .os-loop__icon { border-color: rgba(52,213,196,.55); box-shadow: 0 0 40px rgba(52,213,196,.18); transform: scale(1.05); }
-    .os-loop__icon svg { width: 26px; height: 26px; stroke: var(--os-text); }
+    .os-loop__node.in .os-loop__icon { border-color: rgba(52,213,196,.55); box-shadow: 0 0 30px rgba(52,213,196,.16); transform: scale(1.05); }
+    .os-loop__icon svg { width: 22px; height: 22px; stroke: var(--os-text); }
     .os-loop__node.in .os-loop__icon svg { stroke: var(--os-accent); }
-    .os-loop__label { font-size: .92rem; font-weight: 700; margin: 0 0 6px; }
-    .os-loop__desc { font-size: .78rem; line-height: 1.5; color: var(--os-text-dim); margin: 0 auto; max-width: 150px; }
+    .os-loop__label { font-size: .82rem; font-weight: 700; margin: 0 0 6px; }
+    .os-loop__desc { font-size: .72rem; line-height: 1.45; color: var(--os-text-dim); margin: 0 auto; max-width: 120px; }
     .os-loop__closing { margin-top: 52px; font-size: .95rem; color: var(--os-text-faint); }
+    @media(max-width: 900px){ .os-loop__nodes{ grid-template-columns: repeat(4, 1fr); } }
+    @media(max-width: 620px){ .os-loop__nodes{ grid-template-columns: repeat(2, 1fr); gap: 16px; } }
 
     /* observe */
     .os-observe .os-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
@@ -393,19 +395,18 @@
         <img class="brand__logo brand__logo--word logo-dark" src="../assets/canyo-wordmark-white.png" alt="CANYO">
         <img class="brand__logo brand__logo--word logo-light" src="../assets/canyo-wordmark-black.png" alt="CANYO">
       </a>
-      <nav class="nav__links nav__links--dense" id="navLinks">
-        <a href="../">Home</a>
+      <nav class="nav__links" id="navLinks">
         <a href="../#services">Services</a>
         <a href="../#process">Process</a>
         <a href="../#stack">Stack</a>
         <a href="../#pricing">Pricing</a>
         <a href="../#faq">FAQ</a>
         <a href="../#reviews">Reviews</a>
+        <a href="../blog/">Blog</a>
         <a href="../about/" class="nav__highlight">About</a>
         <a href="../inside-canyo/" class="nav__highlight">Inside CANYO</a>
-        <a href="./" class="nav__highlight" aria-current="page">CanyoOS</a>
+        <a href="../canyo-os/" class="nav__highlight" aria-current="page">CanyoOS</a>
         <a href="../machine/" class="nav__console" aria-label="The Machine — interactive ops console" title="SYSTEM ACCESS">//</a>
-        <a href="../#contact" class="nav__cta">Get a Free Assessment</a>
       </nav>
       <div class="nav__controls">
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark / light mode" title="Toggle theme">
@@ -419,42 +420,31 @@
     </div>
   </header>
 
-  <main>
+  <main id="main">
 
     <!-- HERO -->
-    <section class="os-sec os-hero" id="top">
-      <div class="os-hero__grid" aria-hidden="true"></div>
-      <div class="os-hero__orb" aria-hidden="true">
-        <svg viewBox="0 0 400 400" fill="none">
-          <circle cx="200" cy="200" r="90" stroke="url(#orbGrad)" stroke-width="1" opacity=".35">
-            <animate attributeName="r" values="90;100;90" dur="4s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values=".35;.5;.35" dur="4s" repeatCount="indefinite"/>
-          </circle>
-          <circle cx="200" cy="200" r="130" stroke="url(#orbGrad)" stroke-width="1" opacity=".22">
-            <animate attributeName="r" values="130;145;130" dur="5s" repeatCount="indefinite"/>
-          </circle>
-          <circle cx="200" cy="200" r="170" stroke="url(#orbGrad)" stroke-width="1" opacity=".12">
-            <animate attributeName="r" values="170;185;170" dur="6s" repeatCount="indefinite"/>
-          </circle>
-          <defs>
-            <linearGradient id="orbGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#34d5c4"/>
-              <stop offset="100%" stop-color="#6ee7ff"/>
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-      <div class="os-wrap os-center">
-        <span class="os-eyebrow rv">Introducing</span>
-        <h1 class="os-wordmark rv" data-d="1">
-          <img class="os-wordmark__logo logo-dark" src="../assets/canyo-logo-white.png" alt="">
-          <img class="os-wordmark__logo logo-light" src="../assets/canyo-logo-black.png" alt="">
-          CanyoOS
+    <section class="hero" id="top">
+      <div class="hero__grid-bg"></div>
+      <div class="hero__glow"></div>
+      <div class="container hero__inner">
+        <div class="hero__logo-stage reveal">
+          <div class="hero__logo-ring" aria-hidden="true"></div>
+          <div class="hero__logo-ring hero__logo-ring--2" aria-hidden="true"></div>
+          <img class="hero__logo-img logo-dark" src="../assets/canyo-logo-white.png" alt="CANYO">
+          <img class="hero__logo-img logo-light" src="../assets/canyo-logo-black.png" alt="CANYO">
+        </div>
+
+        <p class="bts-eyebrow mono reveal">THE OPERATING LAYER</p>
+        <h1 class="hero__title reveal" style="font-size: 0;">
+          <img class="canyoos-hero-lockup logo-dark reveal" src="../assets/canyoos-lockup-white.png?v=1792449982" alt="CANYO OS" style="height: clamp(48px, 9vw, 96px); width: auto; display: inline-block;">
+          <img class="canyoos-hero-lockup logo-light reveal" src="../assets/canyoos-lockup-black.png?v=1792449982" alt="CANYO OS" style="height: clamp(48px, 9vw, 96px); width: auto; display: inline-block;">
         </h1>
-        <p class="os-h1 rv" data-d="2" style="margin-top: 4px;">Security that doesn't wait for you to notice.</p>
-        <p class="os-sub rv" data-d="3">CanyoOS is the always-on layer that watches every endpoint you manage, tells the difference between normal and wrong, and handles it — automatically, accountably, and in full view.</p>
-        <div class="os-cta-row rv" data-d="4">
-          <a href="#loop" class="os-link">How it works ↓</a>
+
+        <p class="hero__sub reveal">The always-on layer that watches every endpoint you manage, tells the difference between normal and wrong, and handles it — automatically, accountably, and in full view.</p>
+
+        <div class="hero__actions reveal">
+          <a href="#loop" class="btn btn--ghost">How it works</a>
+          <a href="../machine/" class="btn btn--primary">We built a simulation</a>
         </div>
       </div>
     </section>
@@ -475,46 +465,55 @@
     <!-- LOOP -->
     <section class="os-sec os-sec--dark" id="loop">
       <div class="os-wrap os-center">
-        <span class="os-eyebrow rv">The Canyo Loop</span>
+        <span class="os-eyebrow rv">The CANYO Operating Loop</span>
         <h2 class="os-h2 rv" data-d="1">One continuous loop. Watching, deciding, acting — on repeat, forever.</h2>
-        <p class="os-sub rv" data-d="2">Every endpoint under CanyoOS runs through the same disciplined cycle, thousands of times a day, without anyone having to ask it to.</p>
+        <p class="os-sub rv" data-d="2">Every endpoint under CanyoOS runs through the same disciplined cycle, without anyone having to ask it to.</p>
 
         <div class="os-loop__diagram rv" data-d="3">
           <div class="os-loop__track" aria-hidden="true"></div>
           <div class="os-loop__nodes">
-            <div class="os-loop__node" data-stage="0">
-              <div class="os-loop__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8-10-8-10-8Z"/><circle cx="12" cy="12" r="3"/></svg></div>
-              <p class="os-loop__label">Observe</p>
-              <p class="os-loop__desc">Every device continuously reports what's actually true about it.</p>
+            <div class="os-loop__node">
+              <div class="os-loop__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+              <div class="os-loop__label">Observe</div>
+              <div class="os-loop__desc">Every device continuously reports what's actually true about it.</div>
             </div>
-            <div class="os-loop__node" data-stage="1">
-              <div class="os-loop__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-2 5-5 2 5 2 2 5 2-5 5-2-5-2Z"/></svg></div>
-              <p class="os-loop__label">Decide</p>
-              <p class="os-loop__desc">Observations are measured against what should be true.</p>
+            <div class="os-loop__node">
+              <div class="os-loop__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+              <div class="os-loop__label">Decide</div>
+              <div class="os-loop__desc">Observations are measured against what should be true.</div>
             </div>
-            <div class="os-loop__node" data-stage="2">
-              <div class="os-loop__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg></div>
-              <p class="os-loop__label">Authorize</p>
-              <p class="os-loop__desc">Anything consequential checks for permission first.</p>
+            <div class="os-loop__node">
+              <div class="os-loop__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+              <div class="os-loop__label">Authorize</div>
+              <div class="os-loop__desc">Anything consequential checks for permission first.</div>
             </div>
-            <div class="os-loop__node" data-stage="3">
-              <div class="os-loop__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.09 12.11a1.77 1.77 0 0 0 0 2.48l5.83 5.83a1.77 1.77 0 0 0 2.48 0L22 10.5"/><path d="M16 2h6v6"/></svg></div>
-              <p class="os-loop__label">Act</p>
-              <p class="os-loop__desc">Approved responses are carried out directly on the device.</p>
+            <div class="os-loop__node">
+              <div class="os-loop__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 10-8 10 8 10 8-4 8-10 8-10-8-10-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+              <div class="os-loop__label">Preview</div>
+              <div class="os-loop__desc">Before acting, CanyoOS shows exactly what the change will do.</div>
             </div>
-            <div class="os-loop__node" data-stage="4">
+            <div class="os-loop__node">
+              <div class="os-loop__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+              <div class="os-loop__label">Execute</div>
+              <div class="os-loop__desc">The approved action runs.</div>
+            </div>
+            <div class="os-loop__node">
               <div class="os-loop__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-              <p class="os-loop__label">Verify</p>
-              <p class="os-loop__desc">CanyoOS confirms the fix actually held.</p>
+              <div class="os-loop__label">Verify</div>
+              <div class="os-loop__desc">CanyoOS confirms the fix actually held.</div>
             </div>
-            <div class="os-loop__node" data-stage="5">
-              <div class="os-loop__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-              <p class="os-loop__label">Escalate</p>
-              <p class="os-loop__desc">When something is ambiguous, a human is brought in by design.</p>
+            <div class="os-loop__node">
+              <div class="os-loop__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+              <div class="os-loop__label">Record</div>
+              <div class="os-loop__desc">What happened is permanently logged — not assumed.</div>
+            </div>
+            <div class="os-loop__node">
+              <div class="os-loop__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+              <div class="os-loop__label">Escalate</div>
+              <div class="os-loop__desc">When something is ambiguous, a human is brought in.</div>
             </div>
           </div>
         </div>
-
         <p class="os-loop__closing rv" data-d="4">Every pass through the loop is recorded. Nothing CanyoOS does happens off the books.</p>
       </div>
     </section>
@@ -645,16 +644,18 @@
         <p>Structured IT management for businesses — monitoring, maintenance, support, and recovery, handled end-to-end.</p>
         <p class="footer__slogan mono">ENGINEERED IT. RELIABLE RESULTS.</p>
       </div>
-      <div class="footer__col">
+                  <div class="footer__col">
         <h4 class="mono">SITE</h4>
-        <a href="../">Home</a>
         <a href="../#services">Services</a>
         <a href="../#process">Process</a>
+        <a href="../#stack">Stack</a>
+        <a href="../#pricing">Pricing</a>
+        <a href="../#faq">FAQ</a>
+        <a href="../#reviews">Reviews</a>
+        <a href="../blog/">Blog</a>
         <a href="../about/">About</a>
-        <a href="../#stack">Our Stack</a>
         <a href="../inside-canyo/">Inside CANYO</a>
         <a href="../canyo-os/">CanyoOS</a>
-        <a href="../#pricing">Pricing</a>
       </div>
       <div class="footer__col">
         <h4 class="mono">LEGAL</h4>
@@ -674,10 +675,11 @@
     <div class="container footer__bar">
       <span>© <span id="year"></span> CANYO. All rights reserved. &nbsp;·&nbsp; <span class="accent">Engineered IT. Reliable Results.</span></span>
       <span class="footer__status mono"><span class="pulse-dot"></span> STATUS: OPERATIONAL</span>
+      <span><a href="../blog/" style="color:var(--muted,#9a9aa4);text-decoration:none;font-size:.78rem;">Follow our build progress on the blog →</a></span>
     </div>
   </footer>
 
-  <script src="../app.js?v=4"></script>
+  <script src="../app.js?v=6"></script>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();

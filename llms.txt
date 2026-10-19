@@ -8,11 +8,13 @@
 - [Process](https://canyo.net/process/): Free assessment, stabilize, manage, report & review
 - [Services](https://canyo.net/services/): 24/7 monitoring & maintenance, remote & on-site support, backup & recovery, security & compliance, IT documentation & asset management, new-hire onboarding, health reports & reviews
 - [Pricing](https://canyo.net/pricing/): $200/user up to 10 users; $2,000 base + $150/user beyond 10; annual service agreements
+- [Stack](https://canyo.net/stack/): Full technology stack with role, benefit, and outage notes for each tool(https://canyo.net/pricing/): $200/user up to 10 users; $2,000 base + $150/user beyond 10; annual service agreements
 - [FAQ](https://canyo.net/faq/): 23 questions covering monitoring, backups, security, pricing, compliance, remote access, and more
 - [Reviews](https://canyo.net/reviews/): Early feedback, 5.0 rated on Google
 - [Contact](https://canyo.net/contact/): contact@canyo.net, +1-520-336-7521
 - [Inside CANYO](https://canyo.net/inside-canyo/): Technical deep-dive — least privilege, defense in depth, verification over trust, isolation by default, layered access model, incident response, reversible-first operations
 - [CanyoOS](https://canyo.net/canyo-os/): CANYO's proprietary, vertically integrated operating layer for managed security — observe, decide, authorize, act, verify, escalate. Operated exclusively by CANYO.
+- [Blog](https://canyo.net/blog/): Build progress, field notes, and updates from CANYO
 - [The CANYO Machine](https://canyo.net/machine/): Interactive game simulating a day in managed IT — background auto-remediation, secure least-privilege file restore, AI-handled tickets, human escalation for judgment calls, hands-on manual fixes. Demonstrates CANYO's real operating model.
 
 ## Technology Stack
