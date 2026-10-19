@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en-US" data-theme="dark">
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-M3MSYTL207"></script>
@@ -11,8 +11,8 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inside CANYO: How We Actually Run | Tucson Managed IT</title>
-  <meta name="description" content="CANYO is a Tucson-based managed IT services provider. Here's how we operate our own infrastructure: least privilege, defense in depth, verification over trust, isolation by default.">
+  <title>Inside CANYO | How We Actually Run</title>
+  <meta name="description" content="See how CANYO designs its infrastructure: least privilege, defense in depth, verification over trust, and isolation by default.">
   <link rel="canonical" href="https://canyo.net/inside-canyo/">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta name="geo.region" content="US-AZ">
@@ -29,6 +29,8 @@
   <meta property="og:title" content="Inside CANYO: How We Actually Run">
   <meta property="og:description" content="You trust us with your technology. Here's what happens behind our walls — least privilege, defense in depth, verification, isolation.">
   <meta property="og:image" content="https://canyo.net/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="CANYO">
   <meta property="og:locale" content="en_US">
 
@@ -42,7 +44,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=27">
+  <link rel="stylesheet" href="../styles.css?v=31">
   <style>
     .wt-box{background:var(--bg-2,#101014);border:1px solid var(--line,rgba(128,128,128,.18));border-radius:8px;overflow:hidden;margin-top:40px;max-width:760px}
     .wt-head{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line,rgba(128,128,128,.18))}
@@ -149,6 +151,8 @@
   </script>
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
   <div class="scroll-progress" aria-hidden="true"></div>
 
   <!-- ============ NAV ============ -->
@@ -161,19 +165,18 @@
         <img class="brand__logo brand__logo--word logo-light" src="../assets/canyo-wordmark-black.png" alt="CANYO">
       </a>
 
-      <nav class="nav__links nav__links--dense" id="navLinks">
-        <a href="../">Home</a>
+      <nav class="nav__links" id="navLinks">
         <a href="../#services">Services</a>
         <a href="../#process">Process</a>
         <a href="../#stack">Stack</a>
         <a href="../#pricing">Pricing</a>
         <a href="../#faq">FAQ</a>
         <a href="../#reviews">Reviews</a>
+        <a href="../blog/">Blog</a>
         <a href="../about/" class="nav__highlight">About</a>
-        <a href="./" class="nav__highlight" aria-current="page">Inside CANYO</a>
+        <a href="../inside-canyo/" class="nav__highlight" aria-current="page">Inside CANYO</a>
         <a href="../canyo-os/" class="nav__highlight">CanyoOS</a>
         <a href="../machine/" class="nav__console" aria-label="The Machine — interactive ops console" title="SYSTEM ACCESS">//</a>
-        <a href="../#contact" class="nav__cta">Get a Free Assessment</a>
       </nav>
 
       <div class="nav__controls">
@@ -188,7 +191,7 @@
     </div>
   </header>
 
-  <main id="top">
+  <main id="main">
 
     <!-- ============ PAGE HERO ============ -->
     <section class="hero">
@@ -369,6 +372,11 @@
             <p>The applications themselves maintain their own authentication. We don't treat the gateway as a replacement for application-level security — where practical, the application has its own separate credentials.</p>
             <span class="card__tag mono">APPLICATION BOUNDARY</span>
           </article>
+          <article class="card reveal">
+            <h3>POLARIS</h3>
+            <p>Our internal AI agent handles first-pass triage and continuous monitoring, surfacing patterns and low-risk conditions to our technicians. It doesn't replace human judgment — it gives our team the earliest possible signal so they can make the decision that matters.</p>
+            <span class="card__tag mono">TRIAGE + MONITORING</span>
+          </article>
         </div>
 
         <p class="reveal" style="text-align: center; margin-top: 34px; font-weight: 600; max-width: 720px; margin-inline: auto;">The products themselves aren't the security strategy. The architecture is. Together, they create multiple independent controls between an unauthorized party and the tools we use to operate CANYO.</p>
@@ -473,6 +481,7 @@
           <div class="matrix__row"><span>Delete or alter data</span><span class="matrix__no">No</span><span>Yes — always</span></div>
           <div class="matrix__row"><span>Change security policy</span><span class="matrix__no">No</span><span>Yes — always</span></div>
           <div class="matrix__row"><span>Restore from backup</span><span class="matrix__no">No</span><span>Yes — verified and approved</span></div>
+          <div class="matrix__row"><span>Automated fix doesn't verify as successful</span><span class="matrix__no">No</span><span>Escalates automatically</span></div>
         </div>
         <p class="reveal" style="margin-top: 22px; color: var(--text-dim);">The pattern is deliberate: automation handles <strong>known, reversible, low-risk</strong> actions. Anything that changes access, data, or policy requires a human.</p>
       </div>
@@ -508,43 +517,51 @@
       <div class="container">
         <p class="kicker mono reveal">// WHEN SOMETHING GOES WRONG</p>
         <h2 class="section__title reveal">How CANYO Responds to an Incident</h2>
-        <p class="section__sub reveal" style="margin-top: 0; max-width: 720px;">Every incident follows the same disciplined sequence — no improvisation, no skipped steps.</p>
+        <p class="section__sub reveal" style="margin-top: 0; max-width: 720px;">Every incident follows the same disciplined sequence — no improvisation, no skipped steps. We apply the CANYO Operating Loop to incident response: it's the same eight-stage loop used everywhere else, just framed around what happens when something goes wrong.</p>
 
         <div class="bts-layers reveal">
           <div class="bts-layer">
             <span class="bts-layer__num">01</span>
             <div class="bts-layer__body">
-              <h3>Detect</h3>
-              <p>AI-native monitoring identifies an abnormal condition — a stopped service, a failed backup, an unexpected change, or malware detected by endpoint protection.</p>
+              <h3>Observe</h3>
+              <p>Continuous monitoring reports what's actually happening — a stopped service, a failed backup, an unexpected change, or malware detected by endpoint protection.</p>
             </div>
           </div>
           <div class="bts-layer__arrow" aria-hidden="true">↓</div>
           <div class="bts-layer">
             <span class="bts-layer__num">02</span>
             <div class="bts-layer__body">
-              <h3>Isolate</h3>
-              <p>If the condition poses a risk, the affected system is contained to prevent spread. When endpoint protection detects malware, the device's network access is automatically restricted — preventing lateral movement into client servers.</p>
+              <h3>Decide</h3>
+              <p>The condition is measured against policy. Is this normal? Is it risky? Does it need action now or later?</p>
             </div>
           </div>
           <div class="bts-layer__arrow" aria-hidden="true">↓</div>
           <div class="bts-layer">
             <span class="bts-layer__num">03</span>
             <div class="bts-layer__body">
-              <h3>Investigate</h3>
-              <p>The root cause is identified — not just the symptom.</p>
+              <h3>Authorize</h3>
+              <p>Anything consequential — isolation, data changes, policy changes — is gated by permission. Containment of malware is pre-authorized because waiting isn't safe; everything else waits for a human.</p>
             </div>
           </div>
           <div class="bts-layer__arrow" aria-hidden="true">↓</div>
           <div class="bts-layer">
             <span class="bts-layer__num">04</span>
             <div class="bts-layer__body">
-              <h3>Remediate</h3>
-              <p>The problem is corrected using controlled, reversible procedures.</p>
+              <h3>Preview</h3>
+              <p>Before acting, we look at what the response will do: what systems it touches, what access it changes, what could go wrong.</p>
             </div>
           </div>
           <div class="bts-layer__arrow" aria-hidden="true">↓</div>
           <div class="bts-layer">
             <span class="bts-layer__num">05</span>
+            <div class="bts-layer__body">
+              <h3>Execute</h3>
+              <p>The approved action runs — whether that's isolating an endpoint, restarting a service, or applying a reversible fix.</p>
+            </div>
+          </div>
+          <div class="bts-layer__arrow" aria-hidden="true">↓</div>
+          <div class="bts-layer">
+            <span class="bts-layer__num">06</span>
             <div class="bts-layer__body">
               <h3>Verify</h3>
               <p>The fix is confirmed against the expected outcome — not assumed to have worked.</p>
@@ -552,13 +569,24 @@
           </div>
           <div class="bts-layer__arrow" aria-hidden="true">↓</div>
           <div class="bts-layer">
-            <span class="bts-layer__num">06</span>
+            <span class="bts-layer__num">07</span>
             <div class="bts-layer__body">
-              <h3>Document</h3>
-              <p>What happened, what was done, and what the result was — recorded for the client and for CANYO's institutional memory.</p>
+              <h3>Record</h3>
+              <p>What happened, what was done, and what the result was — logged permanently for the client and for CANYO's records.</p>
+            </div>
+          </div>
+          <div class="bts-layer__arrow" aria-hidden="true">↓</div>
+          <div class="bts-layer">
+            <span class="bts-layer__num">08</span>
+            <div class="bts-layer__body">
+              <h3>Escalate</h3>
+              <p>When something is ambiguous, unusual, or high-stakes, a human is brought in — sometimes before any action is taken.</p>
             </div>
           </div>
         </div>
+
+        <h3 class="reveal" style="font-size: 1.4rem; margin-top: 48px; margin-bottom: 16px;">What You're Told</h3>
+        <p class="reveal" style="color: var(--text-dim); margin-bottom: 18px;">You don't sit and wait for a status update. As soon as we have a real answer — not a guess, not a placeholder — we communicate it. For active incidents, that means an initial acknowledgment quickly, followed by a clear update once we've observed, decided, and verified what's actually going on. You get the facts we have, the action we're taking, and what we still need from you. No theater, no vague "we're looking into it" without a timeline.</p>
       </div>
     </section>
 
@@ -576,12 +604,14 @@
           </div>
           <div class="wt-screen" id="wtScreen"><div class="wt-idle mono">PRESS PLAY TO WATCH AN INCIDENT RESOLVE ITSELF.</div></div>
           <div class="wt-stages" id="wtStages">
-            <span class="wt-stage" data-s="0">01 DETECT</span>
-            <span class="wt-stage" data-s="1">02 ISOLATE</span>
-            <span class="wt-stage" data-s="2">03 INVESTIGATE</span>
-            <span class="wt-stage" data-s="3">04 REMEDIATE</span>
-            <span class="wt-stage" data-s="4">05 VERIFY</span>
-            <span class="wt-stage" data-s="5">06 DOCUMENT</span>
+          <span class="wt-stage" data-s="0">01 OBSERVE</span>
+          <span class="wt-stage" data-s="1">02 DECIDE</span>
+          <span class="wt-stage" data-s="2">03 AUTHORIZE</span>
+          <span class="wt-stage" data-s="3">04 PREVIEW</span>
+          <span class="wt-stage" data-s="4">05 EXECUTE</span>
+          <span class="wt-stage" data-s="5">06 VERIFY</span>
+          <span class="wt-stage" data-s="6">07 RECORD</span>
+          <span class="wt-stage" data-s="7">08 ESCALATE</span>
           </div>
           <div class="wt-controls">
             <button class="wt-btn mono" id="wtPlay">▶ PLAY</button>
@@ -813,14 +843,18 @@
         <p>Structured IT management for businesses — monitoring, maintenance, support, and recovery, handled end-to-end.</p>
         <p class="footer__slogan mono">ENGINEERED IT. RELIABLE RESULTS.</p>
       </div>
-      <div class="footer__col">
+                  <div class="footer__col">
         <h4 class="mono">SITE</h4>
         <a href="../#services">Services</a>
         <a href="../#process">Process</a>
-        <a href="../about/">About</a>
-        <a href="../#stack">Our Stack</a>
-        <a href="./">Inside CANYO</a>
+        <a href="../#stack">Stack</a>
         <a href="../#pricing">Pricing</a>
+        <a href="../#faq">FAQ</a>
+        <a href="../#reviews">Reviews</a>
+        <a href="../blog/">Blog</a>
+        <a href="../about/">About</a>
+        <a href="../inside-canyo/">Inside CANYO</a>
+        <a href="../canyo-os/">CanyoOS</a>
       </div>
       <div class="footer__col">
         <h4 class="mono">LEGAL</h4>
@@ -843,25 +877,29 @@
     </div>
   </footer>
 
-  <script src="../app.js?v=4"></script>
+  <script src="../app.js?v=6"></script>
   <script>
   (function(){
     var screen=document.getElementById('wtScreen'),stages=[].slice.call(document.querySelectorAll('.wt-stage'));
     var playBtn=document.getElementById('wtPlay'),replayBtn=document.getElementById('wtReplay');
     if(!screen)return;
     var SEQ=[
-      {s:0,t:'09:14:02',cls:'',txt:'[DETECT]  AI monitoring flagged an unknown device on the client network.'},
+      {s:0,t:'09:14:02',cls:'',txt:'[OBSERVE] AI monitoring flagged an unknown device on the client network.'},
       {s:0,t:'09:14:02',cls:'st',txt:'          Source: endpoint protection · confidence high'},
-      {s:1,t:'09:14:03',cls:'',txt:'[ISOLATE] Device moved to a quarantined guest zone automatically.'},
-      {s:1,t:'09:14:03',cls:'st',txt:'          It can reach the internet, but not your files or servers.'},
-      {s:2,t:'09:14:05',cls:'',txt:'[INVESTIGATE] Identified: a new employee\'s personal phone.'},
-      {s:2,t:'09:14:05',cls:'st',txt:'          No malicious activity. Just an unregistered device.'},
-      {s:3,t:'09:14:06',cls:'',txt:'[REMEDIATE] Applied the standard policy: registered the device,'},
-      {s:3,t:'',cls:'',txt:'            gave it approved access, revoked the quarantine.'},
-      {s:4,t:'09:14:09',cls:'',txt:'[VERIFY]  Confirmed the device can reach what it needs — and nothing else.'},
-      {s:4,t:'09:14:09',cls:'ok',txt:'          ✓ Access correct · ✓ Network segmented · ✓ No exposure'},
-      {s:5,t:'09:14:10',cls:'',txt:'[DOCUMENT] Logged the event, the decision, and the outcome to the client record.'},
-      {s:5,t:'09:14:10',cls:'ok',txt:'[DONE]    8 seconds. No downtime. No one had to think about it.'}
+      {s:1,t:'09:14:03',cls:'',txt:'[DECIDE]  Unknown device = unregistered guest. Risk: low but not allowed.'},
+      {s:1,t:'09:14:03',cls:'st',txt:'          Policy says quarantine until verified.'},
+      {s:2,t:'09:14:04',cls:'',txt:'[AUTHORIZE] Containment is pre-approved. Auto-isolate enabled.'},
+      {s:2,t:'09:14:04',cls:'st',txt:'          No human required for quarantine-only action.'},
+      {s:3,t:'09:14:05',cls:'',txt:'[PREVIEW] Device moved to quarantined guest zone.'},
+      {s:3,t:'09:14:05',cls:'st',txt:'          It can reach the internet, but not your files or servers.'},
+      {s:4,t:'09:14:06',cls:'',txt:'[EXECUTE] Applied the standard policy: registered the device,'},
+      {s:4,t:'',cls:'',txt:'            gave it approved access, revoked the quarantine.'},
+      {s:5,t:'09:14:09',cls:'',txt:'[VERIFY]  Confirmed the device can reach what it needs — and nothing else.'},
+      {s:5,t:'09:14:09',cls:'ok',txt:'          ✓ Access correct · ✓ Network segmented · ✓ No exposure'},
+      {s:6,t:'09:14:10',cls:'',txt:'[RECORD]  Logged the event, the decision, and the outcome to the client record.'},
+      {s:6,t:'09:14:10',cls:'st',txt:'          Permanent record. Not a summary written later.'},
+      {s:7,t:'09:14:11',cls:'',txt:'[ESCALATE] No escalation needed — outcome was clear.'},
+      {s:7,t:'09:14:11',cls:'ok',txt:'[DONE]    9 seconds. No downtime. No one had to think about it.'}
     ];
     var timers=[];
     function clearAll(){timers.forEach(clearTimeout);timers=[];}

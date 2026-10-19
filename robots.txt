@@ -3,11 +3,13 @@
 
 User-agent: *
 Allow: /
+Disallow: /legal/*.bak*
+Disallow: /machine/login
+Disallow: /assets/*
 
 # AI crawlers — allow indexing, disallow training
 User-agent: GPTBot
 Allow: /
-Content-Signal: search=yes, ai-input=yes, ai-train=no
 
 User-agent: ChatGPT-User
 Allow: /
@@ -42,7 +44,5 @@ Disallow: /
 
 User-agent: cohere-ai
 Disallow: /
-
-Content-Signal: search=yes, ai-input=yes, ai-train=no
 
 Sitemap: https://canyo.net/sitemap.xml
