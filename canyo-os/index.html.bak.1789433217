@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CANYO OS — The First Self-Verifying Operating Layer for Business IT</title>
+  <meta name="description" content="CANYO OS is the industry's first self-verifying operating layer for business IT: a signed, policy-driven control plane that observes, decides, verifies, and proves every action on your machines — then shows you the receipt.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CANYO">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://canyo.net/canyo-os/">
+  <meta property="og:title" content="CANYO OS — The First Self-Verifying Operating Layer for Business IT">
+  <meta property="og:description" content="Not another RMM. A signed, policy-bound control plane that maintains a known-good state on every machine — and proves it.">
+  <meta property="og:image" content="https://canyo.net/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://canyo.net/canyo-os/">
+  <meta name="twitter:title" content="CANYO OS — The First Self-Verifying Operating Layer for Business IT">
+  <meta name="twitter:description" content="A signed, policy-bound control plane that maintains a known-good state on every machine — and proves it.">
+  <meta name="twitter:image" content="https://canyo.net/assets/og-image.png">
+
+  <!-- Canonical + robots -->
+  <link rel="canonical" href="https://canyo.net/canyo-os/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="author" content="CANYO">
+  <meta name="theme-color" content="#0b0b12" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f4f5f9" media="(prefers-color-scheme: light)">
+  <link rel="alternate" hreflang="en-US" href="https://canyo.net/canyo-os/">
+  <link rel="alternate" hreflang="x-default" href="https://canyo.net/canyo-os/">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://canyo.net/canyo-os/#webpage",
+        "url": "https://canyo.net/canyo-os/",
+        "name": "CANYO OS — The First Self-Verifying Operating Layer for Business IT",
+        "description": "CANYO OS is the industry's first self-verifying operating layer for business IT: a signed, policy-driven control plane that observes, decides, verifies, and proves every action on your machines.",
+        "isPartOf": {"@id": "https://canyo.net/#website"},
+        "about": {"@id": "https://canyo.net/#organization"},
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://canyo.net/"},
+            {"@type": "ListItem", "position": 2, "name": "CANYO OS", "item": "https://canyo.net/canyo-os/"}
+          ]
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "CANYO OS",
+        "url": "https://canyo.net/canyo-os/",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Windows, macOS, Linux",
+        "description": "A self-verifying, policy-driven operating layer that maintains a known-good state across business endpoints and proves every action with evidence.",
+        "creator": {"@id": "https://canyo.net/#organization"},
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Internal operating layer included with CANYO managed services."}
+      }
+    ]
+  }
+  </script>
+
+  <!-- Theme before first paint -->
+  <script>
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem('canyo-theme'); } catch (e) {}
+      var theme = stored || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css?v=27">
+  <link rel="icon" type="image/png" href="../assets/favicon-dark.png" sizes="512x512" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" href="../assets/favicon-light.png" sizes="512x512" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" href="../assets/favicon-dark-32.png" sizes="32x32" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" href="../assets/favicon-light-32.png" sizes="32x32" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" href="../assets/favicon-dark-16.png" sizes="16x16" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" href="../assets/favicon-light-16.png" sizes="16x16" media="(prefers-color-scheme: light)">
+
+  <style>
+    /* ============================================================
+       CANYO OS — compact, horizontal, fast-reveal, dense
+       ============================================================ */
+    .os{
+      --vio:#7b5cff; --cy:#37cdea; --grn:#2fd39a; --am:#ffab4d; --ros:#ff6d9c;
+    }
+    [data-theme="dark"] .os{
+      --bg:#0b0b12; --bg-alt:#10101a; --surface:#14141f; --surface-2:#1a1a28;
+      --text:#f4f4f9; --text-dim:#a4a4b6; --text-faint:#6b6b7c;
+      --border:rgba(255,255,255,.07); --border-strong:rgba(255,255,255,.14);
+    }
+    [data-theme="light"] .os{
+      --bg:#f4f5f9; --bg-alt:#ffffff; --surface:#ffffff; --surface-2:#eef0f6;
+      --text:#14141d; --text-dim:#4e4e5a; --text-faint:#8b8b98;
+      --border:rgba(18,18,35,.08); --border-strong:rgba(18,18,35,.16);
+    }
+
+    /* ---------- subtle animated mesh background ---------- */
+    .os-bg{ position:fixed; inset:0; z-index:-3; overflow:hidden; background:var(--bg); transition:background .4s ease; }
+    .os-bg .blob{
+      position:absolute; width:56vmax; height:56vmax; border-radius:50%;
+      filter:blur(70px); will-change:transform; transform:translate3d(0,0,0);
+      opacity:.5; pointer-events:none; contain:layout paint style;
+    }
+    .os-bg .b1{ left:-12vmax; top:-16vmax; background:radial-gradient(circle at 40% 40%, var(--vio), transparent 62%); animation:drift1 30s ease-in-out infinite alternate; }
+    .os-bg .b2{ right:-14vmax; top:-6vmax; background:radial-gradient(circle at 60% 40%, var(--cy), transparent 62%); animation:drift2 38s ease-in-out infinite alternate; }
+    .os-bg .b3{ left:10vmax; bottom:-22vmax; background:radial-gradient(circle at 50% 50%, var(--am), transparent 64%); animation:drift3 44s ease-in-out infinite alternate; }
+    .os-bg .b4{ right:6vmax; bottom:-14vmax; background:radial-gradient(circle at 50% 50%, var(--grn), transparent 64%); animation:drift1 36s ease-in-out infinite alternate-reverse; }
+    @keyframes drift1{ to{ transform:translate3d(9vmax,7vmax,0) scale(1.12); } }
+    @keyframes drift2{ to{ transform:translate3d(-8vmax,9vmax,0) scale(1.08); } }
+    @keyframes drift3{ to{ transform:translate3d(-7vmax,-8vmax,0) scale(1.15); } }
+    [data-theme="light"] .os-bg .blob{ opacity:.4; }
+    .os-bg::after{
+      content:""; position:absolute; inset:0;
+      background:radial-gradient(120% 90% at 50% 0%, transparent 40%, color-mix(in srgb, var(--bg) 55%, transparent) 100%);
+    }
+    [data-theme="light"] .os-bg::after{
+      background:radial-gradient(120% 90% at 50% 0%, transparent 45%, color-mix(in srgb, var(--bg) 70%, transparent) 100%);
+    }
+
+    /* ---------- generic section ---------- */
+    .os-sec{ position:relative; padding:clamp(56px,8vh,96px) 24px; }
+    .os-sec::before{
+      content:""; position:absolute; top:0; left:50%; transform:translateX(-50%);
+      width:min(1120px,88%); height:1px;
+      background:linear-gradient(90deg, transparent, var(--border-strong) 30%, var(--border-strong) 70%, transparent);
+    }
+    .os-sec:first-of-type::before{ display:none; }
+    .os-sec--wash::after{
+      content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+      background:
+        radial-gradient(60% 50% at 18% 30%, color-mix(in srgb, var(--vio) 7%, transparent), transparent 70%),
+        radial-gradient(55% 45% at 84% 70%, color-mix(in srgb, var(--cy) 6%, transparent), transparent 70%);
+    }
+    .os-center{ text-align:center; }
+    .os-kick{
+      display:inline-flex; align-items:center; gap:10px; margin-bottom:16px;
+      padding:6px 14px; border-radius:999px; font-family:var(--font-mono);
+      font-size:.62rem; letter-spacing:.26em; text-transform:uppercase; color:var(--text-dim);
+      border:1px solid var(--border-strong);
+      background:color-mix(in srgb, var(--surface) 55%, transparent);
+      -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+      box-shadow:0 0 26px rgba(123,92,255,.12);
+    }
+    .os-kick .dot{ width:7px; height:7px; border-radius:50%; background:linear-gradient(120deg,var(--vio),var(--cy)); box-shadow:0 0 14px var(--vio); }
+    .os-h2{
+      font-weight:900; letter-spacing:-0.035em; line-height:1.05; margin:0 auto; max-width:1020px;
+      font-size:clamp(1.9rem,4.6vw,3.4rem);
+      background:linear-gradient(180deg,var(--text), color-mix(in srgb,var(--text) 60%, transparent));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .grad{
+      background:linear-gradient(112deg,var(--vio),var(--cy) 45%,var(--grn) 75%,var(--am));
+      background-size:220% 220%; -webkit-background-clip:text; background-clip:text; color:transparent;
+      animation:sheen 8s ease-in-out infinite;
+    }
+    @keyframes sheen{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+    .os-sub{ margin:14px auto 0; max-width:760px; color:var(--text-dim); font-size:clamp(.98rem,1.7vw,1.12rem); line-height:1.55; }
+    .os-sub strong{ color:var(--text); }
+
+    /* ---------- HERO ---------- */
+    .os-hero{ min-height:100svh; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:calc(var(--nav-h) + 20px) 24px 80px; position:relative; }
+    .os-first{
+      display:inline-flex; align-items:center; gap:10px; padding:8px 18px; border-radius:999px;
+      font-family:var(--font-mono); font-size:.62rem; letter-spacing:.3em; text-transform:uppercase; color:var(--text);
+      border:1px solid transparent;
+      background:linear-gradient(color-mix(in srgb,var(--bg-alt) 82%, transparent), color-mix(in srgb,var(--bg-alt) 82%, transparent)) padding-box,
+                 linear-gradient(120deg,var(--vio),var(--cy),var(--am)) border-box;
+      box-shadow:0 0 36px rgba(123,92,255,.28); margin-bottom:24px; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+    }
+    .os-lockup{ display:flex; flex-direction:column; align-items:center; gap:2px; margin-bottom:12px; }
+    .os-lockup .wm{ height:clamp(28px,5.2vw,54px); width:auto; filter:drop-shadow(0 8px 40px rgba(123,92,255,.3)); }
+    .os-big{
+      font-family:var(--font-display); font-weight:900; letter-spacing:-0.045em; line-height:1.04; margin:0;
+      padding:.08em .1em .12em; overflow:visible; display:inline-block;
+      font-size:clamp(5rem,19vw,12.5rem);
+      background:linear-gradient(115deg,var(--vio) 0%,var(--cy) 38%,var(--grn) 66%,var(--am) 100%);
+      background-size:220% 220%; -webkit-background-clip:text; background-clip:text; color:transparent;
+      filter:drop-shadow(0 16px 70px rgba(123,92,255,.28)); animation:sheen 9s ease-in-out infinite;
+    }
+    .os-ctarow{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:30px; }
+    .os-btn{ display:inline-flex; align-items:center; gap:10px; padding:15px 28px; border-radius:999px; font-weight:700; font-size:.96rem; text-decoration:none; transition:transform .3s, box-shadow .3s; }
+    .os-btn--primary{ color:#fff; background:linear-gradient(115deg,var(--vio),var(--cy)); box-shadow:0 14px 44px rgba(123,92,255,.4); }
+    .os-btn--primary:hover{ transform:translateY(-3px); box-shadow:0 20px 60px rgba(123,92,255,.55); }
+    .os-btn--ghost{ color:var(--text); background:color-mix(in srgb,var(--surface) 60%, transparent); border:1px solid var(--border-strong); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); }
+    .os-btn--ghost:hover{ transform:translateY(-3px); }
+    .os-scrollcue{ position:absolute; bottom:22px; left:50%; transform:translateX(-50%); font-family:var(--font-mono); font-size:.6rem; letter-spacing:.32em; color:var(--text-faint); display:flex; flex-direction:column; align-items:center; gap:10px; }
+    .os-scrollcue::after{ content:""; width:1px; height:48px; background:linear-gradient(180deg,var(--text-faint),transparent); animation:cue 2.2s ease-in-out infinite; }
+    @keyframes cue{0%,100%{opacity:.25;transform:scaleY(.6);transform-origin:top}50%{opacity:1;transform:scaleY(1);transform-origin:top}}
+
+    /* ---------- WHAT IT IS / ISN'T (horizontal, immediate) ---------- */
+    .os-what{
+      max-width:1120px; margin:0 auto; display:grid; grid-template-columns:1.15fr .85fr; gap:28px; align-items:start; text-align:left;
+    }
+    .os-what .left{ display:flex; flex-direction:column; gap:18px; }
+    .os-what .lead{
+      font-size:clamp(1.15rem,2.4vw,1.55rem); line-height:1.55; color:var(--text-dim); margin:0;
+    }
+    .os-what .lead strong{ color:var(--text); }
+    .os-what .note{
+      padding:14px 18px; border-radius:14px; border:1px solid var(--border-strong);
+      background:color-mix(in srgb,var(--surface) 60%, transparent);
+      -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+      font-size:.92rem; line-height:1.55; color:var(--text-dim);
+    }
+    .os-what .note strong{ color:var(--text); }
+    .os-what .right{
+      display:grid; grid-template-columns:1fr 1fr; gap:12px;
+    }
+    .os-what .tile{
+      padding:18px; border-radius:16px; border:1px solid var(--border);
+      background:color-mix(in srgb,var(--surface) 55%, transparent);
+      -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+    }
+    .os-what .tile .tag{ font-family:var(--font-mono); font-size:.58rem; letter-spacing:.18em; text-transform:uppercase; color:var(--text-faint); }
+    .os-what .tile h4{ font-size:1.05rem; font-weight:800; margin:8px 0 6px; }
+    .os-what .tile p{ font-size:.86rem; line-height:1.5; color:var(--text-dim); margin:0; }
+    .os-what .tile.yes{ border-color:rgba(47,211,154,.35); }
+    .os-what .tile.yes .tag{ color:var(--grn); }
+    .os-what .tile.no{ border-color:rgba(255,109,156,.35); }
+    .os-what .tile.no .tag{ color:var(--ros); }
+
+    /* ---------- horizontal pipeline ---------- */
+    .os-pipe{ max-width:1080px; margin:36px auto 0; display:flex; justify-content:space-between; position:relative; }
+    .os-pipe::before{
+      content:""; position:absolute; top:22px; left:6%; right:6%; height:2px;
+      background:linear-gradient(90deg,var(--vio),var(--cy),var(--grn),var(--am)); opacity:.35; border-radius:2px;
+    }
+    .os-pnode{ position:relative; width:11.5%; text-align:center; }
+    .os-pnode .ring{
+      width:44px; height:44px; border-radius:50%; margin:0 auto 10px; display:flex; align-items:center; justify-content:center;
+      background:color-mix(in srgb,var(--surface) 70%, transparent); border:1px solid var(--border-strong);
+      -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
+      font-family:var(--font-mono); font-size:.7rem; font-weight:700; color:var(--text);
+      box-shadow:0 0 22px rgba(123,92,255,.18);
+    }
+    .os-pnode h4{ font-size:.82rem; font-weight:800; margin:0 0 4px; }
+    .os-pnode p{ font-size:.68rem; line-height:1.45; color:var(--text-dim); margin:0; }
+
+    /* ---------- fleet dashboard mock ---------- */
+    .os-dash{
+      max-width:1080px; margin:36px auto 0; border-radius:22px; overflow:hidden; position:relative; text-align:left;
+      background:color-mix(in srgb,var(--bg-alt) 86%, transparent); border:1px solid var(--border-strong);
+      -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px);
+      box-shadow:0 40px 110px rgba(0,0,0,.4), 0 0 70px rgba(123,92,255,.14);
+    }
+    .os-dash .dh{ display:flex; align-items:center; gap:8px; padding:14px 22px; border-bottom:1px solid var(--border); font-family:var(--font-mono); font-size:.62rem; letter-spacing:.26em; text-transform:uppercase; color:var(--text-faint); }
+    .os-dash .dh i{ width:10px; height:10px; border-radius:50%; }
+    .os-dash .dh i:nth-child(1){background:var(--ros)} .os-dash .dh i:nth-child(2){background:var(--am)} .os-dash .dh i:nth-child(3){background:var(--grn)}
+    .os-dash .dh .live{ margin-left:auto; display:inline-flex; align-items:center; gap:8px; color:var(--grn); }
+    .os-dash .dh .live::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--grn); box-shadow:0 0 12px var(--grn); animation:livepulse 2s ease-in-out infinite; }
+    @keyframes livepulse{0%,100%{opacity:.4}50%{opacity:1}}
+    .os-dgrid{ display:grid; grid-template-columns:repeat(6,1fr); }
+    .os-dstat{ padding:22px 14px; text-align:center; border-right:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .os-dstat:nth-child(6){ border-right:none; }
+    .os-dstat .dv{ font-family:var(--font-display); font-weight:900; font-size:clamp(1.7rem,3vw,2.5rem); line-height:1; letter-spacing:-0.02em; }
+    .os-dstat .dl{ margin-top:8px; font-family:var(--font-mono); font-size:.58rem; letter-spacing:.16em; text-transform:uppercase; color:var(--text-faint); line-height:1.5; }
+    .os-dstat.c-grn .dv{ color:var(--grn); } .os-dstat.c-cy .dv{ color:var(--cy); }
+    .os-dstat.c-am .dv{ color:var(--am); } .os-dstat.c-ros .dv{ color:var(--ros); }
+    .os-dstat.c-vio .dv{ color:var(--vio); } .os-dstat.c-dim .dv{ color:var(--text-dim); }
+    .os-ddecision{ padding:16px 22px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+    .os-ddecision .flag{ font-family:var(--font-mono); font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--am); border:1px solid color-mix(in srgb,var(--am) 45%, transparent); border-radius:999px; padding:5px 12px; flex:0 0 auto; }
+    .os-ddecision p{ margin:0; color:var(--text-dim); font-size:.9rem; line-height:1.55; flex:1 1 380px; }
+    .os-ddecision p strong{ color:var(--text); }
+
+    /* ---------- action catalog chips ---------- */
+    .os-chips{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; max-width:980px; margin:32px auto 0; }
+    .os-chip{
+      padding:9px 16px; border-radius:999px; font-family:var(--font-mono); font-size:.72rem; letter-spacing:.04em;
+      color:var(--text-dim); border:1px solid var(--border); white-space:nowrap;
+      background:color-mix(in srgb,var(--surface) 62%, transparent);
+      -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+      transition:border-color .3s, color .3s, box-shadow .3s;
+    }
+    .os-chip:hover{ border-color:rgba(55,205,234,.5); color:var(--text); box-shadow:0 0 18px rgba(55,205,234,.14); }
+
+    /* ---------- permission classes ---------- */
+    .os-ribbon{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; max-width:1120px; margin:36px auto 0; }
+    .os-class{ padding:22px 20px; border-radius:18px; text-align:left; position:relative; overflow:hidden;
+      background:color-mix(in srgb,var(--surface) 68%, transparent); border:1px solid var(--border);
+      -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+      transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s; }
+    .os-class:hover{ transform:translateY(-6px); box-shadow:0 26px 60px rgba(0,0,0,.28); }
+    .os-class .band{ position:absolute; left:0; top:0; bottom:0; width:5px; }
+    .os-class[data-c="0"] .band{ background:var(--cy); box-shadow:0 0 20px var(--cy); }
+    .os-class[data-c="1"] .band{ background:var(--grn); box-shadow:0 0 20px var(--grn); }
+    .os-class[data-c="2"] .band{ background:var(--am); box-shadow:0 0 20px var(--am); }
+    .os-class[data-c="3"] .band{ background:var(--ros); box-shadow:0 0 20px var(--ros); }
+    .os-class .cn{ font-family:var(--font-mono); font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; }
+    .os-class[data-c="0"] .cn{color:var(--cy)} .os-class[data-c="1"] .cn{color:var(--grn)} .os-class[data-c="2"] .cn{color:var(--am)} .os-class[data-c="3"] .cn{color:var(--ros)}
+    .os-class h4{ font-size:1.05rem; font-weight:800; margin:9px 0 6px; }
+    .os-class p{ color:var(--text-dim); font-size:.85rem; line-height:1.55; margin:0; }
+
+    /* ---------- preconditions checklist ---------- */
+    .os-checks{ display:grid; grid-template-columns:repeat(3,1fr); gap:0 28px; max-width:1040px; margin:32px auto 0; text-align:left; }
+    .os-check{ display:flex; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); align-items:flex-start; }
+    .os-check .ck{ flex:0 0 auto; width:20px; height:20px; margin-top:2px; border-radius:6px; display:flex; align-items:center; justify-content:center;
+      color:#fff; font-size:.72rem; font-weight:700; background:linear-gradient(120deg,var(--vio),var(--cy)); box-shadow:0 0 14px rgba(123,92,255,.3); }
+    .os-check p{ margin:0; color:var(--text-dim); font-size:.86rem; line-height:1.45; }
+    .os-check p strong{ color:var(--text); }
+
+    /* ---------- comparison table ---------- */
+    .os-vs{ max-width:980px; margin:36px auto 0; border-radius:22px; overflow:hidden;
+      background:color-mix(in srgb,var(--surface) 68%, transparent); border:1px solid var(--border-strong);
+      -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); box-shadow:0 30px 80px rgba(0,0,0,.28); }
+    .os-vs .vr{ display:grid; grid-template-columns:1.05fr 1.25fr 1.4fr; border-bottom:1px solid var(--border); }
+    .os-vs .vr:last-child{ border-bottom:none; }
+    .os-vs .vc{ padding:15px 20px; font-size:.9rem; line-height:1.5; text-align:left; color:var(--text-dim); }
+    .os-vs .vc:first-child{ font-family:var(--font-mono); font-size:.64rem; letter-spacing:.18em; text-transform:uppercase; color:var(--text-faint); display:flex; align-items:center; }
+    .os-vs .vc.bad{ border-left:1px solid var(--border); }
+    .os-vs .vc.good{ border-left:1px solid var(--border); color:var(--text); background:linear-gradient(120deg, color-mix(in srgb,var(--vio) 7%, transparent), color-mix(in srgb,var(--cy) 5%, transparent)); }
+    .os-vs .vr.head .vc{ padding:17px 20px; font-family:var(--font-mono); font-size:.64rem; letter-spacing:.2em; text-transform:uppercase; }
+    .os-vs .vr.head .vc.bad{ color:var(--text-faint); }
+    .os-vs .vr.head .vc.good{ color:var(--text); background:linear-gradient(120deg, color-mix(in srgb,var(--vio) 12%, transparent), color-mix(in srgb,var(--cy) 8%, transparent)); }
+
+    /* ---------- receipt ---------- */
+    .os-receipt{ max-width:780px; margin:0 auto; text-align:left; border-radius:20px; overflow:hidden; position:relative;
+      background:color-mix(in srgb,var(--bg-alt) 84%, transparent); border:1px solid var(--border-strong);
+      -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px);
+      box-shadow:0 40px 110px rgba(0,0,0,.45), 0 0 70px rgba(47,211,154,.12); font-family:var(--font-mono); }
+    .os-receipt .rh{ display:flex; align-items:center; gap:8px; padding:14px 22px; border-bottom:1px solid var(--border); font-size:.62rem; letter-spacing:.26em; text-transform:uppercase; color:var(--text-faint); }
+    .os-receipt .rh i{ width:10px; height:10px; border-radius:50%; }
+    .os-receipt .rh i:nth-child(1){background:var(--ros)} .os-receipt .rh i:nth-child(2){background:var(--am)} .os-receipt .rh i:nth-child(3){background:var(--grn)}
+    .os-receipt .rb{ padding:20px 26px; font-size:.85rem; line-height:1.85; color:var(--text-dim); }
+    .os-receipt .ok{ color:var(--grn); } .os-receipt .hl{ color:var(--cy); } .os-receipt .warn{ color:var(--am); }
+    .os-receipt .rline{ display:flex; gap:16px; padding:2px 0; }
+    .os-receipt .lk{ flex:0 0 132px; color:var(--text-faint); letter-spacing:.05em; }
+
+    /* ---------- split panes ---------- */
+    .os-split{ display:grid; grid-template-columns:1fr 1fr; gap:18px; max-width:1040px; margin:36px auto 0; text-align:left; }
+    .os-pane{ padding:26px 24px; border-radius:22px; position:relative; overflow:hidden;
+      background:color-mix(in srgb,var(--surface) 68%, transparent); border:1px solid var(--border);
+      -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); }
+    .os-pane::before{ content:""; position:absolute; left:0; top:0; right:0; height:4px; }
+    .os-pane.you::before{ background:linear-gradient(90deg,var(--cy),transparent); }
+    .os-pane.we::before{ background:linear-gradient(90deg,var(--vio),transparent); }
+    .os-pane h3{ font-size:1.12rem; font-weight:800; margin:0 0 5px; }
+    .os-pane .sub{ font-family:var(--font-mono); font-size:.6rem; letter-spacing:.22em; text-transform:uppercase; color:var(--text-faint); }
+    .os-pane ul{ list-style:none; margin:14px 0 0; padding:0; }
+    .os-pane li{ position:relative; padding:9px 0 9px 24px; color:var(--text-dim); font-size:.9rem; line-height:1.5; border-bottom:1px solid var(--border); }
+    .os-pane li:last-child{ border-bottom:none; }
+    .os-pane li::before{ content:""; position:absolute; left:0; top:15px; width:8px; height:8px; border-radius:50%; }
+    .os-pane.you li::before{ background:var(--cy); box-shadow:0 0 10px var(--cy); }
+    .os-pane.we li::before{ background:var(--vio); box-shadow:0 0 10px var(--vio); }
+
+    /* ---------- retry / rollback ladder ---------- */
+    .os-ladder{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; max-width:1120px; margin:36px auto 0; text-align:left; }
+    .os-rung{ padding:18px 18px 20px; border-radius:16px; position:relative;
+      background:color-mix(in srgb,var(--surface) 66%, transparent); border:1px solid var(--border);
+      -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); }
+    .os-rung .rn{ font-family:var(--font-mono); font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; }
+    .os-rung:nth-child(1) .rn{ color:var(--cy); } .os-rung:nth-child(2) .rn{ color:var(--grn); }
+    .os-rung:nth-child(3) .rn{ color:var(--am); } .os-rung:nth-child(4) .rn{ color:var(--ros); }
+    .os-rung h4{ font-size:.98rem; font-weight:800; margin:8px 0 5px; }
+    .os-rung p{ color:var(--text-dim); font-size:.84rem; line-height:1.5; margin:0; }
+
+    /* ---------- principles ---------- */
+    .os-prin{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; max-width:1120px; margin:36px auto 0; text-align:left; }
+    .os-prin .pc{ padding:22px 20px; border-radius:18px;
+      background:color-mix(in srgb,var(--surface) 66%, transparent); border:1px solid var(--border);
+      -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+      transition:transform .4s, border-color .4s; }
+    .os-prin .pc:hover{ transform:translateY(-5px); border-color:var(--border-strong); }
+    .os-prin .num{ font-family:var(--font-display); font-weight:900; font-size:1.7rem; line-height:1;
+      background:linear-gradient(120deg,var(--vio),var(--cy)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .os-prin h4{ font-size:1.05rem; font-weight:800; margin:10px 0 6px; }
+    .os-prin p{ color:var(--text-dim); font-size:.86rem; line-height:1.55; margin:0; }
+
+    /* ---------- integrations ---------- */
+    .os-integ{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; max-width:1000px; margin:34px auto 0; }
+    .os-igrid-item{ display:flex; align-items:center; gap:12px; padding:14px 20px; border-radius:16px; text-align:left;
+      background:color-mix(in srgb,var(--surface) 64%, transparent); border:1px solid var(--border);
+      -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); transition:transform .35s, border-color .35s; }
+    .os-igrid-item:hover{ transform:translateY(-4px); border-color:var(--border-strong); }
+    .os-igrid-item .ig{ width:10px; height:10px; border-radius:3px; flex:0 0 auto; }
+    .os-igrid-item h5{ margin:0; font-size:.92rem; font-weight:800; }
+    .os-igrid-item p{ margin:2px 0 0; font-size:.76rem; color:var(--text-faint); }
+
+    /* ---------- compact on-page FAQ ---------- */
+    .os-faq{ max-width:860px; margin:36px auto 0; text-align:left; }
+    .os-faq details{ border:1px solid var(--border); border-radius:16px; margin-bottom:10px; overflow:hidden;
+      background:color-mix(in srgb,var(--surface) 62%, transparent);
+      -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); transition:border-color .3s; }
+    .os-faq details[open]{ border-color:rgba(123,92,255,.4); }
+    .os-faq summary{ list-style:none; cursor:pointer; padding:15px 22px; font-weight:700; font-size:.96rem; display:flex; align-items:center; gap:14px; }
+    .os-faq summary::-webkit-details-marker{ display:none; }
+    .os-faq summary::before{ content:"+"; font-family:var(--font-mono); font-size:1.1rem; width:22px; text-align:center; flex:0 0 auto;
+      background:linear-gradient(120deg,var(--vio),var(--cy)); -webkit-background-clip:text; background-clip:text; color:transparent; transition:transform .3s; }
+    .os-faq details[open] summary::before{ transform:rotate(45deg); }
+    .os-faq .fa{ padding:0 22px 17px 58px; color:var(--text-dim); font-size:.9rem; line-height:1.58; }
+    .os-faq .fa strong{ color:var(--text); }
+
+    /* ---------- reveal (faster, subtler) ---------- */
+    .rv{ opacity:0; transform:translateY(18px); transition:opacity .55s cubic-bezier(.2,.7,.2,1), transform .55s cubic-bezier(.2,.7,.2,1); }
+    .rv.in{ opacity:1; transform:none; }
+    .rv[data-d="1"]{transition-delay:.04s} .rv[data-d="2"]{transition-delay:.08s} .rv[data-d="3"]{transition-delay:.12s} .rv[data-d="4"]{transition-delay:.16s}
+
+    /* ---------- pause / reduced ---------- */
+    .os-bg.paused .blob{ animation-play-state:paused; }
+    @media (prefers-reduced-motion:reduce){
+      .rv{opacity:1;transform:none;transition:none}
+      .os-bg .blob{animation:none}
+      .grad,.os-big{animation:none}
+      .os-scrollcue::after{animation:none}
+      .os-dash .dh .live::before{animation:none}
+    }
+    @media (max-width:1020px){
+      .os-what{ grid-template-columns:1fr; }
+      .os-what .right{ grid-template-columns:1fr 1fr; }
+      .os-pipe{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px 12px; }
+      .os-pipe::before{ display:none; }
+      .os-pnode{ width:auto; }
+      .os-dgrid{ grid-template-columns:repeat(3,1fr); }
+      .os-dstat:nth-child(3){ border-right:none; }
+      .os-vs .vr{ grid-template-columns:1fr; }
+      .os-vs .vc{ border-left:none !important; border-top:1px solid var(--border); padding:12px 20px; }
+      .os-vs .vc:first-child{ border-top:none; padding:16px 20px 4px; }
+      .os-vs .vr.head .vc.bad{ display:none; }
+      .os-ladder{ grid-template-columns:repeat(2,1fr); }
+      .os-checks{ grid-template-columns:repeat(2,1fr); }
+      .os-ribbon{ grid-template-columns:repeat(2,1fr); }
+    }
+    @media (max-width:820px){
+      .os-bg .blob{ filter:blur(50px); opacity:.45; }
+      .os-what .right{ grid-template-columns:1fr; }
+      .os-pipe{ grid-template-columns:repeat(2,1fr); }
+      .os-ribbon{ grid-template-columns:1fr; }
+      .os-split{ grid-template-columns:1fr; }
+      .os-checks{ grid-template-columns:1fr; }
+      .os-ladder{ grid-template-columns:1fr; }
+    }
+    @media (max-width:520px){
+      .os-sec{ padding:52px 18px; }
+      .os-hero{ padding-top:calc(var(--nav-h) + 16px); padding-bottom:70px; }
+      .os-bg .blob{ filter:blur(40px); opacity:.4; }
+      .os-receipt .lk{ flex:0 0 96px; } .os-receipt .rb{ font-size:.78rem; }
+      .os-dgrid{ grid-template-columns:repeat(2,1fr); }
+      .os-dstat:nth-child(odd){ border-right:1px solid var(--border); }
+      .os-dstat:nth-child(even){ border-right:none; }
+      .os-faq .fa{ padding-left:22px; }
+      .os-pipe{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body class="os">
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- subtle animated gradient mesh background -->
+  <div class="os-bg" id="osBg" aria-hidden="true">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
+  </div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="../" class="brand">
+        <img class="brand__logo brand__logo--mark logo-dark" src="../assets/canyo-logo-white.png" alt="CANYO">
+        <img class="brand__logo brand__logo--mark logo-light" src="../assets/canyo-logo-black.png" alt="CANYO">
+        <img class="brand__logo brand__logo--word logo-dark" src="../assets/canyo-wordmark-white.png" alt="CANYO">
+        <img class="brand__logo brand__logo--word logo-light" src="../assets/canyo-wordmark-black.png" alt="CANYO">
+      </a>
+      <nav class="nav__links nav__links--dense" id="navLinks">
+        <a href="../">Home</a>
+        <a href="../#services">Services</a>
+        <a href="../#process">Process</a>
+        <a href="../#stack">Stack</a>
+        <a href="../#pricing">Pricing</a>
+        <a href="../#faq">FAQ</a>
+        <a href="../#reviews">Reviews</a>
+        <a href="../about/" class="nav__highlight">About</a>
+        <a href="../inside-canyo/" class="nav__highlight">Inside CANYO</a>
+        <a href="./" class="nav__highlight" aria-current="page">CANYO OS</a>
+        <a href="../machine/" class="nav__console" aria-label="The Machine — interactive ops console" title="SYSTEM ACCESS">//</a>
+        <a href="../#contact" class="nav__cta">Get a Free Assessment</a>
+      </nav>
+      <div class="nav__controls">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark / light mode" title="Toggle theme">
+          <svg class="icon icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="icon icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <button class="nav__burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="os-hero">
+      <span class="os-first rv" data-d="1">✦ An Industry First</span>
+      <div class="os-lockup rv" data-d="2">
+        <img class="wm logo-dark" src="../assets/canyo-wordmark-white.png" alt="CANYO">
+        <img class="wm logo-light" src="../assets/canyo-wordmark-black.png" alt="CANYO">
+        <h1 class="os-big">OS</h1>
+      </div>
+      <p class="os-sub rv" data-d="3" style="max-width:840px;">
+        The first <strong>self-verifying operating layer</strong> for business IT. It doesn't replace Windows or macOS — it sits on top, continuously maintaining a known-good state on every machine, proving every action with evidence, and only escalating what truly needs a human.
+      </p>
+      <div class="os-ctarow rv" data-d="4">
+        <a href="../#contact" class="os-btn os-btn--primary">Experience IT run by CANYO OS</a>
+        <a href="#what-it-is" class="os-btn os-btn--ghost">See how it works ↓</a>
+      </div>
+      <div class="os-scrollcue" aria-hidden="true">SCROLL</div>
+    </section>
+
+    <!-- ============ WHAT IT IS / ISN'T ============ -->
+    <section class="os-sec" id="what-it-is">
+      <div class="os-what">
+        <div class="left rv" data-d="1">
+          <span class="os-kick" style="margin:0;"><span class="dot"></span> WHAT IT IS</span>
+          <p class="lead">
+            <strong>CANYO OS is a control plane, not a desktop operating system.</strong> It runs alongside Windows, macOS, and Linux as a signed, policy-driven layer that observes the machine, decides what should be true, and only executes approved, reversible operations — then proves the outcome.
+          </p>
+          <p class="note">
+            <strong>Think of it as the operating discipline above your OS.</strong> Your OS runs the computer. CANYO OS makes sure the computer stays in the state your business approved: backed up, encrypted, protected, patched, and within policy — with a receipt for every change.
+          </p>
+        </div>
+        <div class="right rv" data-d="2">
+          <div class="tile yes">
+            <span class="tag">It is</span>
+            <h4>An operational layer</h4>
+            <p>Sits above Windows, macOS, and Linux to enforce desired state.</p>
+          </div>
+          <div class="tile yes">
+            <span class="tag">It is</span>
+            <h4>A policy engine</h4>
+            <p>Turns "back up every night" into verified, continuous enforcement.</p>
+          </div>
+          <div class="tile no">
+            <span class="tag">It is not</span>
+            <h4>A replacement OS</h4>
+            <p>It doesn't replace Windows or macOS. It governs them.</p>
+          </div>
+          <div class="tile no">
+            <span class="tag">It is not</span>
+            <h4>A remote script runner</h4>
+            <p>It never accepts arbitrary commands. Only signed, allowlisted actions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE PIPELINE ============ -->
+    <section class="os-sec os-center os-sec--wash">
+      <div class="os-kick rv"><span class="dot"></span> THE CANYO LOOP</div>
+      <h2 class="os-h2 rv" data-d="1">Eight steps. Every single action.</h2>
+      <p class="os-sub rv" data-d="2">A script just runs a command. CANYO OS never does. Every operation flows through a disciplined pipeline.</p>
+
+      <div class="os-pipe rv" data-d="3">
+        <div class="os-pnode"><div class="ring">01</div><h4>Observe</h4><p>Read the true state of the machine.</p></div>
+        <div class="os-pnode"><div class="ring">02</div><h4>Decide</h4><p>Match state to your policy.</p></div>
+        <div class="os-pnode"><div class="ring">03</div><h4>Authorize</h4><p>Confirm signature and scope.</p></div>
+        <div class="os-pnode"><div class="ring">04</div><h4>Preview</h4><p>Show what will and won't change.</p></div>
+        <div class="os-pnode"><div class="ring">05</div><h4>Execute</h4><p>Run only approved, reversible ops.</p></div>
+        <div class="os-pnode"><div class="ring">06</div><h4>Verify</h4><p>Prove the outcome actually happened.</p></div>
+        <div class="os-pnode"><div class="ring">07</div><h4>Record</h4><p>Write the evidence receipt.</p></div>
+        <div class="os-pnode"><div class="ring">08</div><h4>Escalate</h4><p>Hand ambiguous decisions to a human.</p></div>
+      </div>
+    </section>
+
+    <!-- ============ FLEET DASHBOARD MOCK ============ -->
+    <section class="os-sec os-center">
+      <div class="os-kick rv"><span class="dot"></span> DECISION-ORIENTED</div>
+      <h2 class="os-h2 rv" data-d="1">A dashboard of decisions, not script output.</h2>
+      <p class="os-sub rv" data-d="2">Conventional tools show logs and closed tickets. CANYO OS shows outcomes — what's proven, what's blocked, and what genuinely needs your call.</p>
+
+      <div class="os-dash rv" data-d="3">
+        <div class="dh"><i></i><i></i><i></i><span style="margin-left:10px">CANYO OS · FLEET OVERVIEW</span><span class="live">LIVE</span></div>
+        <div class="os-dgrid">
+          <div class="os-dstat c-grn"><div class="dv" data-count="18">18</div><div class="dl">Safe automations<br>completed</div></div>
+          <div class="os-dstat c-cy"><div class="dv" data-count="18">18</div><div class="dl">Outcomes<br>verified</div></div>
+          <div class="os-dstat c-am"><div class="dv" data-count="2">2</div><div class="dl">Pending<br>decisions</div></div>
+          <div class="os-dstat c-ros"><div class="dv" data-count="3">3</div><div class="dl">Actions<br>blocked</div></div>
+          <div class="os-dstat c-vio"><div class="dv" data-count="1">1</div><div class="dl">Unknown<br>state</div></div>
+          <div class="os-dstat c-dim"><div class="dv" data-count="0">0</div><div class="dl">Policy<br>violations</div></div>
+        </div>
+        <div class="os-ddecision">
+          <span class="flag">Needs you</span>
+          <p><strong>A former employee's account is still active.</strong> CANYO OS stopped because disabling access is a human-authorized identity change. Recommended next step: confirm ownership and approve disablement.</p>
+        </div>
+      </div>
+      <p class="os-sub rv" data-d="4" style="margin-top:18px; font-size:.92rem; max-width:640px;">Everything on it is either <strong>proven or explicitly waiting on a human.</strong></p>
+    </section>
+
+    <!-- ============ ACTION CATALOG ============ -->
+    <section class="os-sec os-center os-sec--wash">
+      <div class="os-kick rv"><span class="dot"></span> THE ALLOWLISTED CATALOG</div>
+      <h2 class="os-h2 rv" data-d="1">A closed catalog of approved actions.<br><span class="grad">Not open-ended commands.</span></h2>
+      <p class="os-sub rv" data-d="2">CANYO OS only understands a defined set of structured, declarative operations. Anything outside the catalog simply doesn't exist to the agent.</p>
+
+      <div class="os-chips rv" data-d="3">
+        <span class="os-chip">Collect inventory</span>
+        <span class="os-chip">Check disk usage</span>
+        <span class="os-chip">Verify encryption status</span>
+        <span class="os-chip">Verify backup freshness</span>
+        <span class="os-chip">Check software versions</span>
+        <span class="os-chip">Check service status</span>
+        <span class="os-chip">Restart approved service</span>
+        <span class="os-chip">Clear approved temp files</span>
+        <span class="os-chip">Retry failed backup</span>
+        <span class="os-chip">Repair known scheduled task</span>
+        <span class="os-chip">Reapply known configuration</span>
+        <span class="os-chip">Ensure required app installed</span>
+        <span class="os-chip">Ensure required service running</span>
+        <span class="os-chip">Collect diagnostic bundle</span>
+        <span class="os-chip">Verify backup repository</span>
+      </div>
+      <p class="os-sub rv" data-d="4" style="margin-top:22px; font-size:.92rem; max-width:680px;">Declarative means CANYO OS expresses the <strong>desired outcome</strong> — "ensure the print service is running, retry twice, verify the queue responds" — instead of a blind <code style="font-family:var(--font-mono); font-size:.88em;">Restart-Service</code>. One policy model across Windows, macOS, and Linux.</p>
+    </section>
+
+    <!-- ============ PERMISSION CLASSES ============ -->
+    <section class="os-sec os-center">
+      <div class="os-kick rv"><span class="dot"></span> PERMISSION BY DESIGN</div>
+      <h2 class="os-h2 rv" data-d="1">Not all automation<br>is created equal.</h2>
+      <p class="os-sub rv" data-d="2">Every action carries a permission class — built into the operation itself. Your policy decides what runs on its own and what waits for you.</p>
+
+      <div class="os-ribbon rv" data-d="3">
+        <div class="os-class" data-c="0"><span class="band"></span><span class="cn">Class 0</span><h4>Observation</h4><p>Watches and changes nothing. Disk, services, encryption, backups. Runs continuously.</p></div>
+        <div class="os-class" data-c="1"><span class="band"></span><span class="cn">Class 1</span><h4>Reversible</h4><p>Fixes safely on its own — restart a service, clear approved temp files, retry a backup.</p></div>
+        <div class="os-class" data-c="2"><span class="band"></span><span class="cn">Class 2</span><h4>Controlled</h4><p>Asks first. Software installs, firewall or DNS changes, drivers — require approval.</p></div>
+        <div class="os-class" data-c="3"><span class="band"></span><span class="cn">Class 3</span><h4>Human decision</h4><p>Never silent. Deleting data, disabling security, changing access — stops and waits.</p></div>
+      </div>
+    </section>
+
+    <!-- ============ PRECONDITIONS ============ -->
+    <section class="os-sec os-center os-sec--wash">
+      <div class="os-kick rv"><span class="dot"></span> SAFETY BEFORE EXECUTION</div>
+      <h2 class="os-h2 rv" data-d="1">Twelve checks run<br>before anything runs.</h2>
+      <p class="os-sub rv" data-d="2">If even one precondition fails, CANYO OS stops safely and explains why. It never improvises.</p>
+
+      <div class="os-checks rv" data-d="3">
+        <div class="os-check"><span class="ck">✓</span><p><strong>Device is enrolled</strong> and the job is intended for this exact machine</p></div>
+        <div class="os-check"><span class="ck">✓</span><p><strong>Organization identity</strong> is correct and verified</p></div>
+        <div class="os-check"><span class="ck">✓</span><p><strong>Job signature is valid</strong> and the payload hash matches</p></div>
+        <div class="os-check"><span class="ck">✓</span><p><strong>Job has not expired</strong> and hasn't already been executed</p></div>
+        <div class="os-check"><span class="ck">✓</span><p><strong>Policy allows the action</strong> for this organization</p></div>
+        <div class="os-check"><span class="ck">✓</span><p><strong>Action is approved</strong> for this device group</p></div>
+        <div class="os-check"><span class="ck">✓</span><p><strong>No maintenance lock</strong> or emergency recovery state is active</p></div>
+        <div class="os-check"><span class="ck">✓</span><p><strong>Retry limit not exceeded</strong> — no infinite loops</p></div>
+        <div class="os-check"><span class="ck">✓</span><p><strong>Required backups and safeguards</strong> are in place first</p></div>
+        <div class="os-check"><span class="ck">✓</span><p><strong>No business-critical process</strong> would be interrupted</p></div>
+        <div class="os-check"><span class="ck">✓</span><p><strong>Power and network</strong> are sufficient for the operation</p></div>
+        <div class="os-check"><span class="ck">✓</span><p><strong>Destination identity matches</strong> — for backups, the repository is yours</p></div>
+      </div>
+      <p class="os-sub rv" data-d="4" style="margin-top:22px; font-size:.92rem; max-width:640px;">Example refusal: <em>"Backup skipped safely. Repository identity could not be verified."</em></p>
+    </section>
+
+    <!-- ============ RECEIPT ============ -->
+    <section class="os-sec os-center">
+      <div class="os-kick rv"><span class="dot"></span> PROOF, NOT PROMISES</div>
+      <h2 class="os-h2 rv" data-d="1">Every action ends<br>with a <span class="grad">receipt.</span></h2>
+      <p class="os-sub rv" data-d="2">A script finishing isn't a result. CANYO OS records before and after, what it touched, what it refused, and whether it actually worked.</p>
+
+      <div class="os-receipt rv" data-d="3" style="margin-top:34px;">
+        <div class="rh"><i></i><i></i><i></i><span style="margin-left:auto">AUTOMATION RECEIPT · VERIFIED</span></div>
+        <div class="rb">
+          <div class="rline"><span class="lk">ISSUE</span><span>Disk volume exceeded 85% utilization</span></div>
+          <div class="rline"><span class="lk">AUTHORIZED BY</span><span class="hl">Workstation disk-pressure policy · v3</span></div>
+          <div class="rline"><span class="lk">CLASS</span><span>Class 1 · Reversible remediation</span></div>
+          <div class="rline"><span class="lk">PRE-STATE</span><span>Disk usage 88%</span></div>
+          <div class="rline"><span class="lk">ACTION</span><span>Cleared 22 GB of approved temporary data</span></div>
+          <div class="rline"><span class="lk">REFUSED</span><span class="warn">Documents · Desktop · Downloads · profiles · backups</span></div>
+          <div class="rline"><span class="lk">POST-STATE</span><span>Disk usage reduced to 64%</span></div>
+          <div class="rline"><span class="lk">VERIFIED</span><span>Protected paths unchanged · system responsive</span></div>
+          <div class="rline"><span class="lk">RESULT</span><span class="ok">RESOLVED &amp; VERIFIED ✓</span></div>
+        </div>
+      </div>
+      <p class="os-sub rv" data-d="4" style="margin-top:22px;">These receipts feed client reports, compliance evidence, insurance questionnaires, and audits — automatically.</p>
+    </section>
+
+    <!-- ============ COMPARISON ============ -->
+    <section class="os-sec os-center os-sec--wash">
+      <div class="os-kick rv"><span class="dot"></span> SIDE BY SIDE</div>
+      <h2 class="os-h2 rv" data-d="1">The old way vs.<br><span class="grad">the CANYO way.</span></h2>
+      <p class="os-sub rv" data-d="2">The difference between a remote command channel and a true control plane.</p>
+
+      <div class="os-vs rv" data-d="3">
+        <div class="vr head"><div class="vc"></div><div class="vc bad">Traditional MSP script</div><div class="vc good">CANYO OS</div></div>
+        <div class="vr"><div class="vc">Trigger</div><div class="vc bad">Alert fires → a script runs</div><div class="vc good">8-step pipeline: observe → decide → authorize → preview → execute → verify → record → escalate</div></div>
+        <div class="vr"><div class="vc">Commands</div><div class="vc bad">Arbitrary remote scripts, run as admin</div><div class="vc good">Signed, allowlisted operations from a closed catalog — anything else is rejected</div></div>
+        <div class="vr"><div class="vc">Permissions</div><div class="vc bad">One global "technician" can do anything</div><div class="vc good">Permission classes 0–3; risky actions always wait for a human</div></div>
+        <div class="vr"><div class="vc">Proof</div><div class="vc bad">"Script completed successfully"</div><div class="vc good">Before/after state evidence with explicit verification results</div></div>
+        <div class="vr"><div class="vc">Repeat runs</div><div class="vc bad">Duplicate tasks, config drift</div><div class="vc good">Idempotent — same desired state, no duplicates, "no action required" when already met</div></div>
+        <div class="vr"><div class="vc">Failure</div><div class="vc bad">Endless retry loops and alert spam</div><div class="vc good">Bounded retries, defined escalation, specific errors never retried</div></div>
+        <div class="vr"><div class="vc">Rollback</div><div class="vc bad">None — hope it's fine</div><div class="vc good">Rollback method defined before execution, honest when only partial</div></div>
+      </div>
+    </section>
+
+    <!-- ============ RETRY / ROLLBACK LADDER ============ -->
+    <section class="os-sec os-center">
+      <div class="os-kick rv"><span class="dot"></span> REVERSIBLE-FIRST RESPONSE</div>
+      <h2 class="os-h2 rv" data-d="1">A ladder of response —<br>never a leap to the drastic.</h2>
+      <p class="os-sub rv" data-d="2">CANYO OS climbs one rung at a time and stops the moment the state is proven safe. Destructive is always last, and never silent.</p>
+
+      <div class="os-ladder rv" data-d="3">
+        <div class="os-rung"><span class="rn">Rung 1 · Transient</span><h4>Retry, bounded</h4><p>Network timeout? Retry within strict limits. Identity, permission, or integrity errors are never retried.</p></div>
+        <div class="os-rung"><span class="rn">Rung 2 · Repairable</span><h4>Restore a known-safe state</h4><p>A stopped service or broken task gets one controlled repair — then verification proves it held.</p></div>
+        <div class="os-rung"><span class="rn">Rung 3 · Reversible</span><h4>Roll back</h4><p>If a change caused the problem, the pre-defined rollback restores the previous configuration or package.</p></div>
+        <div class="os-rung"><span class="rn">Rung 4 · Human</span><h4>Escalate with evidence</h4><p>Ambiguous, unknown, or destructive? It stops, preserves everything, and hands a human a clear decision.</p></div>
+      </div>
+    </section>
+
+    <!-- ============ POLICY → PROTECTION ============ -->
+    <section class="os-sec os-center os-sec--wash">
+      <div class="os-kick rv"><span class="dot"></span> HOW A POLICY BECOMES PROTECTION</div>
+      <h2 class="os-h2 rv" data-d="1">You describe the outcome.<br><span class="grad">CANYO OS enforces it.</span></h2>
+      <p class="os-sub rv" data-d="2">Tell us in plain business language what "healthy" means. CANYO OS turns it into a living policy and holds every machine to it.</p>
+
+      <div class="os-split rv" data-d="3">
+        <div class="os-pane we">
+          <h3>You say</h3>
+          <span class="sub">Plain business language</span>
+          <ul>
+            <li>"Back up our documents every night."</li>
+            <li>"Never let antivirus get turned off."</li>
+            <li>"Don't let disks fill up and slow people down."</li>
+            <li>"Ask us before installing anything new."</li>
+          </ul>
+        </div>
+        <div class="os-pane you">
+          <h3>CANYO OS does</h3>
+          <span class="sub">Continuous, verified enforcement</span>
+          <ul>
+            <li>Confirms each backup ran, is fresh, and can actually restore.</li>
+            <li>Detects a disabled protection and restores it — then alerts a human.</li>
+            <li>Clears only approved temp data before the disk becomes a problem.</li>
+            <li>Blocks unapproved installs and routes the request to you.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SIGNED + SCOPED + IDEMPOTENT ============ -->
+    <section class="os-sec os-center">
+      <div class="os-kick rv"><span class="dot"></span> WHY IT'S DIFFERENT</div>
+      <h2 class="os-h2 rv" data-d="1">Signed. Scoped.<br><span class="grad">Safe to run twice.</span></h2>
+      <p class="os-sub rv" data-d="2">Three properties make CANYO OS fundamentally safer than a script library.</p>
+
+      <div class="os-prin rv" data-d="3">
+        <div class="pc">
+          <span class="num">Signed</span>
+          <h4>Nothing runs unless it's authorized</h4>
+          <p>Every operation is cryptographically signed, scoped to your organization, and expires. Tampered or arbitrary commands are rejected outright.</p>
+        </div>
+        <div class="pc">
+          <span class="num">Scoped</span>
+          <h4>Boundaries are explicit</h4>
+          <p>Each action declares exactly what it's allowed to touch — and what it must refuse. A cleanup can never wander into your documents.</p>
+        </div>
+        <div class="pc">
+          <span class="num">Idempotent</span>
+          <h4>Safe to run twice</h4>
+          <p>Running the same operation again produces the same result — no duplicates, no drift. If the desired state is already met, it does nothing.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ YOUR MACHINE / OUR END ============ -->
+    <section class="os-sec os-center os-sec--wash">
+      <div class="os-kick rv"><span class="dot"></span> FULL TRANSPARENCY</div>
+      <h2 class="os-h2 rv" data-d="1">What happens on your machine.<br><span class="grad">What we do on our end.</span></h2>
+      <p class="os-sub rv" data-d="2">No black box. Exactly how the responsibility is split.</p>
+
+      <div class="os-split rv" data-d="3">
+        <div class="os-pane you">
+          <h3>On your machine</h3>
+          <span class="sub">The CANYO agent</span>
+          <ul>
+            <li>A small, signed agent holds the desired state you approved.</li>
+            <li>It observes continuously and runs only allowlisted, reversible fixes.</li>
+            <li>It verifies each result and records before/after evidence.</li>
+            <li>It refuses anything outside policy — and shows you what it refused.</li>
+            <li>It never runs an unsigned or arbitrary command.</li>
+          </ul>
+        </div>
+        <div class="os-pane we">
+          <h3>On our end</h3>
+          <span class="sub">The CANYO control plane</span>
+          <ul>
+            <li>We define your policy in plain business language, once.</li>
+            <li>Every job is signed, scoped to your organization, and expires.</li>
+            <li>We review pending decisions and anything ambiguous — a human, not a script.</li>
+            <li>We coordinate security response with Guardz / SentinelOne.</li>
+            <li>You get a decision-oriented dashboard, not a wall of script output.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INTEGRATIONS ============ -->
+    <section class="os-sec os-center">
+      <div class="os-kick rv"><span class="dot"></span> WORKS WITH YOUR STACK</div>
+      <h2 class="os-h2 rv" data-d="1">It coordinates your tools.<br><span class="grad">It doesn't replace them.</span></h2>
+      <p class="os-sub rv" data-d="2">CANYO OS is the operational layer above the tools you already trust — orchestrating them, verifying their output, and keeping the record.</p>
+
+      <div class="os-integ rv" data-d="3">
+        <div class="os-igrid-item"><span class="ig" style="background:var(--grn); box-shadow:0 0 12px var(--grn);"></span><div><h5>Restic + Backblaze B2</h5><p>Verified, restorable backups</p></div></div>
+        <div class="os-igrid-item"><span class="ig" style="background:var(--ros); box-shadow:0 0 12px var(--ros);"></span><div><h5>Guardz + SentinelOne</h5><p>MDR detection &amp; response</p></div></div>
+        <div class="os-igrid-item"><span class="ig" style="background:var(--cy); box-shadow:0 0 12px var(--cy);"></span><div><h5>NinjaOne</h5><p>Deploys the signed agent — then hands off</p></div></div>
+        <div class="os-igrid-item"><span class="ig" style="background:var(--vio); box-shadow:0 0 12px var(--vio);"></span><div><h5>Tailscale</h5><p>Secure device connectivity</p></div></div>
+        <div class="os-igrid-item"><span class="ig" style="background:var(--am); box-shadow:0 0 12px var(--am);"></span><div><h5>CISO Assistant</h5><p>Compliance mapping &amp; evidence</p></div></div>
+      </div>
+    </section>
+
+    <!-- ============ PRINCIPLES ============ -->
+    <section class="os-sec os-center os-sec--wash">
+      <div class="os-kick rv"><span class="dot"></span> THE DISCIPLINE</div>
+      <h2 class="os-h2 rv" data-d="1">Four rules<br>CANYO OS never breaks.</h2>
+      <div class="os-prin rv" data-d="2">
+        <div class="pc"><span class="num">01</span><h4>No automation without permission</h4><p>Every action lives in a declared, allowlisted catalog with explicit boundaries.</p></div>
+        <div class="pc"><span class="num">02</span><h4>No success without verification</h4><p>State is checked before and after — the reported outcome is the one that actually happened.</p></div>
+        <div class="pc"><span class="num">03</span><h4>No destructive action by default</h4><p>Reversible-first. Data, access, and security changes always require a defined human decision.</p></div>
+        <div class="pc"><span class="num">04</span><h4>No green checkmark for the unknown</h4><p>Uncertainty stays visible. If it can't prove a state is safe, it says so and escalates.</p></div>
+      </div>
+    </section>
+
+    <!-- ============ COMPACT FAQ ============ -->
+    <section class="os-sec os-center">
+      <div class="os-kick rv"><span class="dot"></span> QUICK ANSWERS</div>
+      <h2 class="os-h2 rv" data-d="1">Fair questions,<br>straight answers.</h2>
+
+      <div class="os-faq rv" data-d="2">
+        <details>
+          <summary>Is CANYO OS a separate product I have to buy?</summary>
+          <div class="fa">No. CANYO OS isn't sold on its own — it's the operating discipline behind every CANYO managed service. When CANYO runs your IT, CANYO OS is how it runs: signed operations, verified outcomes, and receipts for everything.</div>
+        </details>
+        <details>
+          <summary>Does it replace Windows or macOS?</summary>
+          <div class="fa">No. <strong>CANYO OS is an operational layer on top of your existing operating system.</strong> Windows or macOS still runs the machine. CANYO OS sits above them to enforce, verify, and prove the business state you approved.</div>
+        </details>
+        <details>
+          <summary>Will it change things on my systems without asking?</summary>
+          <div class="fa">Only what your policy already approved, and only within safe bounds. <strong>Class 0</strong> observes without changing anything. <strong>Class 1</strong> performs small, fully reversible fixes. <strong>Class 2</strong> asks first. <strong>Class 3</strong> — deleting data, changing access, touching security — always stops and waits for a human.</div>
+        </details>
+        <details>
+          <summary>What happens when something can't be fixed automatically?</summary>
+          <div class="fa">It stops instead of guessing. CANYO OS preserves the evidence, explains the situation in plain language, recommends the next step, and hands the decision to a human — no blind retries, no silent failures.</div>
+        </details>
+        <details>
+          <summary>Does it replace my antivirus, backup, or security tools?</summary>
+          <div class="fa">No — it coordinates them. CANYO OS works alongside tools like SentinelOne, Guardz, and Restic: it verifies they're running, confirms backups are fresh and restorable, coordinates the response when something is detected, and keeps the operational record.</div>
+        </details>
+        <details>
+          <summary>How is this different from what my current IT provider does?</summary>
+          <div class="fa">Most providers install an agent that runs scripts when alerts fire, then close a ticket. CANYO OS maintains a <strong>known-good state</strong> instead: every action is signed, policy-bound, reversible, verified, and recorded with before/after evidence. You don't get told a script ran — you get proof the outcome happened.</div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="os-sec os-center os-sec--wash">
+      <div class="os-kick rv"><span class="dot"></span> WHAT IT MEANS FOR YOU</div>
+      <h2 class="os-h2 rv" data-d="1">Fewer tickets.<br>Fewer surprises.<br><span class="grad">More certainty.</span></h2>
+      <p class="os-sub rv" data-d="2">CANYO OS isn't a product we sell — it's the discipline behind how CANYO runs your IT. It's why a CANYO environment stays documented, recoverable, and consistently healthy instead of quietly drifting out of control.</p>
+      <div class="os-ctarow rv" data-d="3" style="margin-top:32px;">
+        <a href="../#contact" class="os-btn os-btn--primary">Experience IT run by CANYO OS</a>
+      </div>
+      <p class="rv" data-d="4" style="margin-top:20px;">
+        <a href="../inside-canyo/" style="color:var(--text-dim); font-size:.94rem; text-decoration:none; border-bottom:1px solid var(--border-strong); padding-bottom:2px;">Read how CANYO is engineered →</a>
+      </p>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="../" class="brand">
+          <img class="brand__logo brand__logo--mark logo-dark" src="../assets/canyo-logo-white.png" alt="CANYO">
+          <img class="brand__logo brand__logo--mark logo-light" src="../assets/canyo-logo-black.png" alt="CANYO">
+          <img class="brand__logo brand__logo--word logo-dark" src="../assets/canyo-wordmark-white.png" alt="CANYO">
+          <img class="brand__logo brand__logo--word logo-light" src="../assets/canyo-wordmark-black.png" alt="CANYO">
+        </a>
+        <p>Structured IT management for small businesses — monitoring, maintenance, support, and recovery, handled end-to-end.</p>
+        <p class="footer__slogan mono">ENGINEERED IT. RELIABLE RESULTS.</p>
+      </div>
+      <div class="footer__col">
+        <h4 class="mono">SITE</h4>
+        <a href="../#services">Services</a>
+        <a href="../#process">Process</a>
+        <a href="../about/">About</a>
+        <a href="../#stack">Our Stack</a>
+        <a href="../inside-canyo/">Inside CANYO</a>
+        <a href="../#pricing">Pricing</a>
+      </div>
+      <div class="footer__col">
+        <h4 class="mono">LEGAL</h4>
+        <a href="../legal/privacy-policy.html">Privacy Policy</a>
+        <a href="../legal/terms-of-service.html">Terms of Service</a>
+      </div>
+      <div class="footer__col">
+        <h4 class="mono">CONTACT</h4>
+        <a href="mailto:contact@canyo.net">contact@canyo.net</a>
+        <a href="tel:+15203367521">(520) 336-7521</a>
+        <span class="footer__loc">Tucson, Arizona</span>
+        <a href="../#contact">Free Assessment</a>
+        <a href="https://g.page/r/CX-KTqEh6_EYEBM/review" target="_blank" rel="noopener" class="footer__review">★ Leave a Google review</a>
+        <a href="https://github.com/CANYO-IT/canyo.net" target="_blank" rel="noopener" class="footer__github"><strong>This website is open source ↗</strong></a>
+      </div>
+    </div>
+    <div class="container footer__bar">
+      <span>© <span id="year"></span> CANYO. All rights reserved. &nbsp;·&nbsp; <span class="accent">Engineered IT. Reliable Results.</span></span>
+      <span class="footer__status mono"><span class="pulse-dot"></span> STATUS: OPERATIONAL</span>
+    </div>
+  </footer>
+
+  <script src="../app.js?v=4"></script>
+  <script>
+    (function(){
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* reveal on scroll */
+      var els = document.querySelectorAll('.rv');
+      if(!('IntersectionObserver' in window) || reduced){
+        els.forEach(function(e){ e.classList.add('in'); });
+      } else {
+        var io = new IntersectionObserver(function(entries){
+          entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+        }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+        els.forEach(function(e){ io.observe(e); });
+      }
+
+      /* animated counters for the dashboard mock */
+      var counters = document.querySelectorAll('[data-count]');
+      if(counters.length){
+        if(reduced || !('IntersectionObserver' in window)){
+          counters.forEach(function(c){ c.textContent = c.getAttribute('data-count'); });
+        } else {
+          var cio = new IntersectionObserver(function(entries){
+            entries.forEach(function(en){
+              if(!en.isIntersecting) return;
+              cio.unobserve(en.target);
+              var el = en.target, target = parseInt(el.getAttribute('data-count'), 10) || 0;
+              if(target === 0){ el.textContent = '0'; return; }
+              var t0 = null, dur = 900;
+              var step = function(ts){
+                if(!t0) t0 = ts;
+                var p = Math.min((ts - t0) / dur, 1);
+                el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+                if(p < 1) requestAnimationFrame(step);
+              };
+              requestAnimationFrame(step);
+            });
+          }, {threshold:.4});
+          counters.forEach(function(c){ c.textContent = '0'; cio.observe(c); });
+        }
+      }
+
+      /* pause the background mesh when the tab is hidden */
+      var bg = document.getElementById('osBg');
+      if(bg){
+        document.addEventListener('visibilitychange', function(){ bg.classList.toggle('paused', document.hidden); });
+      }
+    })();
+  </script>
+</body>
+</html>

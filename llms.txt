@@ -1,6 +1,6 @@
 # CANYO LLC
 
-> Veteran-owned managed IT services provider serving small businesses in Tucson and Southern Arizona. CANYO builds managed IT environments designed to prevent problems before they become disruptions — automated maintenance, security monitoring, backup verification, and controlled remediation with human intervention when judgment is required. Flat-rate monthly pricing with guaranteed response times.
+> Veteran-owned managed IT services provider serving businesses in Tucson and Southern Arizona. CANYO builds managed IT environments designed to prevent problems before they become disruptions — automated maintenance, security monitoring, backup verification, and controlled remediation with human intervention when judgment is required. Flat-rate monthly pricing with guaranteed response times.
 
 ## Company
 
@@ -12,11 +12,12 @@
 - [Reviews](https://canyo.net/reviews/): Early feedback, 5.0 rated on Google
 - [Contact](https://canyo.net/contact/): contact@canyo.net, +1-520-336-7521
 - [Inside CANYO](https://canyo.net/inside-canyo/): Technical deep-dive — least privilege, defense in depth, verification over trust, isolation by default, layered access model, incident response, reversible-first operations
+- [CanyoOS](https://canyo.net/canyo-os/): CANYO's proprietary, vertically integrated operating layer for managed security — observe, decide, authorize, act, verify, escalate. Operated exclusively by CANYO.
 - [The CANYO Machine](https://canyo.net/machine/): Interactive game simulating a day in managed IT — background auto-remediation, secure least-privilege file restore, AI-handled tickets, human escalation for judgment calls, hands-on manual fixes. Demonstrates CANYO's real operating model.
 
 ## Technology Stack
 
-- NinjaOne: Remote monitoring & management (RMM)
+- CanyoOS: CANYO's own vertically integrated, custom-built RMM — monitoring, management, security, and automation built to work as one system. Operated internally by CANYO (not end-user software).
 - Guardz: AI-native managed detection and response (MDR) with SentinelOne EDR
 - Tailscale: Zero-trust remote access, SOC 2 Type II certified platform, WireGuard-based
 - Restic: Encrypted, deduplicated, snapshot-based backup engine

@@ -200,26 +200,47 @@ input{font-family:var(--fm)}
   #vpnWrap .btn{padding:9px 12px !important;font-size:10px}
 }
 @media(max-width:520px){
-  .modal{align-items:center;padding:12px}
-  .card{max-height:88dvh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .modal{padding:12px;align-items:center}
+  .modal.kb{align-items:flex-start;padding-top:10px}
+  .card{width:100%;max-width:420px;border-radius:14px;max-height:calc(100dvh - 24px);overflow:hidden}
   .modal.kb .card{max-height:calc(var(--vvh,100dvh) - 20px)}
-  .priv{flex-direction:row}
+  .card__body{padding:16px 16px 18px;overflow-y:auto;-webkit-overflow-scrolling:touch;flex:1;min-height:0}
+  .kick{margin-bottom:6px;font-size:8px}
+  .ctitle{font-size:19px;margin-bottom:4px}
+  .csub{font-size:10.5px;line-height:1.55}
+  .hint{margin-top:10px;padding:8px 11px;font-size:9.5px;line-height:1.5}
+  .field{margin-top:11px}
+  .field input{font-size:16px;padding:11px 13px} /* 16px prevents iOS focus zoom */
+  .btn{padding:13px;font-size:11px;margin-top:13px}
+  .priv{margin-top:9px;font-size:8.5px;line-height:1.5;flex-direction:row}
+  .stepsdots{margin-top:13px}
+  .stepsdots i{width:18px}
   .bigword{font-size:clamp(28px,8.6vw,42px)}
   .bigsub{font-size:10px;max-width:none}
   #chrome{padding:12px 14px}
   #chrome .who{display:none}
-  .card{width:100%;border-radius:12px}
-  .card__body{padding:18px}
-  .modal{padding:14px;align-items:flex-end}
-  .ctitle{font-size:18px}
-  .btn{padding:15px;font-size:11px}
-  .field input{font-size:16px} /* prevent iOS zoom on focus */
+  .frow{padding:10px 12px}
   .frow .nm{font-size:11px}
   .frow .mt{font-size:8.5px}
   #mailBtn{width:56px;height:56px}
   #flash .big{font-size:clamp(26px,8vw,44px)}
   #flash .sm{font-size:10px;line-height:1.9}
   .card__x{padding:5px 10px}
+}
+/* Short / landscape phones: card must scroll internally and hug the top */
+@media(max-height:520px){
+  .modal{padding:8px}
+  .modal.kb{padding-top:8px}
+  .card{max-height:calc(100dvh - 16px)}
+  .modal.kb .card{max-height:calc(var(--vvh,100dvh) - 14px)}
+  .card__body{padding:12px 16px}
+  .ctitle{font-size:17px;margin-bottom:3px}
+  .csub{font-size:10px}
+  .hint{margin-top:8px;padding:7px 10px}
+  .field{margin-top:8px}
+  .btn{margin-top:10px;padding:11px}
+  .priv{margin-top:7px}
+  .stepsdots{margin-top:9px}
 }
 </style>
 </head>
