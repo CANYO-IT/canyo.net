@@ -29,6 +29,7 @@
   var toggle = document.getElementById('themeToggle');
   var root = document.documentElement;
 
+  if (!toggle) return;
   toggle.addEventListener('click', function () {
     var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
@@ -59,21 +60,64 @@
 (function initMobileMenu() {
   var burger = document.getElementById('navBurger');
   var links = document.getElementById('navLinks');
+  if (!burger || !links) return;
 
-  burger.addEventListener('click', function () {
-    var open = links.classList.toggle('open');
+  var scrollY = 0;
+  function setMenuOpen(open) {
+    var currentlyOpen = links.classList.contains('open');
+    if (open === currentlyOpen) return;
+
+    links.classList.toggle('open', open);
     burger.classList.toggle('open', open);
     burger.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('menu-open', open);
+
+    if (open) {
+      scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = '-' + scrollY + 'px';
+      document.body.style.width = '100%';
+      burger.focus();
+    } else {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollY);
+    }
+  }
+
+  burger.addEventListener('click', function (e) {
+    e.stopPropagation();
+    setMenuOpen(!links.classList.contains('open'));
   });
 
-  // Close menu after tapping a link
+  // Close menu after tapping a same-page anchor link
   links.querySelectorAll('a').forEach(function (a) {
     a.addEventListener('click', function () {
-      links.classList.remove('open');
-      burger.classList.remove('open');
-      burger.setAttribute('aria-expanded', 'false');
+      var href = a.getAttribute('href') || '';
+      var samePageAnchor = href.indexOf('#') === 0;
+      var samePagePath = href.indexOf(window.location.pathname) === 0 && href.indexOf('#') !== -1;
+      if (samePageAnchor || samePagePath) setMenuOpen(false);
     });
   });
+
+  // Close when clicking/tapping outside the menu
+  document.addEventListener('click', function (e) {
+    if (links.classList.contains('open') && !links.contains(e.target) && !burger.contains(e.target)) {
+      setMenuOpen(false);
+    }
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && links.classList.contains('open')) setMenuOpen(false);
+  });
+
+  // Reset menu when crossing the mobile breakpoint
+  var mq = window.matchMedia('(min-width: 861px)');
+  function onMqChange() { if (mq.matches) setMenuOpen(false); }
+  if (mq.addEventListener) mq.addEventListener('change', onMqChange);
+  else if (mq.addListener) mq.addListener(onMqChange);
 })();
 
 /* ---------- Scroll-reveal animations ---------- */
