@@ -21,3 +21,6 @@ credentials/
 # Local editor and IDE files
 .vscode/
 .idea/
+
+# Local virtual environment
+.venv/
