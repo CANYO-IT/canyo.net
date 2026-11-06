@@ -98,9 +98,9 @@ a { color: inherit; text-decoration: none; }
 }
 .nav.scrolled { border-bottom-color: var(--border); }
 
-.nav__inner { height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; gap: 24px; position: relative; overflow: hidden; }
+.nav__inner { height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; gap: 12px; position: relative; overflow: hidden; }
 
-.brand { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: 1.05rem; letter-spacing: -0.01em; flex: none; width: 160px; }
+.brand { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: 1rem; letter-spacing: -0.01em; flex: none; width: 150px; }
 .brand__mark {
   display: grid; place-items: center;
   width: 34px; height: 34px; border-radius: 9px;
@@ -110,10 +110,10 @@ a { color: inherit; text-decoration: none; }
 }
 .brand__tld { color: var(--text-faint); font-weight: 600; }
 
-.nav__links { display: flex; align-items: center; gap: 12px; justify-content: center; flex: 1; flex-wrap: nowrap; }
-.nav__group { display: flex; align-items: center; gap: 10px; }
-.nav__group--pages { flex: none; margin-left: 10px; }
-.nav__links a { display: inline-flex; align-items: center; font-size: 0.8rem; font-weight: 500; color: var(--text-dim); transition: color 0.2s, background 0.2s, border-color 0.2s, box-shadow 0.2s; white-space: nowrap; box-sizing: border-box; padding: 4px 8px; border: 1px solid transparent; border-radius: 8px; }
+.nav__links { display: flex; align-items: center; gap: 8px; justify-content: center; flex: 1; flex-wrap: nowrap; }
+.nav__group { display: flex; align-items: center; gap: 6px; }
+.nav__group--pages { flex: none; margin-left: 8px; }
+.nav__links a { display: inline-flex; align-items: center; font-size: 0.78rem; font-weight: 500; color: var(--text-dim); transition: color 0.2s, background 0.2s, border-color 0.2s, box-shadow 0.2s; white-space: nowrap; box-sizing: border-box; padding: 3px 7px; border: 1px solid transparent; border-radius: 7px; }
 .nav__links a:hover { color: var(--text); }
 .nav__links a.nav__highlight {
   border-color: var(--accent);
@@ -141,22 +141,22 @@ a { color: inherit; text-decoration: none; }
 
 /* Keep the console and CTA buttons visually distinct from the uniform padding */
 .nav__links a.nav__console,
-.nav__links a.nav__cta { padding: 4px 8px; }
+.nav__links a.nav__cta { padding: 3px 7px; }
 
 /* Denser nav variant (Inside CANYO page has an extra Home link) */
 .nav__links a.nav__console { font-family: var(--font-mono); opacity: .4; font-size: .8em; letter-spacing: .1em; transition: opacity .2s, color .2s; }
 .nav__links a.nav__console:hover { opacity: 1; color: var(--text); }
 
 .nav__cta {
-  padding: 4px 10px; border-radius: 99px;
+  padding: 3px 8px; border-radius: 99px;
   background: var(--accent); color: var(--on-accent) !important; font-weight: 600;
   transition: transform 0.2s, box-shadow 0.2s;
   flex: none; white-space: nowrap;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
 }
 .nav__cta:hover { transform: translateY(-1px); box-shadow: 0 6px 24px var(--accent-glow); }
 
-.nav__controls { display: flex; align-items: center; gap: 12px; flex: none; width: 100px; justify-content: flex-end; }
+.nav__controls { display: flex; align-items: center; gap: 10px; flex: none; width: 96px; justify-content: flex-end; }
 
 /* Theme toggle */
 .theme-toggle {
@@ -736,11 +736,11 @@ body.menu-open { overflow: hidden; touch-action: none; }
   .nav__links a { font-size: 0.85rem; }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1400px) {
   .nav__group--sections { display: none; }
   .nav__group--pages { margin-left: 0; }
-  .nav__links { justify-content: flex-end; gap: 8px; }
-  .nav__group { gap: 8px; }
+  .nav__links { justify-content: flex-end; gap: 6px; }
+  .nav__group { gap: 6px; }
   .nav__links a { font-size: 0.78rem; }
   .nav__links a.nav__highlight { padding: 3px 7px; }
 }
