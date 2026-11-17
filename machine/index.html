@@ -22,8 +22,11 @@
 <meta name="twitter:description" content="An interactive simulation of managed IT: auto-remediation, secure file restore, AI ticketing, and human escalation.">
 <meta name="twitter:image" content="https://canyo.net/assets/og-image.png">
 <meta name="author" content="CANYO LLC">
-<link rel="icon" href="https://canyo.net/assets/canyo-logo-white.png" type="image/png">
-<link rel="apple-touch-icon" href="https://canyo.net/assets/canyo-logo-white.png">
+<!-- Favicons: default dark (Google), light-mode swap -->
+<link rel="icon" type="image/png" href="../assets/favicon-dark.png" sizes="512x512">
+<link rel="icon" type="image/png" href="../assets/favicon-light.png" sizes="512x512" media="(prefers-color-scheme: light)">
+<link rel="alternate icon" href="../assets/favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebPage","name":"The CANYO Machine","url":"https://canyo.net/machine/","description":"An interactive simulation of a day in managed IT — auto-remediation, secure file restore, AI ticketing, and human escalation.","isPartOf":{"@type":"WebSite","name":"CANYO","url":"https://canyo.net/"},"about":{"@type":"Organization","name":"CANYO LLC","url":"https://canyo.net/"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://canyo.net/"},{"@type":"ListItem","position":2,"name":"The CANYO Machine","item":"https://canyo.net/machine/"}]}}
 </script>
@@ -41,6 +44,10 @@
   --fd:'Montserrat',system-ui,sans-serif; --fm:'JetBrains Mono',ui-monospace,monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
+
+/* skip link: hidden until keyboard focus */
+.skip-link{position:absolute;top:-48px;left:12px;z-index:200;background:var(--ink);color:var(--bg);font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:.1em;text-decoration:none;padding:9px 14px;border-radius:6px;transition:top .18s ease}
+.skip-link:focus{top:12px;outline:2px solid var(--ok)}
 html{height:100%;height:-webkit-fill-available;overscroll-behavior:none}
 body{position:fixed;inset:0;width:100%;height:100%;height:100dvh;overflow:hidden;overscroll-behavior:none}
 body{background:var(--bg);color:var(--ink);font-family:var(--fd);overflow:hidden;-webkit-tap-highlight-color:transparent}
@@ -54,10 +61,9 @@ input{font-family:var(--fm)}
 /* ============ CHROME (top bar + persistent) ============ */
 #chrome{position:fixed;top:0;left:0;right:0;z-index:130;display:flex;align-items:center;gap:14px;padding:14px 20px;pointer-events:none}
 #chrome>*{pointer-events:auto}
-#chrome .logo{display:flex;align-items:center;gap:10px}
-#chrome .logo img{height:20px;display:block}
-#chrome .who{font-family:var(--fm);font-size:9px;letter-spacing:.22em;color:var(--faint)}
-#chrome .who b{color:var(--dim)}
+#chrome .logo{display:flex;align-items:center;gap:12px}
+#chrome .logo img{height:20px;width:auto;display:block}
+#chrome .who{font-family:var(--fm);font-size:9px;font-weight:500;letter-spacing:.24em;color:var(--dim);padding:4px 9px;border:1px solid var(--line);border-radius:4px;background:rgba(10,10,12,.6);white-space:nowrap}
 #chromeRight{margin-left:auto;display:flex;align-items:center;gap:10px}
 .homebtn{font-family:var(--fm);font-size:10px;letter-spacing:.18em;color:var(--dim);text-decoration:none;padding:8px 12px;border:1px solid var(--line);border-radius:4px;background:rgba(10,10,12,.6)}
 .homebtn:hover{color:var(--ink);border-color:var(--ink)}
@@ -310,7 +316,7 @@ input{font-family:var(--fm)}
 
 <!-- top chrome -->
 <div id="chrome">
-  <div class="logo"><img src="../assets/canyo-logo-white.png" alt="CANYO"><span class="who">INTERNAL<br><b>OPS CONSOLE</b></span></div>
+  <div class="logo"><img src="../assets/canyo-logo-white.png" alt="CANYO"><span class="who">OPS&nbsp;CONSOLE</span></div>
   <div id="chromeRight">
     <a class="homebtn" href="../" title="Back to canyo.net">← HOME</a>
   </div>
